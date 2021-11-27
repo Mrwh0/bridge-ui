@@ -11,13 +11,10 @@ import {
   networkNames,
 } from "lib/constants";
 import {
-  BSC_XDAI_BRIDGE,
+  POLIS_BSC_BRIDGE,
+  BSC_POLIS_BRIDGE,
   defaultTokens,
-  ETH_BSC_BRIDGE,
-  ETH_XDAI_BRIDGE,
-  KOVAN_SOKOL_BRIDGE,
   networks,
-  POA_XDAI_BRIDGE,
 } from "lib/networks";
 
 import { getOverriddenMediator, isOverridden } from "./overrides";
@@ -150,27 +147,11 @@ const {
 
 export const getRPCKeys = (bridgeDirection) => {
   switch (bridgeDirection) {
-    case ETH_XDAI_BRIDGE:
+    case POLIS_BSC_BRIDGE:
       return {
         homeRPCKey: XDAI_RPC_URL,
         foreignRPCKey: MAINNET_RPC_URL,
       };
-    case BSC_XDAI_BRIDGE:
-      return {
-        homeRPCKey: XDAI_RPC_URL,
-        foreignRPCKey: BSC_RPC_URL,
-      };
-    case POA_XDAI_BRIDGE:
-      return {
-        homeRPCKey: XDAI_RPC_URL,
-        foreignRPCKey: POA_RPC_URL,
-      };
-    case ETH_BSC_BRIDGE:
-      return {
-        homeRPCKey: BSC_RPC_URL,
-        foreignRPCKey: MAINNET_RPC_URL,
-      };
-    case KOVAN_SOKOL_BRIDGE:
     default:
       return {
         homeRPCKey: SOKOL_RPC_URL,

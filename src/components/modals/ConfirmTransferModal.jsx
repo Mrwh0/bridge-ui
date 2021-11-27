@@ -266,7 +266,6 @@ export const ConfirmTransferModal = ({ isOpen, onClose }) => {
                 noShadow
               />
             )}
-            <STAKETokenWarning noShadow />
             {isTokenRebasing && (
               <RebasingTokenWarning token={fromToken} noShadow />
             )}

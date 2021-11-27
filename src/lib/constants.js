@@ -1,56 +1,29 @@
 import { BigNumber } from "ethers";
 
-export const ETH_XDAI_BRIDGE = "eth-xdai";
-export const BSC_XDAI_BRIDGE = "bsc-xdai";
-export const POA_XDAI_BRIDGE = "poa-xdai";
-export const KOVAN_SOKOL_BRIDGE = "kovan-sokol";
-export const ETH_BSC_BRIDGE = "eth-bsc";
+export const POLIS_BSC_BRIDGE = "polis-bsc";
+export const BSC_POLIS_BRIDGE = "bsc-polis";
 
 export const ADDRESS_ZERO = "0x0000000000000000000000000000000000000000";
 export const ETHER_CURRENCY_LOGO =
   "https://s2.coinmarketcap.com/static/img/coins/64x64/1027.png";
 export const BNB_CURRENCY_LOGO =
   "https://s2.coinmarketcap.com/static/img/coins/64x64/1839.png";
-export const POA_CURRENCY_LOGO =
-  "https://s2.coinmarketcap.com/static/img/coins/64x64/2548.png";
+export const POLIS_CURRENCY_LOGO =
+  "https://s2.coinmarketcap.com/static/img/coins/64x64/2359.png";
 
 export const LARGEST_UINT256 = BigNumber.from(
   "115792089237316195423570985008687907853269984665640564039457584007913129639935"
 );
 
-export const POLLING_INTERVAL =
-  process.env.REACT_APP_UI_STATUS_UPDATE_INTERVAL || 5000;
+export const POLLING_INTERVAL = 5000;
 
-export const DEFAULT_BRIDGE_DIRECTION =
-  process.env.REACT_APP_DEFAULT_BRIDGE_DIRECTION || ETH_XDAI_BRIDGE;
+export const DEFAULT_BRIDGE_DIRECTION = POLIS_BSC_BRIDGE;
 
-export const NON_ETH_CHAIN_IDS = [56, 77, 99, 100];
+export const NON_ETH_CHAIN_IDS = [56];
 
-export const XDAI_CHAIN_IDS = [77, 99, 100];
+export const XDAI_CHAIN_IDS = [333999];
 
 export const nativeCurrencies = {
-  1: {
-    chainId: 1,
-    decimals: 18,
-    logoURI: ETHER_CURRENCY_LOGO,
-    address: ADDRESS_ZERO,
-    name: "Ether",
-    symbol: "ETH",
-    mode: "NATIVE",
-    homeTokenAddress:
-      "0x6A023CCd1ff6F2045C3309768eAd9E68F978f6e1".toLowerCase(),
-  },
-  42: {
-    chainId: 42,
-    decimals: 18,
-    logoURI: ETHER_CURRENCY_LOGO,
-    address: ADDRESS_ZERO,
-    name: "Kovan Ether",
-    symbol: "KETH",
-    mode: "NATIVE",
-    homeTokenAddress:
-      "0x3D14493DF2B479E6BABE82Fc2373F91622bac025".toLowerCase(),
-  },
   56: {
     chainId: 56,
     decimals: 18,
@@ -59,19 +32,17 @@ export const nativeCurrencies = {
     address: ADDRESS_ZERO,
     symbol: "BNB",
     mode: "NATIVE",
-    homeTokenAddress:
-      "0xCa8d20f3e0144a72C6B5d576e9Bd3Fd8557E2B04".toLowerCase(),
+    homeTokenAddress: "".toLowerCase(),
   },
-  99: {
-    chainId: 99,
+  333999: {
+    chainId: 333999,
     decimals: 18,
-    logoURI: POA_CURRENCY_LOGO,
-    name: "POA",
+    logoURI: POLIS_CURRENCY_LOGO,
+    name: "Polis",
     address: ADDRESS_ZERO,
-    symbol: "POA",
+    symbol: "POLIS",
     mode: "NATIVE",
-    homeTokenAddress:
-      "0x9fe3864F9Ae7cfb5668Dae90C0e20c4C3D437664".toLowerCase(),
+    homeTokenAddress: "".toLowerCase(),
   },
 };
 

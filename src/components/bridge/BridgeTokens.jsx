@@ -79,7 +79,6 @@ export const BridgeTokens = () => {
     >
       <GnosisSafeWarning noCheckbox />
       <RPCHealthWarning />
-      <STAKETokenWarning />
       {isERC20Dai && <DaiWarning />}
       {showReverseBridgeWarning && <ReverseWarning />}
       {showBinancePeggedAssetWarning && (
