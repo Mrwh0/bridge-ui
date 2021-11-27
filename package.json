@@ -58,6 +58,6 @@
     "build": "GENERATE_SOURCEMAP=false react-scripts build",
     "start": "react-scripts start",
     "format": "prettier --ignore-path .gitignore --write \"{*,**/*}.{ts,tsx,js,jsx,json,md}\"",
-    "lint": "eslint \"./src/**/*.{js,jsx}\""
+    "lint": "eslint \"./src/**/*.{js,jsx}\" --fix"
   }
 }
