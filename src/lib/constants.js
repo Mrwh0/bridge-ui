@@ -1,14 +1,11 @@
 import { BigNumber } from "ethers";
 
 export const POLIS_BSC_BRIDGE = "polis-bsc";
-export const BSC_POLIS_BRIDGE = "bsc-polis";
 
 export const ADDRESS_ZERO = "0x0000000000000000000000000000000000000000";
 
 export const BNB_CURRENCY_LOGO =
   "https://s2.coinmarketcap.com/static/img/coins/64x64/1839.png";
-export const POLIS_CURRENCY_LOGO =
-  "https://s2.coinmarketcap.com/static/img/coins/64x64/2359.png";
 
 export const LARGEST_UINT256 = BigNumber.from(
   "115792089237316195423570985008687907853269984665640564039457584007913129639935"
@@ -29,23 +26,10 @@ export const nativeCurrencies = {
     mode: "NATIVE",
     homeTokenAddress: "".toLowerCase(),
   },
-  333999: {
-    chainId: 333999,
-    decimals: 18,
-    logoURI: POLIS_CURRENCY_LOGO,
-    name: "Polis",
-    address: ADDRESS_ZERO,
-    symbol: "POLIS",
-    mode: "NATIVE",
-    homeTokenAddress: "".toLowerCase(),
-  },
 };
 
 export const nativeCurrencyMediators = {
-  1: "0xa6439ca0fcba1d0f80df0be6a17220fed9c9038a".toLowerCase(),
-  42: "0x227a6f13aa0dba8912d740c0f88fb1304b2597e1".toLowerCase(),
-  56: "0xefc33f8b2c4d51005585962be7ea20518ea9fd0d".toLowerCase(),
-  99: "0xF6a1Ad94d29679388e533B63bfE1Fd6f1680D23B".toLowerCase(),
+  56: "".toLowerCase(),
 };
 
 export const networkNames = {
@@ -65,7 +49,7 @@ export const networkCurrencies = {
   },
   333999: {
     name: "Polis",
-    symbol: "POLIS"
+    symbol: "POLIS",
   },
 };
 

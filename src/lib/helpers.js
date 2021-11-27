@@ -17,7 +17,8 @@ import { getOverriddenMediator, isOverridden } from "./overrides";
 export const getWalletProviderName = (provider) =>
   provider?.connection?.url || null;
 
-export const getNativeCurrency = (chainId) => nativeCurrencies[chainId || 333999];
+export const getNativeCurrency = (chainId) =>
+  nativeCurrencies[chainId || 333999];
 
 export const getNetworkName = (chainId) =>
   networkNames[chainId] || "Unknown Network";
@@ -28,7 +29,9 @@ export const getNetworkCurrency = (chainId) =>
   networkCurrencies[chainId] || { name: "Unknown", symbol: "Unknown" };
 
 export const getRPCUrl = (chainId, returnAsArray = false) =>
-  returnAsArray ? chainUrls[chainId || 333999].rpc : chainUrls[chainId || 333999].rpc[0];
+  returnAsArray
+    ? chainUrls[chainId || 333999].rpc
+    : chainUrls[chainId || 333999].rpc[0];
 
 export const getExplorerUrl = (chainId) =>
   (chainUrls[chainId] || chainUrls[333999]).explorer;

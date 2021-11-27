@@ -42,7 +42,11 @@ export const useBridgeDirection = () => {
     (chainId) => {
       const subgraphName =
         homeChainId === chainId ? homeGraphName : foreignGraphName;
-      return `https://api.thegraph.com/subgraphs/name/${subgraphName}`;
+      const prefix =
+        chainId === 333999
+          ? "https://graph.polis.tech/subgraphs/name/"
+          : "https://api.thegraph.com/subgraphs/name/";
+      return prefix + subgraphName;
     },
     [foreignGraphName, homeChainId, homeGraphName]
   );
