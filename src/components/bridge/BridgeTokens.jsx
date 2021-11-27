@@ -1,7 +1,6 @@
 import { Flex, Grid, Text, useBreakpointValue } from "@chakra-ui/react";
 import { AdvancedMenu } from "components/bridge/AdvancedMenu";
 import { FromToken } from "components/bridge/FromToken";
-import { SystemFeedback } from "components/bridge/SystemFeedback";
 import { ToToken } from "components/bridge/ToToken";
 import { TransferButton } from "components/bridge/TransferButton";
 import { UnlockButton } from "components/bridge/UnlockButton";
@@ -141,7 +140,6 @@ export const BridgeTokens = () => {
           <ToToken />
         </Grid>
         <AdvancedMenu />
-        <SystemFeedback />
       </Flex>
     </Flex>
   );

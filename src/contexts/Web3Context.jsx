@@ -1,7 +1,5 @@
 import { SafeAppWeb3Modal as Web3Modal } from "@gnosis.pm/safe-apps-web3modal";
 import WalletConnectProvider from "@walletconnect/web3-provider";
-import coinbaseLogo from "assets/coinbase.svg";
-import imTokenLogo from "assets/imtoken.svg";
 import { ethers } from "ethers";
 import {
   getNetworkName,
@@ -16,7 +14,6 @@ import React, {
   useMemo,
   useState,
 } from "react";
-import { WalletLink } from "walletlink";
 
 export const Web3Context = React.createContext({});
 export const useWeb3Context = () => useContext(Web3Context);
@@ -43,46 +40,10 @@ const rpc = {
   56: getRPCUrl(56),
 };
 
-const connector = async (ProviderPackage, options) => {
-  const provider = new ProviderPackage(options);
-  await provider.enable();
-  return provider;
-};
-
 const providerOptions = {
   walletconnect: {
     package: WalletConnectProvider,
     options: { rpc },
-  },
-  "custom-imToken": {
-    display: {
-      logo: imTokenLogo,
-      name: "imToken",
-      description: "Connect to your imToken Wallet",
-    },
-    package: WalletConnectProvider,
-    options: { rpc },
-    connector,
-  },
-  "custom-walletlink": {
-    display: {
-      logo: coinbaseLogo,
-      name: "Coinbase",
-      description: "Scan with Coinbase Wallet to connect",
-    },
-    options: {
-      appName: "OmniBridge",
-    },
-    package: WalletLink,
-    connector: async (WalletLinkPackage, options) => {
-      const { appName } = options;
-      const walletLink = new WalletLinkPackage({
-        appName,
-      });
-      const provider = walletLink.makeWeb3Provider({}, 0);
-      await provider.enable();
-      return provider;
-    },
   },
 };
 
