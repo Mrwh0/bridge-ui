@@ -33,7 +33,6 @@ import { utils } from "ethers";
 import { useBridgeDirection } from "hooks/useBridgeDirection";
 import { LOCAL_STORAGE_KEYS } from "lib/constants";
 import { logError, uniqueTokens } from "lib/helpers";
-import { ETH_BSC_BRIDGE } from "lib/networks";
 import { fetchTokenDetails } from "lib/token";
 import React, { useCallback, useMemo, useRef, useState } from "react";
 
@@ -124,15 +123,12 @@ export const CustomTokenModal = ({ isOpen, onClose, onBack }) => {
   } = useDisclosure();
 
   const onClick = useCallback(() => {
-    if (
-      bridgeDirection === ETH_BSC_BRIDGE &&
-      shouldShowBSCTokenModal(customToken)
-    ) {
+    if (shouldShowBSCTokenModal(customToken)) {
       showWarning();
     } else {
       addCustomToken();
     }
-  }, [customToken, addCustomToken, bridgeDirection, showWarning]);
+  }, [customToken, addCustomToken, showWarning]);
 
   const isTokenRebasing = isRebasingToken(customToken);
   const isTokenSafeMoon = isSafeMoonToken(customToken);

@@ -36,7 +36,6 @@ import {
   removeElement,
   uniqueTokens,
 } from "lib/helpers";
-import { ETH_BSC_BRIDGE } from "lib/networks";
 import { fetchTokenBalanceWithProvider } from "lib/token";
 import { fetchTokenList } from "lib/tokenList";
 import React, {
@@ -62,7 +61,6 @@ export const TokenSelectorModal = ({ isOpen, onClose, onCustom }) => {
   const [filteredTokenList, setFilteredTokenList] = useState([]);
   const smallScreen = useBreakpointValue({ sm: false, base: true });
   const {
-    bridgeDirection,
     getBridgeChainId,
     foreignChainId,
     getGraphEndpoint,
@@ -196,16 +194,13 @@ export const TokenSelectorModal = ({ isOpen, onClose, onCustom }) => {
   const onClick = useCallback(
     async (token) => {
       setSelectedToken(token);
-      if (
-        bridgeDirection === ETH_BSC_BRIDGE &&
-        shouldShowBSCTokenModal(token)
-      ) {
+      if (shouldShowBSCTokenModal(token)) {
         showWarning();
       } else {
         selectToken(token);
       }
     },
-    [selectToken, bridgeDirection, showWarning]
+    [selectToken, showWarning]
   );
 
   const onChange = (e) => {

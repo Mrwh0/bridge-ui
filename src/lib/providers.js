@@ -4,21 +4,13 @@ import { LOCAL_STORAGE_KEYS } from "lib/constants";
 import { getNetworkLabel, getRPCUrl, logError } from "lib/helpers";
 
 const {
-  MAINNET_RPC_URL,
-  KOVAN_RPC_URL,
+  POLIS_RPC_URL,
   BSC_RPC_URL,
-  SOKOL_RPC_URL,
-  POA_RPC_URL,
-  XDAI_RPC_URL,
 } = LOCAL_STORAGE_KEYS;
 
 const RPC_URL = {
-  1: MAINNET_RPC_URL,
-  42: KOVAN_RPC_URL,
   56: BSC_RPC_URL,
-  77: SOKOL_RPC_URL,
-  99: POA_RPC_URL,
-  100: XDAI_RPC_URL,
+  333999: POLIS_RPC_URL,
 };
 
 const NETWORK_TIMEOUT = 1000;
@@ -54,7 +46,6 @@ export const getEthersProvider = async (chainId) => {
   const currentRPCUrls = getRPCUrl(chainId, true);
   const rpcURLs =
     localRPCUrl?.length > 0 ? [localRPCUrl, ...currentRPCUrls] : currentRPCUrls;
-
   const provider =
     (await checkRPCHealth(sessionStorage.getItem(sessionHealthyURL))) ||
     (await Promise.all(rpcURLs.map(checkRPCHealth))).filter((p) => !!p)[0];

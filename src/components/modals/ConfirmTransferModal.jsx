@@ -16,10 +16,6 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import TransferImage from "assets/confirm-transfer.svg";
-import {
-  BinancePeggedAssetWarning,
-  isERC20ExchangableBinancePeggedAsset,
-} from "components/warnings/BinancePeggedAssetWarning";
 import { DaiWarning, isERC20DaiAddress } from "components/warnings/DaiWarning";
 import { GnosisSafeWarning } from "components/warnings/GnosisSafeWarning";
 import {
@@ -37,7 +33,6 @@ import {
   isSafeMoonToken,
   SafeMoonTokenWarning,
 } from "components/warnings/SafeMoonTokenWarning";
-import { STAKETokenWarning } from "components/warnings/STAKETokenWarning";
 import { useBridgeContext } from "contexts/BridgeContext";
 import { useWeb3Context } from "contexts/Web3Context";
 import { useBridgeDirection } from "hooks/useBridgeDirection";
@@ -49,14 +44,12 @@ import {
   getNetworkLabel,
   handleWalletError,
 } from "lib/helpers";
-import { BSC_XDAI_BRIDGE } from "lib/networks";
 import React, { useCallback, useEffect, useState } from "react";
 
 export const ConfirmTransferModal = ({ isOpen, onClose }) => {
   const { isGnosisSafe, account } = useWeb3Context();
 
-  const { homeChainId, foreignChainId, enableReversedBridge, bridgeDirection } =
-    useBridgeDirection();
+  const { foreignChainId, enableReversedBridge } = useBridgeDirection();
   const {
     receiver,
     fromToken,
@@ -119,11 +112,6 @@ export const ConfirmTransferModal = ({ isOpen, onClose }) => {
     !enableReversedBridge &&
     toToken.chainId === foreignChainId &&
     toToken.address === ADDRESS_ZERO;
-  const showBinancePeggedAssetWarning =
-    !!fromToken &&
-    bridgeDirection === BSC_XDAI_BRIDGE &&
-    fromToken.chainId === homeChainId &&
-    isERC20ExchangableBinancePeggedAsset(fromToken);
   const isInflationToken = isInflationaryToken(fromToken);
   const isTokenRebasing = isRebasingToken(fromToken);
   const isTokenSafeMoon = isSafeMoonToken(fromToken);
@@ -255,9 +243,6 @@ export const ConfirmTransferModal = ({ isOpen, onClose }) => {
             )}
             {isERC20Dai && <DaiWarning noShadow />}
             {showReverseBridgeWarning && <ReverseWarning noShadow />}
-            {showBinancePeggedAssetWarning && (
-              <BinancePeggedAssetWarning token={fromToken} noShadow />
-            )}
             {isInflationToken && (
               <InflationaryTokenWarning
                 token={fromToken}

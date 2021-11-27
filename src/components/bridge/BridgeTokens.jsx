@@ -6,10 +6,6 @@ import { ToToken } from "components/bridge/ToToken";
 import { TransferButton } from "components/bridge/TransferButton";
 import { UnlockButton } from "components/bridge/UnlockButton";
 import { BridgeLoadingModal } from "components/modals/BridgeLoadingModal";
-import {
-  BinancePeggedAssetWarning,
-  isERC20ExchangableBinancePeggedAsset,
-} from "components/warnings/BinancePeggedAssetWarning";
 import { DaiWarning, isERC20DaiAddress } from "components/warnings/DaiWarning";
 import { GnosisSafeWarning } from "components/warnings/GnosisSafeWarning";
 import {
@@ -26,26 +22,19 @@ import {
   isSafeMoonToken,
   SafeMoonTokenWarning,
 } from "components/warnings/SafeMoonTokenWarning";
-import { STAKETokenWarning } from "components/warnings/STAKETokenWarning";
 import { useBridgeContext } from "contexts/BridgeContext";
 import { useWeb3Context } from "contexts/Web3Context";
 import { useBridgeDirection } from "hooks/useBridgeDirection";
 import { ADDRESS_ZERO } from "lib/constants";
 import { getNetworkName } from "lib/helpers";
-import { BSC_XDAI_BRIDGE } from "lib/networks";
 import React from "react";
 
 import { SwitchButton } from "./SwitchButton";
 
 export const BridgeTokens = () => {
   const { providerChainId: chainId } = useWeb3Context();
-  const {
-    getBridgeChainId,
-    foreignChainId,
-    homeChainId,
-    enableReversedBridge,
-    bridgeDirection,
-  } = useBridgeDirection();
+  const { getBridgeChainId, foreignChainId, enableReversedBridge } =
+    useBridgeDirection();
   const { fromToken, toToken } = useBridgeContext();
   const isERC20Dai =
     !!fromToken &&
@@ -56,11 +45,6 @@ export const BridgeTokens = () => {
     !enableReversedBridge &&
     toToken.chainId === foreignChainId &&
     toToken.address === ADDRESS_ZERO;
-  const showBinancePeggedAssetWarning =
-    !!fromToken &&
-    bridgeDirection === BSC_XDAI_BRIDGE &&
-    fromToken.chainId === homeChainId &&
-    isERC20ExchangableBinancePeggedAsset(fromToken);
   const isInflationToken = isInflationaryToken(fromToken);
   const isTokenRebasing = isRebasingToken(fromToken);
   const isTokenSafeMoon = isSafeMoonToken(fromToken);
@@ -81,9 +65,6 @@ export const BridgeTokens = () => {
       <RPCHealthWarning />
       {isERC20Dai && <DaiWarning />}
       {showReverseBridgeWarning && <ReverseWarning />}
-      {showBinancePeggedAssetWarning && (
-        <BinancePeggedAssetWarning token={fromToken} />
-      )}
       {isInflationToken && (
         <InflationaryTokenWarning token={fromToken} noCheckbox />
       )}

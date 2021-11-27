@@ -10,19 +10,14 @@ import {
   networkLabels,
   networkNames,
 } from "lib/constants";
-import {
-  POLIS_BSC_BRIDGE,
-  BSC_POLIS_BRIDGE,
-  defaultTokens,
-  networks,
-} from "lib/networks";
+import { POLIS_BSC_BRIDGE, defaultTokens, networks } from "lib/networks";
 
 import { getOverriddenMediator, isOverridden } from "./overrides";
 
 export const getWalletProviderName = (provider) =>
   provider?.connection?.url || null;
 
-export const getNativeCurrency = (chainId) => nativeCurrencies[chainId || 1];
+export const getNativeCurrency = (chainId) => nativeCurrencies[chainId || 333999];
 
 export const getNetworkName = (chainId) =>
   networkNames[chainId] || "Unknown Network";
@@ -33,13 +28,13 @@ export const getNetworkCurrency = (chainId) =>
   networkCurrencies[chainId] || { name: "Unknown", symbol: "Unknown" };
 
 export const getRPCUrl = (chainId, returnAsArray = false) =>
-  returnAsArray ? chainUrls[chainId || 1].rpc : chainUrls[chainId || 1].rpc[0];
+  returnAsArray ? chainUrls[chainId || 333999].rpc : chainUrls[chainId || 333999].rpc[0];
 
 export const getExplorerUrl = (chainId) =>
-  (chainUrls[chainId] || chainUrls[1]).explorer;
+  (chainUrls[chainId] || chainUrls[333999]).explorer;
 
 export const getTokenListUrl = (chainId) =>
-  defaultTokensUrl[chainId] || defaultTokensUrl[1];
+  defaultTokensUrl[chainId] || defaultTokensUrl[333999];
 
 export const removeElement = (array, index) => {
   const cloneArr = [...array];
@@ -136,26 +131,19 @@ export const logDebug = (...args) => {
   }
 };
 
-const {
-  XDAI_RPC_URL,
-  POA_RPC_URL,
-  MAINNET_RPC_URL,
-  BSC_RPC_URL,
-  KOVAN_RPC_URL,
-  SOKOL_RPC_URL,
-} = LOCAL_STORAGE_KEYS;
+const { POLIS_RPC_URL, BSC_RPC_URL } = LOCAL_STORAGE_KEYS;
 
 export const getRPCKeys = (bridgeDirection) => {
   switch (bridgeDirection) {
     case POLIS_BSC_BRIDGE:
       return {
-        homeRPCKey: XDAI_RPC_URL,
-        foreignRPCKey: MAINNET_RPC_URL,
+        homeRPCKey: POLIS_RPC_URL,
+        foreignRPCKey: BSC_RPC_URL,
       };
     default:
       return {
-        homeRPCKey: SOKOL_RPC_URL,
-        foreignRPCKey: KOVAN_RPC_URL,
+        homeRPCKey: POLIS_RPC_URL,
+        foreignRPCKey: BSC_RPC_URL,
       };
   }
 };

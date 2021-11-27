@@ -1,13 +1,6 @@
-import {
-  BSC_POLIS_BRIDGE,
-  POLIS_BSC_BRIDGE,
-  nativeCurrencies,
-} from "lib/constants";
+import { BSC_POLIS_BRIDGE, POLIS_BSC_BRIDGE } from "lib/constants";
 
-export {
-  BSC_POLIS_BRIDGE,
-  POLIS_BSC_BRIDGE,
-};
+export { BSC_POLIS_BRIDGE, POLIS_BSC_BRIDGE };
 
 const POLIS_BSC_BRIDGE_CONFIG = {
   label: "polis⥊bsc",
@@ -28,7 +21,7 @@ const POLIS_BSC_BRIDGE_CONFIG = {
   tokensClaimDisabled: [],
 };
 
-const ENABLED_BRIDGES = process.env.REACT_APP_ENABLED_BRIDGES.split(" ").map(
+const ENABLED_BRIDGES = ["polis-bsc"].map(
   (b) => b.toLowerCase()
 );
 
@@ -45,6 +38,4 @@ const getNetworkConfig = (bridges) => {
 
 export const networks = getNetworkConfig(ENABLED_BRIDGES);
 
-export const defaultTokens = {
-
-};
+export const defaultTokens = {};
