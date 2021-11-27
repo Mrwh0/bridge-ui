@@ -14,13 +14,13 @@ import {
   Switch,
   Text,
   useDisclosure,
-} from '@chakra-ui/react';
-import SettingsImage from 'assets/settings.svg';
-import { useSettings } from 'contexts/SettingsContext';
-import { useBridgeDirection } from 'hooks/useBridgeDirection';
-import { SettingsIcon } from 'icons/SettingsIcon';
-import { getNetworkLabel } from 'lib/helpers';
-import React, { useCallback, useRef } from 'react';
+} from "@chakra-ui/react";
+import SettingsImage from "assets/settings.svg";
+import { useSettings } from "contexts/SettingsContext";
+import { useBridgeDirection } from "hooks/useBridgeDirection";
+import { SettingsIcon } from "icons/SettingsIcon";
+import { getNetworkLabel } from "lib/helpers";
+import React, { useCallback, useRef } from "react";
 
 export const UpdateSettings = ({ close }) => {
   const initialRef = useRef();
@@ -56,7 +56,7 @@ export const UpdateSettings = ({ close }) => {
       <Button
         variant="ghost"
         color="grey"
-        _hover={{ color: 'blue.500', bgColor: 'blackAlpha.100' }}
+        _hover={{ color: "blue.500", bgColor: "blackAlpha.100" }}
         onClick={openSettings}
         leftIcon={<SettingsIcon />}
         px={2}
@@ -96,7 +96,7 @@ export const UpdateSettings = ({ close }) => {
                   mb={4}
                   colorScheme="blue"
                   isChecked={infiniteUnlock}
-                  onChange={e => setInfiniteUnlock(e.target.checked)}
+                  onChange={(e) => setInfiniteUnlock(e.target.checked)}
                 />
                 <Text mb={2}>
                   Custom {getNetworkLabel(foreignChainId)} RPC URL
@@ -105,8 +105,8 @@ export const UpdateSettings = ({ close }) => {
                   <Input
                     id="symbol"
                     size="sm"
-                    onChange={e => setForeignRPC(e.target.value)}
-                    _placeholder={{ color: 'grey' }}
+                    onChange={(e) => setForeignRPC(e.target.value)}
+                    _placeholder={{ color: "grey" }}
                     value={foreignRPC}
                   />
                 </InputGroup>
@@ -117,8 +117,8 @@ export const UpdateSettings = ({ close }) => {
                   <Input
                     id="decimals"
                     size="sm"
-                    onChange={e => setHomeRPC(e.target.value)}
-                    _placeholder={{ color: 'grey' }}
+                    onChange={(e) => setHomeRPC(e.target.value)}
+                    _placeholder={{ color: "grey" }}
                     value={homeRPC}
                   />
                 </InputGroup>
@@ -127,14 +127,16 @@ export const UpdateSettings = ({ close }) => {
                   mb={4}
                   colorScheme="blue"
                   isChecked={neverShowClaims}
-                  onChange={e => setNeverShowClaims(e.target.checked)}
+                  onChange={(e) => setNeverShowClaims(e.target.checked)}
                 />
                 <Text mb={2}>Disable balances in token list</Text>
                 <Switch
                   mb={4}
                   colorScheme="blue"
                   isChecked={disableBalanceFetchToken}
-                  onChange={e => setDisableBalanceFetchToken(e.target.checked)}
+                  onChange={(e) =>
+                    setDisableBalanceFetchToken(e.target.checked)
+                  }
                 />
               </Flex>
             </ModalBody>
@@ -142,8 +144,8 @@ export const UpdateSettings = ({ close }) => {
               <Flex
                 w="100%"
                 justify="space-between"
-                align={{ base: 'stretch', md: 'center' }}
-                direction={{ base: 'column', md: 'row' }}
+                align={{ base: "stretch", md: "center" }}
+                direction={{ base: "column", md: "row" }}
               >
                 <Button
                   px={12}

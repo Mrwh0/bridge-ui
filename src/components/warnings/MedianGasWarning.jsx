@@ -1,5 +1,5 @@
-import { Alert, AlertIcon, Flex, Text } from '@chakra-ui/react';
-import React from 'react';
+import { Alert, AlertIcon, Flex, Text } from "@chakra-ui/react";
+import React from "react";
 
 export const MedianGasWarning = ({
   medianPrice,
@@ -17,7 +17,7 @@ export const MedianGasWarning = ({
       <Alert
         status="warning"
         borderRadius={5}
-        boxShadow={noShadow ? 'none' : '0px 1rem 2rem rgba(204, 218, 238, 0.8)'}
+        boxShadow={noShadow ? "none" : "0px 1rem 2rem rgba(204, 218, 238, 0.8)"}
       >
         <AlertIcon minWidth="20px" />
         <Text fontSize="small">

@@ -1,33 +1,33 @@
-import { SafeAppWeb3Modal as Web3Modal } from '@gnosis.pm/safe-apps-web3modal';
-import WalletConnectProvider from '@walletconnect/web3-provider';
-import coinbaseLogo from 'assets/coinbase.svg';
-import imTokenLogo from 'assets/imtoken.svg';
-import { ethers } from 'ethers';
+import { SafeAppWeb3Modal as Web3Modal } from "@gnosis.pm/safe-apps-web3modal";
+import WalletConnectProvider from "@walletconnect/web3-provider";
+import coinbaseLogo from "assets/coinbase.svg";
+import imTokenLogo from "assets/imtoken.svg";
+import { ethers } from "ethers";
 import {
   getNetworkName,
   getRPCUrl,
   getWalletProviderName,
   logError,
-} from 'lib/helpers';
+} from "lib/helpers";
 import React, {
   useCallback,
   useContext,
   useEffect,
   useMemo,
   useState,
-} from 'react';
-import { WalletLink } from 'walletlink';
+} from "react";
+import { WalletLink } from "walletlink";
 
 export const Web3Context = React.createContext({});
 export const useWeb3Context = () => useContext(Web3Context);
 
-const updateTitle = chainId => {
+const updateTitle = (chainId) => {
   const networkName = getNetworkName(chainId);
-  const defaultTitle = 'OmniBridge';
+  const defaultTitle = "OmniBridge";
   if (!process.env.REACT_APP_TITLE) {
     document.title = defaultTitle;
   } else {
-    const titleReplaceString = '%c';
+    const titleReplaceString = "%c";
     const appTitle = process.env.REACT_APP_TITLE || defaultTitle;
 
     if (appTitle.indexOf(titleReplaceString) !== -1) {
@@ -57,24 +57,24 @@ const providerOptions = {
     package: WalletConnectProvider,
     options: { rpc },
   },
-  'custom-imToken': {
+  "custom-imToken": {
     display: {
       logo: imTokenLogo,
-      name: 'imToken',
-      description: 'Connect to your imToken Wallet',
+      name: "imToken",
+      description: "Connect to your imToken Wallet",
     },
     package: WalletConnectProvider,
     options: { rpc },
     connector,
   },
-  'custom-walletlink': {
+  "custom-walletlink": {
     display: {
       logo: coinbaseLogo,
-      name: 'Coinbase',
-      description: 'Scan with Coinbase Wallet to connect',
+      name: "Coinbase",
+      description: "Scan with Coinbase Wallet to connect",
     },
     options: {
-      appName: 'OmniBridge',
+      appName: "OmniBridge",
     },
     package: WalletLink,
     connector: async (WalletLinkPackage, options) => {
@@ -96,7 +96,7 @@ const web3Modal = new Web3Modal({
 
 export const Web3Provider = ({ children }) => {
   const [{ providerChainId, ethersProvider, account }, setWeb3State] = useState(
-    {},
+    {}
   );
   const [isGnosisSafe, setGnosisSafe] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -115,7 +115,7 @@ export const Web3Provider = ({ children }) => {
             providerChainId: chainId,
           });
         } else {
-          setWeb3State(_provider => ({
+          setWeb3State((_provider) => ({
             ..._provider,
             ethersProvider: provider,
             providerChainId: chainId,
@@ -151,13 +151,13 @@ export const Web3Provider = ({ children }) => {
       setGnosisSafe(gnosisSafe);
 
       if (!gnosisSafe) {
-        modalProvider.on('accountsChanged', accounts => {
-          setWeb3State(_provider => ({
+        modalProvider.on("accountsChanged", (accounts) => {
+          setWeb3State((_provider) => ({
             ..._provider,
             account: accounts[0],
           }));
         });
-        modalProvider.on('chainChanged', () => {
+        modalProvider.on("chainChanged", () => {
           setWeb3Provider(modalProvider);
         });
       }
@@ -183,9 +183,9 @@ export const Web3Provider = ({ children }) => {
 
   const isMetamask = useMemo(
     () =>
-      getWalletProviderName(ethersProvider) === 'metamask' &&
+      getWalletProviderName(ethersProvider) === "metamask" &&
       window.ethereum?.isMetaMask === true,
-    [ethersProvider],
+    [ethersProvider]
   );
 
   return (

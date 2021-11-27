@@ -11,11 +11,11 @@ import {
   ModalHeader,
   ModalOverlay,
   Text,
-} from '@chakra-ui/react';
-import BlueTickImage from 'assets/blue-tick.svg';
-import { useBridgeDirection } from 'hooks/useBridgeDirection';
-import { getNetworkName } from 'lib/helpers';
-import React from 'react';
+} from "@chakra-ui/react";
+import BlueTickImage from "assets/blue-tick.svg";
+import { useBridgeDirection } from "hooks/useBridgeDirection";
+import { getNetworkName } from "lib/helpers";
+import React from "react";
 
 const ClaimErrorModal = ({ onClose, claimErrorShow, claimErrorToken }) => {
   const { foreignChainId } = useBridgeDirection();
@@ -44,8 +44,8 @@ const ClaimErrorModal = ({ onClose, claimErrorShow, claimErrorToken }) => {
               <Box w="100%">
                 <Text as="span">
                   The tokens were already claimed. Check your
-                  {claimErrorToken ? ` ${claimErrorToken.symbol} ` : ' '}
-                  token balance in{' '}
+                  {claimErrorToken ? ` ${claimErrorToken.symbol} ` : " "}
+                  token balance in{" "}
                   <strong>{getNetworkName(foreignChainId)}</strong>.
                 </Text>
               </Box>
@@ -55,8 +55,8 @@ const ClaimErrorModal = ({ onClose, claimErrorShow, claimErrorToken }) => {
             <Flex
               w="100%"
               justify="space-between"
-              align={{ base: 'stretch', md: 'center' }}
-              direction={{ base: 'column', md: 'row' }}
+              align={{ base: "stretch", md: "center" }}
+              direction={{ base: "column", md: "row" }}
             >
               <Button
                 px={12}

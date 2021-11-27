@@ -1,6 +1,6 @@
-import { BridgeHistory } from 'components/history/BridgeHistory';
-import query from 'query-string';
-import React from 'react';
+import { BridgeHistory } from "components/history/BridgeHistory";
+import query from "query-string";
+import React from "react";
 
 export const History = ({ location }) => {
   const parsed = query.parse(location.search);

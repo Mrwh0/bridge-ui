@@ -12,20 +12,20 @@ import {
   ModalOverlay,
   Text,
   VStack,
-} from '@chakra-ui/react';
-import ClaimTokensImage from 'assets/multiple-claim.svg';
-import { LoadingModal } from 'components/modals/LoadingModal';
-import { AuspiciousGasWarning } from 'components/warnings/AuspiciousGasWarning';
-import { useBridgeDirection } from 'hooks/useBridgeDirection';
-import { useClaimableTransfers } from 'hooks/useClaimableTransfers';
-import { LOCAL_STORAGE_KEYS } from 'lib/constants';
+} from "@chakra-ui/react";
+import ClaimTokensImage from "assets/multiple-claim.svg";
+import { LoadingModal } from "components/modals/LoadingModal";
+import { AuspiciousGasWarning } from "components/warnings/AuspiciousGasWarning";
+import { useBridgeDirection } from "hooks/useBridgeDirection";
+import { useClaimableTransfers } from "hooks/useClaimableTransfers";
+import { LOCAL_STORAGE_KEYS } from "lib/constants";
 import {
   getGasPrice,
   getLowestHistoricalEthGasPrice,
   getMedianHistoricalEthGasPrice,
-} from 'lib/gasPrice';
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+} from "lib/gasPrice";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const { DONT_SHOW_CLAIMS } = LOCAL_STORAGE_KEYS;
 
@@ -36,12 +36,12 @@ export const ClaimTokensModal = () => {
 
   const onClose = () => {
     setOpen(false);
-    window.localStorage.setItem(DONT_SHOW_CLAIMS, 'true');
+    window.localStorage.setItem(DONT_SHOW_CLAIMS, "true");
   };
 
   useEffect(() => {
     const dontShowClaims =
-      window.localStorage.getItem(DONT_SHOW_CLAIMS) === 'true';
+      window.localStorage.getItem(DONT_SHOW_CLAIMS) === "true";
     setOpen(!!transfers && transfers.length > 0 && !dontShowClaims);
   }, [transfers]);
 
@@ -92,14 +92,14 @@ export const ClaimTokensModal = () => {
             <Flex
               w="100%"
               justify="space-between"
-              align={{ base: 'stretch', md: 'center' }}
-              direction={{ base: 'column', md: 'row' }}
+              align={{ base: "stretch", md: "center" }}
+              direction={{ base: "column", md: "row" }}
             >
               <Button
                 px={12}
                 onClick={onClose}
                 background="background"
-                _hover={{ background: '#bfd3f2' }}
+                _hover={{ background: "#bfd3f2" }}
                 color="#687D9D"
               >
                 Cancel
@@ -108,7 +108,7 @@ export const ClaimTokensModal = () => {
                 to="/history"
                 display="flex"
                 onClick={() => {
-                  window.localStorage.setItem('dont-show-claims', 'false');
+                  window.localStorage.setItem("dont-show-claims", "false");
                 }}
               >
                 <Button

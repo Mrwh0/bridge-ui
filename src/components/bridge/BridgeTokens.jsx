@@ -1,43 +1,41 @@
-import { Flex, Grid, Text, useBreakpointValue } from '@chakra-ui/react';
-import { AdvancedMenu } from 'components/bridge/AdvancedMenu';
-import { FromToken } from 'components/bridge/FromToken';
-import { SystemFeedback } from 'components/bridge/SystemFeedback';
-import { ToToken } from 'components/bridge/ToToken';
-import { TransferButton } from 'components/bridge/TransferButton';
-import { UnlockButton } from 'components/bridge/UnlockButton';
-import { CoinzillaBannerAd } from 'components/common/CoinzillaBannerAd';
-import { CoinzillaTextAd } from 'components/common/CoinzillaTextAd';
-import { BridgeLoadingModal } from 'components/modals/BridgeLoadingModal';
+import { Flex, Grid, Text, useBreakpointValue } from "@chakra-ui/react";
+import { AdvancedMenu } from "components/bridge/AdvancedMenu";
+import { FromToken } from "components/bridge/FromToken";
+import { SystemFeedback } from "components/bridge/SystemFeedback";
+import { ToToken } from "components/bridge/ToToken";
+import { TransferButton } from "components/bridge/TransferButton";
+import { UnlockButton } from "components/bridge/UnlockButton";
+import { BridgeLoadingModal } from "components/modals/BridgeLoadingModal";
 import {
   BinancePeggedAssetWarning,
   isERC20ExchangableBinancePeggedAsset,
-} from 'components/warnings/BinancePeggedAssetWarning';
-import { DaiWarning, isERC20DaiAddress } from 'components/warnings/DaiWarning';
-import { GnosisSafeWarning } from 'components/warnings/GnosisSafeWarning';
+} from "components/warnings/BinancePeggedAssetWarning";
+import { DaiWarning, isERC20DaiAddress } from "components/warnings/DaiWarning";
+import { GnosisSafeWarning } from "components/warnings/GnosisSafeWarning";
 import {
   InflationaryTokenWarning,
   isInflationaryToken,
-} from 'components/warnings/InflationaryTokenWarning';
+} from "components/warnings/InflationaryTokenWarning";
 import {
   isRebasingToken,
   RebasingTokenWarning,
-} from 'components/warnings/RebasingTokenWarning';
-import { ReverseWarning } from 'components/warnings/ReverseWarning';
-import { RPCHealthWarning } from 'components/warnings/RPCHealthWarning';
+} from "components/warnings/RebasingTokenWarning";
+import { ReverseWarning } from "components/warnings/ReverseWarning";
+import { RPCHealthWarning } from "components/warnings/RPCHealthWarning";
 import {
   isSafeMoonToken,
   SafeMoonTokenWarning,
-} from 'components/warnings/SafeMoonTokenWarning';
-import { STAKETokenWarning } from 'components/warnings/STAKETokenWarning';
-import { useBridgeContext } from 'contexts/BridgeContext';
-import { useWeb3Context } from 'contexts/Web3Context';
-import { useBridgeDirection } from 'hooks/useBridgeDirection';
-import { ADDRESS_ZERO } from 'lib/constants';
-import { getNetworkName } from 'lib/helpers';
-import { BSC_XDAI_BRIDGE } from 'lib/networks';
-import React from 'react';
+} from "components/warnings/SafeMoonTokenWarning";
+import { STAKETokenWarning } from "components/warnings/STAKETokenWarning";
+import { useBridgeContext } from "contexts/BridgeContext";
+import { useWeb3Context } from "contexts/Web3Context";
+import { useBridgeDirection } from "hooks/useBridgeDirection";
+import { ADDRESS_ZERO } from "lib/constants";
+import { getNetworkName } from "lib/helpers";
+import { BSC_XDAI_BRIDGE } from "lib/networks";
+import React from "react";
 
-import { SwitchButton } from './SwitchButton';
+import { SwitchButton } from "./SwitchButton";
 
 export const BridgeTokens = () => {
   const { providerChainId: chainId } = useWeb3Context();
@@ -74,12 +72,11 @@ export const BridgeTokens = () => {
       align="center"
       justify="center"
       direction="column"
-      w={{ base: undefined, lg: 'calc(100% - 4rem)' }}
+      w={{ base: undefined, lg: "calc(100% - 4rem)" }}
       maxW="75rem"
       my="auto"
       mx={{ base: 4, sm: 8 }}
     >
-      <CoinzillaTextAd />
       <GnosisSafeWarning noCheckbox />
       <RPCHealthWarning />
       <STAKETokenWarning />
@@ -124,7 +121,7 @@ export const BridgeTokens = () => {
           </Flex>
         )}
         <Grid
-          templateColumns={{ base: 'initial', lg: '2fr 1fr 2fr' }}
+          templateColumns={{ base: "initial", lg: "2fr 1fr 2fr" }}
           width="100%"
           my={4}
           position="relative"
@@ -166,7 +163,6 @@ export const BridgeTokens = () => {
         <AdvancedMenu />
         <SystemFeedback />
       </Flex>
-      <CoinzillaBannerAd />
     </Flex>
   );
 };

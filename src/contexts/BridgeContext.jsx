@@ -1,19 +1,19 @@
-import { useToast } from '@chakra-ui/react';
-import { useSettings } from 'contexts/SettingsContext';
-import { useWeb3Context } from 'contexts/Web3Context';
-import { BigNumber } from 'ethers';
-import { useApproval } from 'hooks/useApproval';
-import { useBridgeDirection } from 'hooks/useBridgeDirection';
-import { useFeeManager } from 'hooks/useFeeManager';
-import { useMediatorInfo } from 'hooks/useMediatorInfo';
-import { useTotalConfirms } from 'hooks/useTotalConfirms';
+import { useToast } from "@chakra-ui/react";
+import { useSettings } from "contexts/SettingsContext";
+import { useWeb3Context } from "contexts/Web3Context";
+import { BigNumber } from "ethers";
+import { useApproval } from "hooks/useApproval";
+import { useBridgeDirection } from "hooks/useBridgeDirection";
+import { useFeeManager } from "hooks/useFeeManager";
+import { useMediatorInfo } from "hooks/useMediatorInfo";
+import { useTotalConfirms } from "hooks/useTotalConfirms";
 import {
   fetchToAmount,
   fetchTokenLimits,
   fetchToToken,
   relayTokens,
-} from 'lib/bridge';
-import { ADDRESS_ZERO } from 'lib/constants';
+} from "lib/bridge";
+import { ADDRESS_ZERO } from "lib/constants";
 import {
   getDefaultToken,
   getHelperContract,
@@ -22,15 +22,15 @@ import {
   getNetworkLabel,
   logError,
   parseValue,
-} from 'lib/helpers';
-import { fetchTokenDetails } from 'lib/token';
+} from "lib/helpers";
+import { fetchTokenDetails } from "lib/token";
 import React, {
   useCallback,
   useContext,
   useEffect,
   useMemo,
   useState,
-} from 'react';
+} from "react";
 
 export const BridgeContext = React.createContext({});
 
@@ -51,8 +51,8 @@ export const BridgeProvider = ({ children }) => {
 
   const isHome = providerChainId === homeChainId;
 
-  const [receiver, setReceiver] = useState('');
-  const [amountInput, setAmountInput] = useState('');
+  const [receiver, setReceiver] = useState("");
+  const [amountInput, setAmountInput] = useState("");
   const [{ fromToken, toToken }, setTokens] = useState({});
   const [{ fromAmount, toAmount }, setAmounts] = useState({
     fromAmount: BigNumber.from(0),
@@ -74,13 +74,13 @@ export const BridgeProvider = ({ children }) => {
   const { allowed, unlockLoading, approvalTxHash, approve } = useApproval(
     fromToken,
     fromAmount,
-    txHash,
+    txHash
   );
 
   const feeType = isHome ? homeToForeignFeeType : foreignToHomeFeeType;
 
   const getToAmount = useCallback(
-    async amount =>
+    async (amount) =>
       isRewardAddress
         ? amount
         : fetchToAmount(
@@ -89,7 +89,7 @@ export const BridgeProvider = ({ children }) => {
             fromToken,
             toToken,
             amount,
-            feeManagerAddress,
+            feeManagerAddress
           ),
     [
       bridgeDirection,
@@ -98,11 +98,11 @@ export const BridgeProvider = ({ children }) => {
       isRewardAddress,
       feeManagerAddress,
       feeType,
-    ],
+    ]
   );
 
   const cleanAmounts = useCallback(() => {
-    setAmountInput('0.0');
+    setAmountInput("0.0");
     setAmounts({
       fromAmount: BigNumber.from(0),
       toAmount: BigNumber.from(0),
@@ -110,7 +110,7 @@ export const BridgeProvider = ({ children }) => {
   }, []);
 
   const setAmount = useCallback(
-    async inputAmount => {
+    async (inputAmount) => {
       if (!fromToken || !toToken) return;
       setToAmountLoading(true);
       const amount = parseValue(inputAmount, fromToken.decimals);
@@ -118,17 +118,17 @@ export const BridgeProvider = ({ children }) => {
       setAmounts({ fromAmount: amount, toAmount: gotToAmount });
       setToAmountLoading(false);
     },
-    [fromToken, toToken, getToAmount],
+    [fromToken, toToken, getToAmount]
   );
 
   const setToToken = useCallback(
-    newToToken => {
-      setTokens(prevTokens => ({
+    (newToToken) => {
+      setTokens((prevTokens) => ({
         fromToken: prevTokens.fromToken,
         toToken: { ...newToToken },
       }));
     },
-    [setTokens],
+    [setTokens]
   );
 
   const setToken = useCallback(
@@ -140,14 +140,14 @@ export const BridgeProvider = ({ children }) => {
                 ...getNativeCurrency(tokenWithoutMode.chainId),
                 mediator: getMediatorAddress(bridgeDirection, tokenWithoutMode),
                 helperContractAddress: getHelperContract(
-                  tokenWithoutMode.chainId,
+                  tokenWithoutMode.chainId
                 ),
               }
             : fetchTokenDetails(bridgeDirection, tokenWithoutMode),
           fetchToToken(
             bridgeDirection,
             tokenWithoutMode,
-            getBridgeChainId(tokenWithoutMode.chainId),
+            getBridgeChainId(tokenWithoutMode.chainId)
           ),
         ]);
         setTokens({ fromToken: token, toToken: { ...token, ...gotToToken } });
@@ -157,11 +157,11 @@ export const BridgeProvider = ({ children }) => {
         return true;
       } catch (tokenDetailsError) {
         toast({
-          title: 'Error',
+          title: "Error",
           description: !isQueryToken
-            ? 'Cannot fetch token details. Wait for a few minutes and reload the application'
-            : 'Token not found.',
-          status: 'error',
+            ? "Cannot fetch token details. Wait for a few minutes and reload the application"
+            : "Token not found.",
+          status: "error",
           duration: isQueryToken ? 2000 : null,
           isClosable: !isQueryToken,
         });
@@ -169,14 +169,14 @@ export const BridgeProvider = ({ children }) => {
         return false;
       }
     },
-    [bridgeDirection, getBridgeChainId, toast],
+    [bridgeDirection, getBridgeChainId, toast]
   );
 
   const transfer = useCallback(async () => {
     setLoading(true);
     try {
       if (isGnosisSafe && !receiver) {
-        throw new Error('Must set receiver for Gnosis Safe');
+        throw new Error("Must set receiver for Gnosis Safe");
       }
       const tx = await relayTokens(
         ethersProvider,
@@ -187,9 +187,9 @@ export const BridgeProvider = ({ children }) => {
           shouldReceiveNativeCur:
             shouldReceiveNativeCur &&
             toToken?.address === ADDRESS_ZERO &&
-            toToken?.mode === 'NATIVE',
+            toToken?.mode === "NATIVE",
           foreignChainId,
-        },
+        }
       );
       setTxHash(tx.hash);
     } catch (transferError) {
@@ -216,12 +216,12 @@ export const BridgeProvider = ({ children }) => {
   ]);
 
   const setDefaultToken = useCallback(
-    async chainId => {
+    async (chainId) => {
       if (
         fromToken &&
         toToken &&
         toToken.chainId === chainId &&
-        (toToken.address !== ADDRESS_ZERO || toToken.mode === 'NATIVE')
+        (toToken.address !== ADDRESS_ZERO || toToken.mode === "NATIVE")
       ) {
         setTokens({ fromToken: toToken, toToken: fromToken });
         cleanAmounts();
@@ -244,7 +244,7 @@ export const BridgeProvider = ({ children }) => {
       getBridgeChainId,
       bridgeDirection,
       cleanAmounts,
-    ],
+    ]
   );
 
   const updateToken = useCallback(async () => {
@@ -294,7 +294,7 @@ export const BridgeProvider = ({ children }) => {
         ethersProvider,
         fromToken,
         toToken,
-        currentDay,
+        currentDay
       );
       setTokenLimits(limits);
     }
@@ -316,7 +316,7 @@ export const BridgeProvider = ({ children }) => {
     if (
       toToken?.chainId === foreignChainId &&
       toToken?.address === ADDRESS_ZERO &&
-      toToken?.mode === 'NATIVE'
+      toToken?.mode === "NATIVE"
     ) {
       setShouldReceiveNativeCur(true);
     } else {
@@ -333,7 +333,7 @@ export const BridgeProvider = ({ children }) => {
       isHome &&
       !claimDisabled &&
       !(tokensClaimDisabled || []).includes(fromToken?.address.toLowerCase()),
-    [isHome, claimDisabled, tokensClaimDisabled, fromToken],
+    [isHome, claimDisabled, tokensClaimDisabled, fromToken]
   );
 
   return (

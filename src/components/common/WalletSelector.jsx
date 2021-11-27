@@ -7,16 +7,16 @@ import {
   PopoverTrigger,
   Text,
   useBreakpointValue,
-} from '@chakra-ui/react';
-import { useWeb3Context } from 'contexts/Web3Context';
-import { WalletIcon } from 'icons/WalletIcon';
-import { getAccountString, getNetworkLabel, getNetworkName } from 'lib/helpers';
-import React from 'react';
+} from "@chakra-ui/react";
+import { useWeb3Context } from "contexts/Web3Context";
+import { WalletIcon } from "icons/WalletIcon";
+import { getAccountString, getNetworkLabel, getNetworkName } from "lib/helpers";
+import React from "react";
 
 export const WalletSelector = ({ close }) => {
   const { disconnect, account, providerChainId } = useWeb3Context();
 
-  const placement = useBreakpointValue({ base: 'bottom', md: 'bottom-end' });
+  const placement = useBreakpointValue({ base: "bottom", md: "bottom-end" });
   if (!account || !providerChainId) return null;
   return (
     <Flex>

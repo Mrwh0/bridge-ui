@@ -1,7 +1,7 @@
-import { Alert, AlertIcon, Checkbox, Flex, Text } from '@chakra-ui/react';
-import { useBridgeContext } from 'contexts/BridgeContext';
-import { useWeb3Context } from 'contexts/Web3Context';
-import React from 'react';
+import { Alert, AlertIcon, Checkbox, Flex, Text } from "@chakra-ui/react";
+import { useBridgeContext } from "contexts/BridgeContext";
+import { useWeb3Context } from "contexts/Web3Context";
+import React from "react";
 
 export const GnosisSafeWarning = ({
   isChecked,
@@ -21,9 +21,9 @@ export const GnosisSafeWarning = ({
         <Alert
           status="warning"
           borderRadius={5}
-          mb={noCheckbox ? '0' : '4'}
+          mb={noCheckbox ? "0" : "4"}
           boxShadow={
-            noShadow ? 'none' : '0px 1rem 2rem rgba(204, 218, 238, 0.8)'
+            noShadow ? "none" : "0px 1rem 2rem rgba(204, 218, 238, 0.8)"
           }
         >
           <AlertIcon minWidth="20px" />
@@ -46,7 +46,7 @@ export const GnosisSafeWarning = ({
         <Checkbox
           w="100%"
           isChecked={isChecked}
-          onChange={e => setChecked(e.target.checked)}
+          onChange={(e) => setChecked(e.target.checked)}
           borderColor="grey"
           borderRadius="4px"
           size="lg"

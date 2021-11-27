@@ -1,17 +1,17 @@
-import { utils } from 'ethers';
+import { utils } from "ethers";
 import {
   getExplorerUrl,
   getNetworkCurrency,
   getNetworkName,
   getRPCUrl,
   logError,
-} from 'lib/helpers';
+} from "lib/helpers";
 
 export const addTokenToMetamask = async ({ address, symbol, decimals }) =>
   window.ethereum.request({
-    method: 'wallet_watchAsset',
+    method: "wallet_watchAsset",
     params: {
-      type: 'ERC20',
+      type: "ERC20",
       options: {
         address,
         symbol,
@@ -20,9 +20,9 @@ export const addTokenToMetamask = async ({ address, symbol, decimals }) =>
     },
   });
 
-const trySwitchChain = async chainId =>
+const trySwitchChain = async (chainId) =>
   window.ethereum.request({
-    method: 'wallet_switchEthereumChain',
+    method: "wallet_switchEthereumChain",
     params: [
       {
         chainId: utils.hexValue(chainId),
@@ -32,7 +32,7 @@ const trySwitchChain = async chainId =>
 
 const tryAddChain = async (chainId, currency) =>
   window.ethereum.request({
-    method: 'wallet_addEthereumChain',
+    method: "wallet_addEthereumChain",
     params: [
       {
         chainId: utils.hexValue(chainId),
@@ -44,7 +44,7 @@ const tryAddChain = async (chainId, currency) =>
     ],
   });
 
-export const addChainToMetaMask = async chainId => {
+export const addChainToMetaMask = async (chainId) => {
   const { name, symbol } = getNetworkCurrency(chainId);
   const currency = { name, symbol, decimals: 18 };
 

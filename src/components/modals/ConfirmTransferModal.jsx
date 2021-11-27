@@ -14,43 +14,43 @@ import {
   Text,
   useBreakpointValue,
   useToast,
-} from '@chakra-ui/react';
-import TransferImage from 'assets/confirm-transfer.svg';
+} from "@chakra-ui/react";
+import TransferImage from "assets/confirm-transfer.svg";
 import {
   BinancePeggedAssetWarning,
   isERC20ExchangableBinancePeggedAsset,
-} from 'components/warnings/BinancePeggedAssetWarning';
-import { DaiWarning, isERC20DaiAddress } from 'components/warnings/DaiWarning';
-import { GnosisSafeWarning } from 'components/warnings/GnosisSafeWarning';
+} from "components/warnings/BinancePeggedAssetWarning";
+import { DaiWarning, isERC20DaiAddress } from "components/warnings/DaiWarning";
+import { GnosisSafeWarning } from "components/warnings/GnosisSafeWarning";
 import {
   InflationaryTokenWarning,
   isInflationaryToken,
-} from 'components/warnings/InflationaryTokenWarning';
-import { MedianGasWarning } from 'components/warnings/MedianGasWarning';
-import { NeedsTransactionsWarning } from 'components/warnings/NeedsTransactionsWarning';
+} from "components/warnings/InflationaryTokenWarning";
+import { MedianGasWarning } from "components/warnings/MedianGasWarning";
+import { NeedsTransactionsWarning } from "components/warnings/NeedsTransactionsWarning";
 import {
   isRebasingToken,
   RebasingTokenWarning,
-} from 'components/warnings/RebasingTokenWarning';
-import { ReverseWarning } from 'components/warnings/ReverseWarning';
+} from "components/warnings/RebasingTokenWarning";
+import { ReverseWarning } from "components/warnings/ReverseWarning";
 import {
   isSafeMoonToken,
   SafeMoonTokenWarning,
-} from 'components/warnings/SafeMoonTokenWarning';
-import { STAKETokenWarning } from 'components/warnings/STAKETokenWarning';
-import { useBridgeContext } from 'contexts/BridgeContext';
-import { useWeb3Context } from 'contexts/Web3Context';
-import { useBridgeDirection } from 'hooks/useBridgeDirection';
-import { ADDRESS_ZERO } from 'lib/constants';
-import { getGasPrice, getMedianHistoricalEthGasPrice } from 'lib/gasPrice';
+} from "components/warnings/SafeMoonTokenWarning";
+import { STAKETokenWarning } from "components/warnings/STAKETokenWarning";
+import { useBridgeContext } from "contexts/BridgeContext";
+import { useWeb3Context } from "contexts/Web3Context";
+import { useBridgeDirection } from "hooks/useBridgeDirection";
+import { ADDRESS_ZERO } from "lib/constants";
+import { getGasPrice, getMedianHistoricalEthGasPrice } from "lib/gasPrice";
 import {
   formatValue,
   getAccountString,
   getNetworkLabel,
   handleWalletError,
-} from 'lib/helpers';
-import { BSC_XDAI_BRIDGE } from 'lib/networks';
-import React, { useCallback, useEffect, useState } from 'react';
+} from "lib/helpers";
+import { BSC_XDAI_BRIDGE } from "lib/networks";
+import React, { useCallback, useEffect, useState } from "react";
 
 export const ConfirmTransferModal = ({ isOpen, onClose }) => {
   const { isGnosisSafe, account } = useWeb3Context();
@@ -70,7 +70,7 @@ export const ConfirmTransferModal = ({ isOpen, onClose }) => {
   useEffect(() => {
     if (fromAmount.gt(0)) {
       setFee(
-        ((Number(fromAmount) - Number(toAmount)) * 100) / Number(fromAmount),
+        ((Number(fromAmount) - Number(toAmount)) * 100) / Number(fromAmount)
       );
     }
   }, [fromAmount, toAmount]);
@@ -83,21 +83,21 @@ export const ConfirmTransferModal = ({ isOpen, onClose }) => {
 
   const toast = useToast();
   const showError = useCallback(
-    msg => {
+    (msg) => {
       if (msg) {
         toast({
-          title: 'Error',
+          title: "Error",
           description: msg,
-          status: 'error',
-          isClosable: 'true',
+          status: "error",
+          isClosable: "true",
         });
       }
     },
-    [toast],
+    [toast]
   );
 
   const onClick = useCallback(() => {
-    transfer().catch(error => handleWalletError(error, showError));
+    transfer().catch((error) => handleWalletError(error, showError));
     onClose();
   }, [onClose, showError, transfer]);
 
@@ -157,7 +157,7 @@ export const ConfirmTransferModal = ({ isOpen, onClose }) => {
             p={2}
           />
           <ModalBody px={6} py={0}>
-            <Flex align="center" direction={{ base: 'column', md: 'row' }}>
+            <Flex align="center" direction={{ base: "column", md: "row" }}>
               <Flex
                 justify="center"
                 align="center"
@@ -179,14 +179,14 @@ export const ConfirmTransferModal = ({ isOpen, onClose }) => {
                 flex={1}
                 minH="5rem"
                 h="5rem"
-                w={{ base: '10rem', md: 'auto' }}
+                w={{ base: "10rem", md: "auto" }}
                 justify="center"
                 align="center"
                 position="relative"
               >
                 <Divider
                   color="#DAE3F0"
-                  orientation={smallScreen ? 'vertical' : 'horizontal'}
+                  orientation={smallScreen ? "vertical" : "horizontal"}
                 />
                 <Image
                   src={TransferImage}
@@ -194,8 +194,8 @@ export const ConfirmTransferModal = ({ isOpen, onClose }) => {
                   left="50%"
                   top="50%"
                   transform={{
-                    base: 'translate(-50%, -50%) rotate(90deg)',
-                    md: 'translate(-50%, -50%)',
+                    base: "translate(-50%, -50%) rotate(90deg)",
+                    md: "translate(-50%, -50%)",
                   }}
                 />
               </Flex>
@@ -224,12 +224,12 @@ export const ConfirmTransferModal = ({ isOpen, onClose }) => {
             <Box
               w="100%"
               fontSize="sm"
-              color={needsClaiming ? 'black' : 'grey'}
+              color={needsClaiming ? "black" : "grey"}
             >
               <Text as="span">{`Please confirm that you would like to send `}</Text>
               <Text as="b">{`${fromAmt} ${fromUnit}`}</Text>
               <Text as="span">{` from ${getNetworkLabel(
-                fromToken.chainId,
+                fromToken.chainId
               )}`}</Text>
               {receiver ? (
                 <>
@@ -283,14 +283,14 @@ export const ConfirmTransferModal = ({ isOpen, onClose }) => {
             <Flex
               w="100%"
               justify="space-between"
-              align={{ base: 'stretch', md: 'center' }}
-              direction={{ base: 'column', md: 'row' }}
+              align={{ base: "stretch", md: "center" }}
+              direction={{ base: "column", md: "row" }}
             >
               <Button
                 px={12}
                 onClick={onClose}
                 background="background"
-                _hover={{ background: '#bfd3f2' }}
+                _hover={{ background: "#bfd3f2" }}
                 color="#687D9D"
               >
                 Cancel

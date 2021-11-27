@@ -1,13 +1,13 @@
-import { Flex, Image, Link, Spinner, Text, useToast } from '@chakra-ui/react';
-import UnlockIcon from 'assets/unlock.svg';
-import { TxLink } from 'components/common/TxLink';
-import { isRebasingToken } from 'components/warnings/RebasingTokenWarning';
-import { isSafeMoonToken } from 'components/warnings/SafeMoonTokenWarning';
-import { useBridgeContext } from 'contexts/BridgeContext';
-import { useWeb3Context } from 'contexts/Web3Context';
-import { isRevertedError } from 'lib/amb';
-import { handleWalletError } from 'lib/helpers';
-import React, { useCallback } from 'react';
+import { Flex, Image, Link, Spinner, Text, useToast } from "@chakra-ui/react";
+import UnlockIcon from "assets/unlock.svg";
+import { TxLink } from "components/common/TxLink";
+import { isRebasingToken } from "components/warnings/RebasingTokenWarning";
+import { isSafeMoonToken } from "components/warnings/SafeMoonTokenWarning";
+import { useBridgeContext } from "contexts/BridgeContext";
+import { useWeb3Context } from "contexts/Web3Context";
+import { isRevertedError } from "lib/amb";
+import { handleWalletError } from "lib/helpers";
+import React, { useCallback } from "react";
 
 export const UnlockButton = () => {
   const { providerChainId } = useWeb3Context();
@@ -27,59 +27,59 @@ export const UnlockButton = () => {
     allowed || toAmountLoading || isTokenRebasing || isTokenSafeMoon;
   const toast = useToast();
   const showError = useCallback(
-    msg => {
+    (msg) => {
       if (msg) {
         toast({
-          title: 'Error',
+          title: "Error",
           description: msg,
-          status: 'error',
-          isClosable: 'true',
+          status: "error",
+          isClosable: "true",
         });
       }
     },
-    [toast],
+    [toast]
   );
   const valid = useCallback(() => {
     if (amount.lte(0)) {
-      showError('Please specify amount');
+      showError("Please specify amount");
       return false;
     }
     if (balance.lt(amount)) {
-      showError('Not enough balance');
+      showError("Not enough balance");
       return false;
     }
     return true;
   }, [amount, balance, showError]);
   const onClick = useCallback(() => {
     if (!unlockLoading && !buttonDisabled && valid()) {
-      approve().catch(error => {
+      approve().catch((error) => {
         if (error && error.message) {
           if (
             isRevertedError(error) ||
             (error.data &&
-              (error.data.includes('Bad instruction fe') ||
-                error.data.includes('Reverted')))
+              (error.data.includes("Bad instruction fe") ||
+                error.data.includes("Reverted")))
           ) {
             showError(
               <Text>
                 There is problem with the token unlock. Try to revoke previous
-                approval if any on{' '}
+                approval if any on{" "}
                 <Link
                   href="https://revoke.cash"
                   textDecor="underline"
                   isExternal
                 >
                   https://revoke.cash/
-                </Link>{' '}
+                </Link>{" "}
                 and try again.
-              </Text>,
+              </Text>
             );
           } else {
             handleWalletError(error, showError);
           }
         } else {
           showError(
-            'Impossible to perform the operation. Reload the application and try again.',
+            "Impossible to perform the operation. Reload the application and try again."
           );
         }
       });
@@ -95,16 +95,16 @@ export const UnlockButton = () => {
         buttonDisabled
           ? undefined
           : {
-              color: 'cyan.600',
+              color: "cyan.600",
             }
       }
-      cursor={buttonDisabled ? 'not-allowed' : 'pointer'}
+      cursor={buttonDisabled ? "not-allowed" : "pointer"}
       transition="0.25s"
       position="relative"
       opacity={buttonDisabled ? 0.4 : 1}
       onClick={onClick}
       borderRadius="0.25rem"
-      w={{ base: '10rem', sm: '12rem', lg: 'auto' }}
+      w={{ base: "10rem", sm: "12rem", lg: "auto" }}
     >
       <svg width="100%" viewBox="0 0 156 42" fill="none">
         <path
@@ -126,7 +126,7 @@ export const UnlockButton = () => {
         ) : (
           <>
             <Text color="white" fontWeight="bold">
-              {buttonDisabled ? 'Unlocked' : 'Unlock'}
+              {buttonDisabled ? "Unlocked" : "Unlock"}
             </Text>
             <Image src={UnlockIcon} ml={2} />
           </>

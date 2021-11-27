@@ -1,22 +1,22 @@
-import schema from '@uniswap/token-lists/src/tokenlist.schema.json';
-import Ajv from 'ajv';
-import { gql, request } from 'graphql-request';
+import schema from "@uniswap/token-lists/src/tokenlist.schema.json";
+import Ajv from "ajv";
+import { gql, request } from "graphql-request";
 
-import { getTokenListUrl, uniqueTokens } from './helpers';
+import { getTokenListUrl, uniqueTokens } from "./helpers";
 
 const tokenListValidator = new Ajv({ allErrors: true }).compile(schema);
 
-const fetchDefaultTokens = async chainId => {
+const fetchDefaultTokens = async (chainId) => {
   const url = getTokenListUrl(chainId);
   if (url) {
     const response = await fetch(url);
     if (response.ok) {
       const json = await response.json();
       if (chainId === 56) {
-        json.tokens = json.tokens.map(token => ({ ...token, chainId }));
+        json.tokens = json.tokens.map((token) => ({ ...token, chainId }));
       }
       if (tokenListValidator(json) || chainId === 56) {
-        return json.tokens.filter(token => token.chainId === chainId);
+        return json.tokens.filter((token) => token.chainId === chainId);
       }
     }
   }
@@ -76,5 +76,5 @@ export const fetchTokenList = memoize(
     ]);
     const tokens = uniqueTokens(defaultTokens.concat(subgraphTokens));
     return tokens;
-  },
+  }
 );

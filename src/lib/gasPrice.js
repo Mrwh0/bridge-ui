@@ -1,12 +1,12 @@
-import axios from 'axios';
-import { BigNumber, utils } from 'ethers';
-import { GasPriceOracle } from 'gas-price-oracle';
-import { logDebug, logError } from 'lib/helpers';
+import axios from "axios";
+import { BigNumber, utils } from "ethers";
+import { GasPriceOracle } from "gas-price-oracle";
+import { logDebug, logError } from "lib/helpers";
 
-const lowest = arr =>
+const lowest = (arr) =>
   arr.reduce((low, item) => (low > item ? item : low), arr[0]);
 
-const median = arr => {
+const median = (arr) => {
   const mid = Math.floor(arr.length / 2);
   const nums = [...arr].sort((a, b) => a - b);
   return arr.length % 2 !== 0 ? nums[mid] : (nums[mid - 1] + nums[mid]) / 2;
@@ -28,7 +28,7 @@ const gasPriceFromSupplier = async () => {
       if (Object.prototype.hasOwnProperty.call(json, speedType)) {
         returnJson[speedType] = utils.parseUnits(
           json[speedType].toFixed(2),
-          'gwei',
+          "gwei"
         );
       }
     }
@@ -48,35 +48,35 @@ const {
   REACT_APP_GAS_PRICE_UPDATE_INTERVAL,
 } = process.env;
 
-const DEFAULT_GAS_PRICE_SPEED_TYPE = 'standard';
+const DEFAULT_GAS_PRICE_SPEED_TYPE = "standard";
 const DEFAULT_GAS_PRICE_UPDATE_INTERVAL = 60000;
 
 class GasPriceStore {
-  gasPrice = BigNumber.from('0');
+  gasPrice = BigNumber.from("0");
 
-  fastGasPrice = BigNumber.from('0');
+  fastGasPrice = BigNumber.from("0");
 
   speedType = DEFAULT_GAS_PRICE_SPEED_TYPE;
 
   updateInterval = DEFAULT_GAS_PRICE_UPDATE_INTERVAL;
 
-  medianHistoricalPrice = BigNumber.from('0');
+  medianHistoricalPrice = BigNumber.from("0");
 
-  lowestHistoricalPrice = BigNumber.from('0');
+  lowestHistoricalPrice = BigNumber.from("0");
 
   constructor() {
     this.gasPrice = utils.parseUnits(
-      REACT_APP_GAS_PRICE_FALLBACK_GWEI || '0',
-      'gwei',
+      REACT_APP_GAS_PRICE_FALLBACK_GWEI || "0",
+      "gwei"
     );
     this.medianHistoricalPrice = utils.parseUnits(
-      REACT_APP_GAS_PRICE_FALLBACK_GWEI || '0',
-      'gwei',
+      REACT_APP_GAS_PRICE_FALLBACK_GWEI || "0",
+      "gwei"
     );
 
     this.fastGasPrice = utils.parseUnits(
-      REACT_APP_GAS_PRICE_FALLBACK_GWEI || '0',
-      'gwei',
+      REACT_APP_GAS_PRICE_FALLBACK_GWEI || "0",
+      "gwei"
     );
     this.speedType =
       REACT_APP_GAS_PRICE_SPEED_TYPE || DEFAULT_GAS_PRICE_SPEED_TYPE;
@@ -97,14 +97,14 @@ class GasPriceStore {
       logError({ gasPriceError });
     }
 
-    logDebug('Updated Gas Price', { gasPrices });
+    logDebug("Updated Gas Price", { gasPrices });
 
     setTimeout(() => this.updateGasPrice(), this.updateInterval);
   }
 
   async updateHistoricalPrice() {
     const response = await axios.get(
-      `https://ethgas.watch/api/gas/trend?hours=168`,
+      `https://ethgas.watch/api/gas/trend?hours=168`
     );
     if (response.status !== 200) {
       throw new Error(`Fetch gasPrice from ethgasAPI failed!`);
@@ -112,11 +112,11 @@ class GasPriceStore {
     const { normal } = response.data;
     this.medianHistoricalPrice = utils.parseUnits(
       median(normal).toString(),
-      'gwei',
+      "gwei"
     );
     this.lowestHistoricalPrice = utils.parseUnits(
       lowest(normal).toString(),
-      'gwei',
+      "gwei"
     );
     setTimeout(() => this.updateHistoricalPrice(), this.updateInterval);
   }

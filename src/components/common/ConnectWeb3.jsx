@@ -1,10 +1,10 @@
-import { Button, Flex, Text } from '@chakra-ui/react';
-import { useSettings } from 'contexts/SettingsContext';
-import { useWeb3Context } from 'contexts/Web3Context';
-import { useBridgeDirection } from 'hooks/useBridgeDirection';
-import { useRenderChain } from 'hooks/useRenderChain';
-import { WalletFilledIcon } from 'icons/WalletFilledIcon';
-import React, { useCallback } from 'react';
+import { Button, Flex, Text } from "@chakra-ui/react";
+import { useSettings } from "contexts/SettingsContext";
+import { useWeb3Context } from "contexts/Web3Context";
+import { useBridgeDirection } from "hooks/useBridgeDirection";
+import { useRenderChain } from "hooks/useRenderChain";
+import { WalletFilledIcon } from "icons/WalletFilledIcon";
+import React, { useCallback } from "react";
 
 export const ConnectWeb3 = () => {
   const {
@@ -30,7 +30,7 @@ export const ConnectWeb3 = () => {
         {bridgeLabel}
       </Text>
     ),
-    [bridgeLabel],
+    [bridgeLabel]
   );
 
   const renderHelperBox = useCallback(() => {
@@ -73,7 +73,7 @@ export const ConnectWeb3 = () => {
       mx={4}
     >
       <Flex
-        bg={account && !loading ? 'red.500' : 'blue.500'}
+        bg={account && !loading ? "red.500" : "blue.500"}
         borderRadius="50%"
         p="1rem"
         justify="center"
@@ -90,7 +90,7 @@ export const ConnectWeb3 = () => {
       ) : (
         <>
           <Text fontSize="xl" fontWeight="bold" mb={4}>
-            {account ? `Switch your network` : 'Connect Wallet'}
+            {account ? `Switch your network` : "Connect Wallet"}
           </Text>
 
           {!account ? (

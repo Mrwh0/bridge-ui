@@ -1,16 +1,16 @@
-import { Contract, utils } from 'ethers';
-import { logError } from 'lib/helpers';
+import { Contract, utils } from "ethers";
+import { logError } from "lib/helpers";
 
-import { NOT_ENOUGH_COLLECTED_SIGNATURES } from './message';
+import { NOT_ENOUGH_COLLECTED_SIGNATURES } from "./message";
 
-export const TOKENS_CLAIMED = 'Tokens already claimed';
+export const TOKENS_CLAIMED = "Tokens already claimed";
 
 export const fetchConfirmations = async (address, ethersProvider) => {
-  const abi = ['function requiredBlockConfirmations() view returns (uint256)'];
+  const abi = ["function requiredBlockConfirmations() view returns (uint256)"];
   const ambContract = new Contract(address, abi, ethersProvider);
   const requiredConfirmations = await ambContract
     .requiredBlockConfirmations()
-    .catch(blockConfirmationsError => logError({ blockConfirmationsError }));
+    .catch((blockConfirmationsError) => logError({ blockConfirmationsError }));
   return parseInt(requiredConfirmations, 10);
 };
 
@@ -19,17 +19,17 @@ export const fetchAmbVersion = async (address, ethersProvider) => {
     return { major: 0, minor: 0, patch: 0 };
   }
   const abi = [
-    'function getBridgeInterfacesVersion() external pure returns (uint64, uint64, uint64)',
+    "function getBridgeInterfacesVersion() external pure returns (uint64, uint64, uint64)",
   ];
   const ambContract = new Contract(address, abi, ethersProvider);
   const ambVersion = await ambContract
     .getBridgeInterfacesVersion()
-    .catch(versionError => logError({ versionError }));
-  return ambVersion.map(v => v.toNumber()).join('.');
+    .catch((versionError) => logError({ versionError }));
+  return ambVersion.map((v) => v.toNumber()).join(".");
 };
 
 function strip0x(input) {
-  return input.replace(/^0x/, '');
+  return input.replace(/^0x/, "");
 }
 
 function signatureToVRS(rawSignature) {
@@ -43,10 +43,10 @@ function signatureToVRS(rawSignature) {
 function packSignatures(array) {
   const length = strip0x(utils.hexValue(array.length));
   const msgLength = length.length === 1 ? `0${length}` : length;
-  let v = '';
-  let r = '';
-  let s = '';
-  array.forEach(e => {
+  let v = "";
+  let r = "";
+  let s = "";
+  array.forEach((e) => {
     v = v.concat(e.v);
     r = r.concat(e.r);
     s = s.concat(e.s);
@@ -55,32 +55,32 @@ function packSignatures(array) {
 }
 
 const REVERT_ERROR_CODES = [
-  '-32000',
-  '-32016',
-  'UNPREDICTABLE_GAS_LIMIT',
-  'CALL_EXCEPTION',
+  "-32000",
+  "-32016",
+  "UNPREDICTABLE_GAS_LIMIT",
+  "CALL_EXCEPTION",
 ];
 
-export const isRevertedError = error =>
+export const isRevertedError = (error) =>
   REVERT_ERROR_CODES.includes(error?.code && error?.code.toString()) ||
   REVERT_ERROR_CODES.includes(
-    error?.error?.code && error?.error?.code.toString(),
+    error?.error?.code && error?.error?.code.toString()
   );
 
 export const executeSignatures = async (
   ethersProvider,
   address,
   version,
-  { messageData, signatures },
+  { messageData, signatures }
 ) => {
   const abi = [
-    'function executeSignatures(bytes messageData, bytes signatures) external',
-    'function safeExecuteSignaturesWithAutoGasLimit(bytes _data, bytes _signatures) external',
+    "function executeSignatures(bytes messageData, bytes signatures) external",
+    "function safeExecuteSignaturesWithAutoGasLimit(bytes _data, bytes _signatures) external",
   ];
   const ambContract = new Contract(address, abi, ethersProvider.getSigner());
 
   let executeSignaturesFunc = ambContract.executeSignatures;
-  if (version > '5.6.0') {
+  if (version > "5.6.0") {
     executeSignaturesFunc = ambContract.safeExecuteSignaturesWithAutoGasLimit;
   }
 
@@ -89,7 +89,7 @@ export const executeSignatures = async (
   }
 
   try {
-    const signs = packSignatures(signatures.map(s => signatureToVRS(s)));
+    const signs = packSignatures(signatures.map((s) => signatureToVRS(s)));
     const tx = await executeSignaturesFunc(messageData, signs);
     return tx;
   } catch (error) {

@@ -13,29 +13,29 @@ import {
   ModalOverlay,
   Text,
   useDisclosure,
-} from '@chakra-ui/react';
-import CustomTokenImage from 'assets/custom-token.svg';
+} from "@chakra-ui/react";
+import CustomTokenImage from "assets/custom-token.svg";
 import {
   ConfirmBSCTokenModal,
   shouldShowBSCTokenModal,
-} from 'components/modals/ConfirmBSCTokenModal';
+} from "components/modals/ConfirmBSCTokenModal";
 import {
   isRebasingToken,
   RebasingTokenWarning,
-} from 'components/warnings/RebasingTokenWarning';
+} from "components/warnings/RebasingTokenWarning";
 import {
   isSafeMoonToken,
   SafeMoonTokenWarning,
-} from 'components/warnings/SafeMoonTokenWarning';
-import { useBridgeContext } from 'contexts/BridgeContext';
-import { useWeb3Context } from 'contexts/Web3Context';
-import { utils } from 'ethers';
-import { useBridgeDirection } from 'hooks/useBridgeDirection';
-import { LOCAL_STORAGE_KEYS } from 'lib/constants';
-import { logError, uniqueTokens } from 'lib/helpers';
-import { ETH_BSC_BRIDGE } from 'lib/networks';
-import { fetchTokenDetails } from 'lib/token';
-import React, { useCallback, useMemo, useRef, useState } from 'react';
+} from "components/warnings/SafeMoonTokenWarning";
+import { useBridgeContext } from "contexts/BridgeContext";
+import { useWeb3Context } from "contexts/Web3Context";
+import { utils } from "ethers";
+import { useBridgeDirection } from "hooks/useBridgeDirection";
+import { LOCAL_STORAGE_KEYS } from "lib/constants";
+import { logError, uniqueTokens } from "lib/helpers";
+import { ETH_BSC_BRIDGE } from "lib/networks";
+import { fetchTokenDetails } from "lib/token";
+import React, { useCallback, useMemo, useRef, useState } from "react";
 
 const { CUSTOM_TOKENS } = LOCAL_STORAGE_KEYS;
 
@@ -43,20 +43,20 @@ export const CustomTokenModal = ({ isOpen, onClose, onBack }) => {
   const { setToken, setLoading } = useBridgeContext();
   const { providerChainId } = useWeb3Context();
   const { bridgeDirection, getBridgeChainId } = useBridgeDirection();
-  const bridgeChainId = useMemo(() => getBridgeChainId(providerChainId), [
-    providerChainId,
-    getBridgeChainId,
-  ]);
+  const bridgeChainId = useMemo(
+    () => getBridgeChainId(providerChainId),
+    [providerChainId, getBridgeChainId]
+  );
   const [customToken, setCustomToken] = useState({
-    address: '',
-    name: '',
-    symbol: '',
+    address: "",
+    name: "",
+    symbol: "",
     decimals: 0,
     chainId: providerChainId,
-    logo: '',
+    logo: "",
   });
 
-  const [addressInput, setAddressInput] = useState('');
+  const [addressInput, setAddressInput] = useState("");
   const [addressInvalid, setAddressInvalid] = useState(false);
 
   const addCustomToken = useCallback(async () => {
@@ -77,15 +77,15 @@ export const CustomTokenModal = ({ isOpen, onClose, onBack }) => {
     customTokensList = uniqueTokens(customTokensList);
     window.localStorage.setItem(
       CUSTOM_TOKENS,
-      JSON.stringify(customTokensList),
+      JSON.stringify(customTokensList)
     );
     await setToken(customToken);
     setLoading(false);
   }, [onClose, customToken, setLoading, setToken]);
 
   const handleChange = useCallback(
-    async e => {
-      if (e.target.id === 'address') {
+    async (e) => {
+      if (e.target.id === "address") {
         setAddressInput(e.target.value);
         if (utils.isAddress(e.target.value)) {
           const tokenAddress = e.target.value;
@@ -93,14 +93,14 @@ export const CustomTokenModal = ({ isOpen, onClose, onBack }) => {
             chainId: providerChainId,
             address: tokenAddress,
           })
-            .then(tokenDetails => {
+            .then((tokenDetails) => {
               setAddressInvalid(false);
-              setCustomToken(_customToken => ({
+              setCustomToken((_customToken) => ({
                 ..._customToken,
                 ...tokenDetails,
               }));
             })
-            .catch(customTokenError => {
+            .catch((customTokenError) => {
               logError({ customTokenError });
               setAddressInvalid(true);
             });
@@ -108,13 +108,13 @@ export const CustomTokenModal = ({ isOpen, onClose, onBack }) => {
           setAddressInvalid(true);
         }
       } else {
-        setCustomToken(_customToken => ({
+        setCustomToken((_customToken) => ({
           ..._customToken,
           [e.target.id]: e.target.value,
         }));
       }
     },
-    [bridgeDirection, providerChainId],
+    [bridgeDirection, providerChainId]
   );
 
   const {
@@ -182,7 +182,7 @@ export const CustomTokenModal = ({ isOpen, onClose, onBack }) => {
                   placeholder="0xAbC ..."
                   size="sm"
                   onChange={handleChange}
-                  _placeholder={{ color: 'grey' }}
+                  _placeholder={{ color: "grey" }}
                   value={addressInput}
                   ref={initialRef}
                   isInvalid={addressInvalid}
@@ -195,7 +195,7 @@ export const CustomTokenModal = ({ isOpen, onClose, onBack }) => {
                   placeholder="ETH"
                   size="sm"
                   onChange={handleChange}
-                  _placeholder={{ color: 'grey' }}
+                  _placeholder={{ color: "grey" }}
                   value={customToken.symbol}
                 />
               </InputGroup>
@@ -206,7 +206,7 @@ export const CustomTokenModal = ({ isOpen, onClose, onBack }) => {
                   placeholder="18"
                   size="sm"
                   onChange={handleChange}
-                  _placeholder={{ color: 'grey' }}
+                  _placeholder={{ color: "grey" }}
                   value={customToken.decimals}
                 />
               </InputGroup>
@@ -218,14 +218,14 @@ export const CustomTokenModal = ({ isOpen, onClose, onBack }) => {
             <Flex
               w="100%"
               justify="space-between"
-              align={{ base: 'stretch', md: 'center' }}
-              direction={{ base: 'column', md: 'row' }}
+              align={{ base: "stretch", md: "center" }}
+              direction={{ base: "column", md: "row" }}
             >
               <Button
                 px={12}
                 onClick={onBack}
                 background="background"
-                _hover={{ background: '#bfd3f2' }}
+                _hover={{ background: "#bfd3f2" }}
                 color="#687D9D"
               >
                 Back

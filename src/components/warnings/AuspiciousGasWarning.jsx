@@ -1,5 +1,5 @@
-import { Alert, AlertIcon, Flex, Text } from '@chakra-ui/react';
-import React from 'react';
+import { Alert, AlertIcon, Flex, Text } from "@chakra-ui/react";
+import React from "react";
 
 export const AuspiciousGasWarning = ({
   lowestPrice,
@@ -16,7 +16,7 @@ export const AuspiciousGasWarning = ({
 
   let msg = `${medianPercent}% below the median`;
   if (lowestPrice.gte(currentPrice)) {
-    msg = 'the lowest';
+    msg = "the lowest";
   } else if (currentPrice.lte(medianPrice.sub(medianPrice.div(4)))) {
     const lowestPercent = currentPrice
       .sub(lowestPrice)
@@ -27,11 +27,11 @@ export const AuspiciousGasWarning = ({
   }
 
   return (
-    <Flex align="center" direction="column" w="100%" mb={noMargin ? '0' : '4'}>
+    <Flex align="center" direction="column" w="100%" mb={noMargin ? "0" : "4"}>
       <Alert
         status="info"
         borderRadius={5}
-        boxShadow={noShadow ? 'none' : '0px 1rem 2rem rgba(204, 218, 238, 0.8)'}
+        boxShadow={noShadow ? "none" : "0px 1rem 2rem rgba(204, 218, 238, 0.8)"}
       >
         <AlertIcon minWidth="20px" />
         <Text fontSize="small">

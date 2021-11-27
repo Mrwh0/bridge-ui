@@ -14,31 +14,28 @@ import {
   Text,
   useToast,
   VStack,
-} from '@chakra-ui/react';
-import ClaimTokenImage from 'assets/claim.svg';
-import { LoadingModal } from 'components/modals/LoadingModal';
-import { AuspiciousGasWarning } from 'components/warnings/AuspiciousGasWarning';
-import { useBridgeContext } from 'contexts/BridgeContext';
-import { useWeb3Context } from 'contexts/Web3Context';
-import { useBridgeDirection } from 'hooks/useBridgeDirection';
-import { useClaim } from 'hooks/useClaim';
-import { isRevertedError, TOKENS_CLAIMED } from 'lib/amb';
+} from "@chakra-ui/react";
+import ClaimTokenImage from "assets/claim.svg";
+import { LoadingModal } from "components/modals/LoadingModal";
+import { AuspiciousGasWarning } from "components/warnings/AuspiciousGasWarning";
+import { useBridgeContext } from "contexts/BridgeContext";
+import { useWeb3Context } from "contexts/Web3Context";
+import { useBridgeDirection } from "hooks/useBridgeDirection";
+import { useClaim } from "hooks/useClaim";
+import { isRevertedError, TOKENS_CLAIMED } from "lib/amb";
 import {
   getGasPrice,
   getLowestHistoricalEthGasPrice,
   getMedianHistoricalEthGasPrice,
-} from 'lib/gasPrice';
-import { getNetworkName, handleWalletError, logError } from 'lib/helpers';
-import { messageCallStatus } from 'lib/message';
-import React, { useCallback, useEffect, useState } from 'react';
+} from "lib/gasPrice";
+import { getNetworkName, handleWalletError, logError } from "lib/helpers";
+import { messageCallStatus } from "lib/message";
+import React, { useCallback, useEffect, useState } from "react";
 
 export const ClaimTransferModal = ({ message, setMessage }) => {
   const { ethersProvider } = useWeb3Context();
-  const {
-    homeChainId,
-    foreignChainId,
-    foreignAmbAddress,
-  } = useBridgeDirection();
+  const { homeChainId, foreignChainId, foreignAmbAddress } =
+    useBridgeDirection();
   const { txHash, setTxHash } = useBridgeContext();
   const [isOpen, setOpen] = useState(true);
   const [claiming, setClaiming] = useState(false);
@@ -52,28 +49,28 @@ export const ClaimTransferModal = ({ message, setMessage }) => {
 
   const toast = useToast();
   const showError = useCallback(
-    errorMsg => {
+    (errorMsg) => {
       if (errorMsg) {
         toast({
-          title: 'Error',
+          title: "Error",
           description: errorMsg,
-          status: 'error',
-          isClosable: 'true',
+          status: "error",
+          isClosable: "true",
         });
       }
     },
-    [toast],
+    [toast]
   );
 
   useEffect(() => {
     if (message && message.messageId) {
       const { messageId } = message;
       messageCallStatus(foreignAmbAddress, ethersProvider, messageId).then(
-        status => {
+        (status) => {
           if (status) {
             setExecuted(true);
           }
-        },
+        }
       );
     }
   }, [message, foreignAmbAddress, ethersProvider]);
@@ -154,9 +151,9 @@ export const ClaimTransferModal = ({ message, setMessage }) => {
                   <AlertIcon minWidth="20px" />
                   <Text fontSize="small">
                     {`The claim process may take a variable period of time on ${getNetworkName(
-                      foreignChainId,
-                    )}${' '}
-                    depending on network congestion. Your token balance will increase to reflect${' '}
+                      foreignChainId
+                    )}${" "}
+                    depending on network congestion. Your token balance will increase to reflect${" "}
                     the completed transfer after the claim is processed`}
                   </Text>
                 </Alert>
@@ -178,14 +175,14 @@ export const ClaimTransferModal = ({ message, setMessage }) => {
             <Flex
               w="100%"
               justify="space-between"
-              align={{ base: 'stretch', md: 'center' }}
-              direction={{ base: 'column', md: 'row' }}
+              align={{ base: "stretch", md: "center" }}
+              direction={{ base: "column", md: "row" }}
             >
               <Button
                 px={12}
                 onClick={onClose}
                 background="background"
-                _hover={{ background: '#bfd3f2' }}
+                _hover={{ background: "#bfd3f2" }}
                 color="#687D9D"
               >
                 Cancel

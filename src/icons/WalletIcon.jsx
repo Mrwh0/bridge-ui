@@ -1,8 +1,8 @@
-import { createIcon } from '@chakra-ui/icons';
-import * as React from 'react';
+import { createIcon } from "@chakra-ui/icons";
+import * as React from "react";
 
 export const WalletIcon = createIcon({
-  displayName: 'WalletIcon',
+  displayName: "WalletIcon",
   path: (
     <>
       <path
@@ -17,5 +17,5 @@ export const WalletIcon = createIcon({
       />
     </>
   ),
-  viewBox: '0 0 18 18',
+  viewBox: "0 0 18 18",
 });

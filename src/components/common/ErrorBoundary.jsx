@@ -1,6 +1,6 @@
-import { Flex, Text } from '@chakra-ui/react';
-import { logError } from 'lib/helpers';
-import React from 'react';
+import { Flex, Text } from "@chakra-ui/react";
+import { logError } from "lib/helpers";
+import React from "react";
 
 export class ErrorBoundary extends React.Component {
   constructor(props) {

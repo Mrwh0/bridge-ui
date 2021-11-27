@@ -1,7 +1,7 @@
-import { fetchAmbVersion } from 'lib/amb';
-import { getNetworkLabel, logError } from 'lib/helpers';
-import { getEthersProvider } from 'lib/providers';
-import { useEffect, useState } from 'react';
+import { fetchAmbVersion } from "lib/amb";
+import { getNetworkLabel, logError } from "lib/helpers";
+import { getEthersProvider } from "lib/providers";
+import { useEffect, useState } from "react";
 
 export const useAmbVersion = (foreignChainId, foreignAmbAddress) => {
   const [foreignAmbVersion, setForeignAmbVersion] = useState();
@@ -13,11 +13,11 @@ export const useAmbVersion = (foreignChainId, foreignAmbAddress) => {
     const fetchVersion = async () => {
       const provider = await getEthersProvider(foreignChainId);
       await fetchAmbVersion(foreignAmbAddress, provider)
-        .then(versionString => {
+        .then((versionString) => {
           setForeignAmbVersion(versionString);
           sessionStorage.setItem(key, versionString);
         })
-        .catch(versionError => logError({ versionError }));
+        .catch((versionError) => logError({ versionError }));
       setFetching(false);
     };
     const version = sessionStorage.getItem(key);

@@ -1,31 +1,26 @@
-import { useBridgeContext } from 'contexts/BridgeContext';
-import { useWeb3Context } from 'contexts/Web3Context';
-import { useBridgeDirection } from 'hooks/useBridgeDirection';
-import { POLLING_INTERVAL } from 'lib/constants';
-import { logDebug, logError, timeout, withTimeout } from 'lib/helpers';
+import { useBridgeContext } from "contexts/BridgeContext";
+import { useWeb3Context } from "contexts/Web3Context";
+import { useBridgeDirection } from "hooks/useBridgeDirection";
+import { POLLING_INTERVAL } from "lib/constants";
+import { logDebug, logError, timeout, withTimeout } from "lib/helpers";
 import {
   getMessage,
   getMessageData,
   messageCallStatus,
   NOT_ENOUGH_COLLECTED_SIGNATURES,
-} from 'lib/message';
-import { getEthersProvider } from 'lib/providers';
-import { useCallback, useEffect, useState } from 'react';
+} from "lib/message";
+import { getEthersProvider } from "lib/providers";
+import { useCallback, useEffect, useState } from "react";
 
-export const useTransactionStatus = setMessage => {
+export const useTransactionStatus = (setMessage) => {
   const { needsClaiming } = useBridgeContext();
   const { homeChainId, getBridgeChainId, getAMBAddress } = useBridgeDirection();
   const { ethersProvider, providerChainId: chainId } = useWeb3Context();
   const isHome = chainId === homeChainId;
 
   const bridgeChainId = getBridgeChainId(chainId);
-  const {
-    loading,
-    setLoading,
-    txHash,
-    setTxHash,
-    totalConfirms,
-  } = useBridgeContext();
+  const { loading, setLoading, txHash, setTxHash, totalConfirms } =
+    useBridgeContext();
   const [needsConfirmation, setNeedsConfirmation] = useState(false);
   const [loadingText, setLoadingText] = useState();
   const [confirmations, setConfirmations] = useState(0);
@@ -63,12 +58,12 @@ export const useTransactionStatus = setMessage => {
         setConfirmations(numConfirmations);
         if (enoughConfirmations) {
           if (needsClaiming) {
-            setLoadingText('Collecting Signatures');
+            setLoadingText("Collecting Signatures");
             const message = await getMessage(
               isHome,
               ethersProvider,
               getAMBAddress(chainId),
-              txHash,
+              txHash
             );
             if (message && message.signatures) {
               setNeedsConfirmation(true);
@@ -77,7 +72,7 @@ export const useTransactionStatus = setMessage => {
               return true;
             }
           } else {
-            setLoadingText('Waiting for Execution');
+            setLoadingText("Waiting for Execution");
             const bridgeProvider = await getEthersProvider(bridgeChainId);
             const bridgeAmbAddress = getAMBAddress(bridgeChainId);
 
@@ -85,12 +80,12 @@ export const useTransactionStatus = setMessage => {
               isHome,
               ethersProvider,
               txHash,
-              txReceipt,
+              txReceipt
             );
             const status = await messageCallStatus(
               bridgeAmbAddress,
               bridgeProvider,
-              messageId,
+              messageId
             );
             if (status) {
               completeReceipt();
@@ -100,11 +95,11 @@ export const useTransactionStatus = setMessage => {
         }
       }
     } catch (txError) {
-      if (txError?.code === 'TRANSACTION_REPLACED' && !txError.cancelled) {
-        logDebug('TRANSACTION_REPLACED');
+      if (txError?.code === "TRANSACTION_REPLACED" && !txError.cancelled) {
+        logDebug("TRANSACTION_REPLACED");
         setTxHash(txError.replacement.hash);
       } else if (
-        txError?.message === 'timed out' ||
+        txError?.message === "timed out" ||
         (needsClaiming && txError?.message === NOT_ENOUGH_COLLECTED_SIGNATURES)
       ) {
         return false;
@@ -134,7 +129,7 @@ export const useTransactionStatus = setMessage => {
       return () => undefined;
     }
 
-    setLoadingText('Waiting for Block Confirmations');
+    setLoadingText("Waiting for Block Confirmations");
     let isSubscribed = true;
 
     const updateStatus = async () => {
@@ -153,7 +148,7 @@ export const useTransactionStatus = setMessage => {
   }, [loading, txHash, ethersProvider, getStatus]);
 
   useEffect(() => {
-    setNeedsConfirmation(needs => chainId === homeChainId && needs);
+    setNeedsConfirmation((needs) => chainId === homeChainId && needs);
   }, [homeChainId, chainId]);
 
   return {

@@ -1,8 +1,8 @@
-import { createIcon } from '@chakra-ui/icons';
-import * as React from 'react';
+import { createIcon } from "@chakra-ui/icons";
+import * as React from "react";
 
 export const NetworkIcon = createIcon({
-  displayName: 'NetworkIcon',
+  displayName: "NetworkIcon",
   path: (
     <path
       fillRule="evenodd"
@@ -11,5 +11,5 @@ export const NetworkIcon = createIcon({
       fill="currentColor"
     />
   ),
-  viewBox: '0 0 18 18',
+  viewBox: "0 0 18 18",
 });

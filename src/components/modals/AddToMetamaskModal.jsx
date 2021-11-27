@@ -20,14 +20,14 @@ import {
   Tooltip,
   Tr,
   useToast,
-} from '@chakra-ui/react';
-import MetamaskFox from 'assets/metamask-fox.svg';
-import { useWeb3Context } from 'contexts/Web3Context';
-import { useCopyToClipboard } from 'hooks/useCopyToClipboard';
-import { useRenderChain } from 'hooks/useRenderChain';
-import { getAccountString, getNetworkName, logError } from 'lib/helpers';
-import { addTokenToMetamask } from 'lib/metamask';
-import React, { useCallback, useState } from 'react';
+} from "@chakra-ui/react";
+import MetamaskFox from "assets/metamask-fox.svg";
+import { useWeb3Context } from "contexts/Web3Context";
+import { useCopyToClipboard } from "hooks/useCopyToClipboard";
+import { useRenderChain } from "hooks/useRenderChain";
+import { getAccountString, getNetworkName, logError } from "lib/helpers";
+import { addTokenToMetamask } from "lib/metamask";
+import React, { useCallback, useState } from "react";
 
 export const AddToMetamaskModal = ({ isOpen, onClose, token: tokenToAdd }) => {
   const [token] = useState(tokenToAdd);
@@ -38,17 +38,17 @@ export const AddToMetamaskModal = ({ isOpen, onClose, token: tokenToAdd }) => {
   const toast = useToast();
 
   const showError = useCallback(
-    msg => {
+    (msg) => {
       if (msg) {
         toast({
-          title: 'Error: Unable to add token',
+          title: "Error: Unable to add token",
           description: msg,
-          status: 'error',
-          isClosable: 'true',
+          status: "error",
+          isClosable: "true",
         });
       }
     },
-    [toast],
+    [toast]
   );
 
   const onClick = useCallback(async () => {
@@ -63,7 +63,7 @@ export const AddToMetamaskModal = ({ isOpen, onClose, token: tokenToAdd }) => {
       logError({ metamaskError });
       if (metamaskError && metamaskError.message) {
         showError(
-          `Please try manually in the wallet app. Got message: "${metamaskError.message}"`,
+          `Please try manually in the wallet app. Got message: "${metamaskError.message}"`
         );
       }
     }
@@ -98,7 +98,7 @@ export const AddToMetamaskModal = ({ isOpen, onClose, token: tokenToAdd }) => {
             <Flex direction="column">
               <Text mb="0.5rem">
                 {`You are adding the following token on ${getNetworkName(
-                  token.chainId,
+                  token.chainId
                 )}:`}
               </Text>
               <Table variant="simple">
@@ -113,7 +113,7 @@ export const AddToMetamaskModal = ({ isOpen, onClose, token: tokenToAdd }) => {
                     <Td>{token.name}</Td>
                     <Td>
                       <Tooltip
-                        label={copied ? 'Copied!' : 'Copy to clipboard'}
+                        label={copied ? "Copied!" : "Copy to clipboard"}
                         closeOnClick={false}
                       >
                         <Button
@@ -150,14 +150,14 @@ export const AddToMetamaskModal = ({ isOpen, onClose, token: tokenToAdd }) => {
             <Flex
               w="100%"
               justify="space-between"
-              align={{ base: 'stretch', md: 'center' }}
-              direction={{ base: 'column', md: 'row' }}
+              align={{ base: "stretch", md: "center" }}
+              direction={{ base: "column", md: "row" }}
             >
               <Button
                 px={12}
                 onClick={onClose}
                 background="background"
-                _hover={{ background: '#bfd3f2' }}
+                _hover={{ background: "#bfd3f2" }}
                 color="#687D9D"
               >
                 Cancel

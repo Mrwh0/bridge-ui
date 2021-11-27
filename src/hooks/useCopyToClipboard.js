@@ -1,5 +1,5 @@
-import copyToClipboard from 'copy-to-clipboard';
-import { useCallback, useEffect, useState } from 'react';
+import copyToClipboard from "copy-to-clipboard";
+import { useCallback, useEffect, useState } from "react";
 
 const DEFAULT_DELAY = 3000;
 
@@ -18,7 +18,7 @@ export const useCopyToClipboard = (delay = DEFAULT_DELAY) => {
     };
   }, [delay, copied]);
 
-  const handleCopy = useCallback(text => {
+  const handleCopy = useCallback((text) => {
     setCopied(true);
     copyToClipboard(text);
   }, []);

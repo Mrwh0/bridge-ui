@@ -1,8 +1,8 @@
-import { createIcon } from '@chakra-ui/icons';
-import * as React from 'react';
+import { createIcon } from "@chakra-ui/icons";
+import * as React from "react";
 
 export const RaidGuildIcon = createIcon({
-  displayName: 'RaidGuildIcon',
+  displayName: "RaidGuildIcon",
   path: (
     <g fill="currentColor">
       <path
@@ -105,5 +105,5 @@ export const RaidGuildIcon = createIcon({
       />
     </g>
   ),
-  viewBox: '0 0 1035.2 281.8',
+  viewBox: "0 0 1035.2 281.8",
 });

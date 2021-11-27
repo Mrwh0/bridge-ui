@@ -1,6 +1,6 @@
-import { Link } from '@chakra-ui/react';
-import { getExplorerUrl } from 'lib/helpers';
-import React from 'react';
+import { Link } from "@chakra-ui/react";
+import { getExplorerUrl } from "lib/helpers";
+import React from "react";
 
 export const TxLink = ({ chainId, hash, children }) => {
   const link = `${getExplorerUrl(chainId)}/tx/${hash}`;

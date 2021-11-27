@@ -7,16 +7,16 @@ import {
   Text,
   useBreakpointValue,
   useDisclosure,
-} from '@chakra-ui/react';
-import DropDown from 'assets/drop-down.svg';
-import { Logo } from 'components/common/Logo';
-import { SelectTokenModal } from 'components/modals/SelectTokenModal';
-import { useBridgeContext } from 'contexts/BridgeContext';
-import { useWeb3Context } from 'contexts/Web3Context';
-import { BigNumber, utils } from 'ethers';
-import { formatValue, logError, truncateText } from 'lib/helpers';
-import { fetchTokenBalance } from 'lib/token';
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+} from "@chakra-ui/react";
+import DropDown from "assets/drop-down.svg";
+import { Logo } from "components/common/Logo";
+import { SelectTokenModal } from "components/modals/SelectTokenModal";
+import { useBridgeContext } from "contexts/BridgeContext";
+import { useWeb3Context } from "contexts/Web3Context";
+import { BigNumber, utils } from "ethers";
+import { formatValue, logError, truncateText } from "lib/helpers";
+import { fetchTokenBalance } from "lib/token";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 
 const useDelay = (fn, ms) => {
   const timer = useRef(0);
@@ -26,7 +26,7 @@ const useDelay = (fn, ms) => {
       clearTimeout(timer.current);
       timer.current = setTimeout(fn.bind(this, ...args), ms || 0);
     },
-    [fn, ms],
+    [fn, ms]
   );
 
   return delayCallBack;
@@ -57,14 +57,14 @@ export const FromToken = () => {
     if (token && account && chainId === token.chainId) {
       setBalanceLoading(true);
       fetchTokenBalance(token, account)
-        .catch(fromBalanceError => {
+        .catch((fromBalanceError) => {
           logError({ fromBalanceError });
           if (isSubscribed) {
             setBalance(BigNumber.from(0));
             setBalanceLoading(false);
           }
         })
-        .then(b => {
+        .then((b) => {
           if (isSubscribed) {
             setBalance(b);
             setBalanceLoading(false);
@@ -85,9 +85,9 @@ export const FromToken = () => {
       mr={{ base: 2, lg: -6 }}
       position="relative"
       borderRadius="0.25rem"
-      border={{ base: '1px solid #DAE3F0', lg: 'none' }}
-      minH={smallScreen ? '5rem' : 8}
-      minW={smallScreen ? '15rem' : undefined}
+      border={{ base: "1px solid #DAE3F0", lg: "none" }}
+      minH={smallScreen ? "5rem" : 8}
+      minW={smallScreen ? "15rem" : undefined}
     >
       <SelectTokenModal onClose={onClose} isOpen={isOpen} />
       {!smallScreen && (
@@ -101,19 +101,19 @@ export const FromToken = () => {
       )}
       {token && (
         <Flex
-          position={{ base: 'relative', lg: 'absolute' }}
-          h={{ base: 'auto', lg: '100%' }}
+          position={{ base: "relative", lg: "absolute" }}
+          h={{ base: "auto", lg: "100%" }}
           w="100%"
           direction="column"
-          py={{ base: 4, lg: 2, xl: 3, '2xl': 4 }}
+          py={{ base: 4, lg: 2, xl: 3, "2xl": 4 }}
           pl={4}
-          pr={{ base: 4, lg: 8, xl: 10, '2xl': 12 }}
+          pr={{ base: 4, lg: 8, xl: 10, "2xl": 12 }}
         >
           <Flex
             justify="space-between"
-            align={{ base: 'stretch', sm: 'center', lg: 'flex-start' }}
+            align={{ base: "stretch", sm: "center", lg: "flex-start" }}
             mb={2}
-            direction={{ base: 'column', sm: 'row' }}
+            direction={{ base: "column", sm: "row" }}
           >
             <Flex
               align="center"
@@ -152,10 +152,10 @@ export const FromToken = () => {
                 <Text
                   color="grey"
                   textAlign="right"
-                  fontSize={{ base: 'md', lg: 'sm', '2xl': 'md' }}
+                  fontSize={{ base: "md", lg: "sm", "2xl": "md" }}
                   {...(smallScreen
                     ? {}
-                    : { position: 'absolute', bottom: '4px', right: 0 })}
+                    : { position: "absolute", bottom: "4px", right: 0 })}
                 >
                   {`Balance: ${formatValue(balance, token.decimals)}`}
                 </Text>
@@ -168,12 +168,12 @@ export const FromToken = () => {
             w="100%"
             {...(!smallScreen
               ? {
-                  position: 'absolute',
+                  position: "absolute",
                   left: 0,
                   bottom: 0,
-                  pr: { base: 4, lg: 8, xl: 10, '2xl': 12 },
+                  pr: { base: 4, lg: 8, xl: 10, "2xl": 12 },
                   pl: 4,
-                  pb: { base: 4, lg: 2, xl: 3, '2xl': 4 },
+                  pb: { base: 4, lg: 2, xl: 3, "2xl": 4 },
                 }
               : {})}
           >
@@ -185,7 +185,7 @@ export const FromToken = () => {
               placeholder="0.0"
               textAlign="left"
               fontWeight="bold"
-              onChange={e => setInput(e.target.value)}
+              onChange={(e) => setInput(e.target.value)}
               onKeyUp={delayedSetAmount}
               fontSize="2xl"
             />
@@ -196,7 +196,7 @@ export const FromToken = () => {
               size="sm"
               fontSize="sm"
               fontWeight="normal"
-              _hover={{ bg: 'blue.100' }}
+              _hover={{ bg: "blue.100" }}
               onClick={() => {
                 const amountInput = utils.formatUnits(balance, token.decimals);
                 setAmount(amountInput);

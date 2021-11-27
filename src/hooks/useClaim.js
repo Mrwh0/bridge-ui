@@ -1,24 +1,21 @@
-import { useToast } from '@chakra-ui/react';
-import { useWeb3Context } from 'contexts/Web3Context';
-import { useBridgeDirection } from 'hooks/useBridgeDirection';
-import { executeSignatures, TOKENS_CLAIMED } from 'lib/amb';
+import { useToast } from "@chakra-ui/react";
+import { useWeb3Context } from "contexts/Web3Context";
+import { useBridgeDirection } from "hooks/useBridgeDirection";
+import { executeSignatures, TOKENS_CLAIMED } from "lib/amb";
 import {
   getNetworkName,
   handleWalletError,
   logDebug,
   logError,
-} from 'lib/helpers';
-import { getMessage, messageCallStatus } from 'lib/message';
-import { addChainToMetaMask } from 'lib/metamask';
-import { getEthersProvider } from 'lib/providers';
-import { useCallback, useEffect, useState } from 'react';
+} from "lib/helpers";
+import { getMessage, messageCallStatus } from "lib/message";
+import { addChainToMetaMask } from "lib/metamask";
+import { getEthersProvider } from "lib/providers";
+import { useCallback, useEffect, useState } from "react";
 
 const useExecution = () => {
-  const {
-    foreignChainId,
-    foreignAmbAddress,
-    foreignAmbVersion,
-  } = useBridgeDirection();
+  const { foreignChainId, foreignAmbAddress, foreignAmbVersion } =
+    useBridgeDirection();
   const { providerChainId, ethersProvider, isMetamask } = useWeb3Context();
   const [doRepeat, setDoRepeat] = useState(false);
   const [executing, setExecuting] = useState(false);
@@ -28,28 +25,30 @@ const useExecution = () => {
   const toast = useToast();
 
   const showError = useCallback(
-    msg => {
+    (msg) => {
       if (msg) {
         toast({
-          title: 'Error',
+          title: "Error",
           description: msg,
-          status: 'error',
-          isClosable: 'true',
+          status: "error",
+          isClosable: "true",
         });
       }
     },
-    [toast],
+    [toast]
   );
 
   const switchChain = useCallback(
-    async chainId => {
-      const result = await addChainToMetaMask(chainId).catch(metamaskError => {
-        logError({ metamaskError });
-        handleWalletError(metamaskError, showError);
-      });
+    async (chainId) => {
+      const result = await addChainToMetaMask(chainId).catch(
+        (metamaskError) => {
+          logError({ metamaskError });
+          handleWalletError(metamaskError, showError);
+        }
+      );
       return result;
     },
-    [showError],
+    [showError]
   );
 
   const executeCallback = useCallback(
@@ -67,25 +66,25 @@ const useExecution = () => {
           }
           showError(
             `Wrong network. Please connect your wallet to ${getNetworkName(
-              foreignChainId,
-            )}.`,
+              foreignChainId
+            )}.`
           );
         } else {
           const tx = await executeSignatures(
             ethersProvider,
             foreignAmbAddress,
             foreignAmbVersion,
-            msgData,
+            msgData
           );
           await tx.wait();
           setTxHash(tx.hash);
         }
       } catch (claimError) {
-        if (claimError?.code === 'TRANSACTION_REPLACED') {
+        if (claimError?.code === "TRANSACTION_REPLACED") {
           if (claimError.cancelled) {
-            throw new Error('transaction was replaced');
+            throw new Error("transaction was replaced");
           } else {
-            logDebug('TRANSACTION_REPLACED');
+            logDebug("TRANSACTION_REPLACED");
             await claimError.replacement.wait();
             setTxHash(claimError.replacement.hash);
           }
@@ -104,7 +103,7 @@ const useExecution = () => {
       foreignAmbAddress,
       showError,
       switchChain,
-    ],
+    ]
   );
 
   useEffect(() => {
@@ -135,8 +134,8 @@ export const useClaim = () => {
       if (providerChainId !== foreignChainId && !isMetamask) {
         throw Error(
           `Wrong network. Please connect your wallet to ${getNetworkName(
-            foreignChainId,
-          )}.`,
+            foreignChainId
+          )}.`
         );
       }
       let message =
@@ -153,7 +152,7 @@ export const useClaim = () => {
       const claimed = await messageCallStatus(
         foreignAmbAddress,
         foreignProvider,
-        message.messageId,
+        message.messageId
       );
       if (claimed) {
         throw Error(TOKENS_CLAIMED);
@@ -169,7 +168,7 @@ export const useClaim = () => {
       providerChainId,
       isMetamask,
       homeRequiredSignatures,
-    ],
+    ]
   );
 
   return { claim, executing, executionTx };

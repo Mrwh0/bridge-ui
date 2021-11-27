@@ -1,10 +1,10 @@
-import { useToast } from '@chakra-ui/react';
-import { useWeb3Context } from 'contexts/Web3Context';
-import { useBridgeDirection } from 'hooks/useBridgeDirection';
-import { getHealthStatus } from 'lib/graphHealth';
-import { logDebug, logError } from 'lib/helpers';
-import { getEthersProvider } from 'lib/providers';
-import { useEffect, useRef, useState } from 'react';
+import { useToast } from "@chakra-ui/react";
+import { useWeb3Context } from "contexts/Web3Context";
+import { useBridgeDirection } from "hooks/useBridgeDirection";
+import { getHealthStatus } from "lib/graphHealth";
+import { logDebug, logError } from "lib/helpers";
+import { getEthersProvider } from "lib/providers";
+import { useEffect, useRef, useState } from "react";
 
 const {
   REACT_APP_GRAPH_HEALTH_UPDATE_INTERVAL,
@@ -25,7 +25,7 @@ const THRESHOLD_BLOCKS =
 
 export const useGraphHealth = (
   description,
-  options = { onlyHome: false, disableAlerts: false },
+  options = { onlyHome: false, disableAlerts: false }
 ) => {
   const { onlyHome, disableAlerts } = options;
   const { bridgeDirection, homeChainId, foreignChainId } = useBridgeDirection();
@@ -42,7 +42,7 @@ export const useGraphHealth = (
   useEffect(() => {
     const subscriptions = [];
     const unsubscribe = () => {
-      subscriptions.forEach(s => {
+      subscriptions.forEach((s) => {
         clearTimeout(s);
       });
     };
@@ -63,7 +63,7 @@ export const useGraphHealth = (
           homeProvider?.getBlockNumber(),
           foreignProvider?.getBlockNumber(),
         ]);
-        logDebug('Updated Subgraph Health', {
+        logDebug("Updated Subgraph Health", {
           homeHealth,
           foreignHealth,
           homeBlockNumber,
@@ -127,9 +127,9 @@ export const useGraphHealth = (
       if (!(homeHealthy && foreignHealthy)) {
         if ((onlyHome === true && !isHome) || disableAlerts === true) return;
         toastIdRef.current = toast({
-          title: 'Subgraph Error',
+          title: "Subgraph Error",
           description,
-          status: 'error',
+          status: "error",
           duration: null,
           isClosable: false,
         });

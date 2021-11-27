@@ -8,11 +8,11 @@ import {
   PopoverTrigger,
   Spinner,
   Text,
-} from '@chakra-ui/react';
-import Details from 'assets/details.svg';
-import { useBridgeContext } from 'contexts/BridgeContext';
-import { formatValue } from 'lib/helpers';
-import React, { useCallback, useState } from 'react';
+} from "@chakra-ui/react";
+import Details from "assets/details.svg";
+import { useBridgeContext } from "contexts/BridgeContext";
+import { formatValue } from "lib/helpers";
+import React, { useCallback, useState } from "react";
 
 export const SystemFeedback = () => {
   const {
@@ -36,7 +36,7 @@ export const SystemFeedback = () => {
           onClick={update}
           variant="ghost"
           color="blue.500"
-          _hover={{ bg: 'blackAlpha.100' }}
+          _hover={{ bg: "blackAlpha.100" }}
           fontWeight="normal"
           px="2"
         >

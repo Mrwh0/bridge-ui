@@ -1,23 +1,21 @@
-import { Checkbox, Flex, Grid, Text } from '@chakra-ui/react';
-import { CoinzillaBannerAd } from 'components/common/CoinzillaBannerAd';
-import { CoinzillaTextAd } from 'components/common/CoinzillaTextAd';
-import { HistoryItem } from 'components/history/HistoryItem';
-import { HistoryPagination } from 'components/history/HistoryPagination';
-import { ManualClaim } from 'components/history/ManualClaim';
-import { NoHistory } from 'components/history/NoHistory';
-import { ClaimErrorModal } from 'components/modals/ClaimErrorModal';
-import { LoadingModal } from 'components/modals/LoadingModal';
-import { AuspiciousGasWarning } from 'components/warnings/AuspiciousGasWarning';
-import { GraphHealthWarning } from 'components/warnings/GraphHealthWarning';
-import { useBridgeDirection } from 'hooks/useBridgeDirection';
-import { useUserHistory } from 'hooks/useUserHistory';
+import { Checkbox, Flex, Grid, Text } from "@chakra-ui/react";
+import { HistoryItem } from "components/history/HistoryItem";
+import { HistoryPagination } from "components/history/HistoryPagination";
+import { ManualClaim } from "components/history/ManualClaim";
+import { NoHistory } from "components/history/NoHistory";
+import { ClaimErrorModal } from "components/modals/ClaimErrorModal";
+import { LoadingModal } from "components/modals/LoadingModal";
+import { AuspiciousGasWarning } from "components/warnings/AuspiciousGasWarning";
+import { GraphHealthWarning } from "components/warnings/GraphHealthWarning";
+import { useBridgeDirection } from "hooks/useBridgeDirection";
+import { useUserHistory } from "hooks/useUserHistory";
 import {
   getGasPrice,
   getLowestHistoricalEthGasPrice,
   getMedianHistoricalEthGasPrice,
-} from 'lib/gasPrice';
-import React, { useCallback, useState } from 'react';
-import { Redirect } from 'react-router-dom';
+} from "lib/gasPrice";
+import React, { useCallback, useState } from "react";
+import { Redirect } from "react-router-dom";
 
 const TOTAL_PER_PAGE = 20;
 
@@ -29,7 +27,7 @@ export const BridgeHistory = ({ page }) => {
 
   const { transfers, loading } = useUserHistory();
 
-  const handleClaimError = useCallback(toToken => {
+  const handleClaimError = useCallback((toToken) => {
     toToken && setClaimErrorToken(toToken);
     setClaimErrorShow(true);
   }, []);
@@ -48,13 +46,13 @@ export const BridgeHistory = ({ page }) => {
   }
 
   const filteredTransfers = onlyUnReceived
-    ? transfers.filter(i => i.receivingTx === null)
+    ? transfers.filter((i) => i.receivingTx === null)
     : transfers;
 
   const numPages = Math.ceil(filteredTransfers.length / TOTAL_PER_PAGE);
   const displayHistory = filteredTransfers.slice(
     (page - 1) * TOTAL_PER_PAGE,
-    Math.min(page * TOTAL_PER_PAGE, filteredTransfers.length),
+    Math.min(page * TOTAL_PER_PAGE, filteredTransfers.length)
   );
 
   if (numPages > 1 && page > numPages) {
@@ -73,7 +71,6 @@ export const BridgeHistory = ({ page }) => {
       px={{ base: 4, sm: 8 }}
       w="100%"
     >
-      <CoinzillaTextAd />
       <ClaimErrorModal
         claimErrorShow={claimErrorShow}
         claimErrorToken={claimErrorToken}
@@ -94,7 +91,7 @@ export const BridgeHistory = ({ page }) => {
         </Text>
         <Checkbox
           isChecked={onlyUnReceived}
-          onChange={e => setOnlyUnReceived(e.target.checked)}
+          onChange={(e) => setOnlyUnReceived(e.target.checked)}
           borderColor="grey"
           borderRadius="4px"
           size="lg"
@@ -108,15 +105,15 @@ export const BridgeHistory = ({ page }) => {
         <>
           <Grid
             templateColumns={{
-              base: '1fr',
-              md: '0.5fr 1.75fr 1fr 1fr 1.25fr 0.5fr',
-              lg: '1fr 1.25fr 1fr 1fr 1.25fr 0.5fr',
+              base: "1fr",
+              md: "0.5fr 1.75fr 1fr 1fr 1.25fr 0.5fr",
+              lg: "1fr 1.25fr 1fr 1fr 1.25fr 0.5fr",
             }}
             color="grey"
             fontSize="sm"
             px={4}
             mb={4}
-            display={{ base: 'none', md: 'grid' }}
+            display={{ base: "none", md: "grid" }}
           >
             <Text>Date</Text>
             <Text>Direction</Text>
@@ -125,15 +122,14 @@ export const BridgeHistory = ({ page }) => {
             <Text textAlign="center">Amount</Text>
             <Text textAlign="right">Status</Text>
           </Grid>
-          {displayHistory.slice(0, 3).map(item => (
+          {displayHistory.slice(0, 3).map((item) => (
             <HistoryItem
               key={item.sendingTx}
               data={item}
               handleClaimError={handleClaimError}
             />
           ))}
-          <CoinzillaBannerAd my="20px" mt="4px" />
-          {displayHistory.slice(3).map(item => (
+          {displayHistory.slice(3).map((item) => (
             <HistoryItem
               key={item.sendingTx}
               data={item}

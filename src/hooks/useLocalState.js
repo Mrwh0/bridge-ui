@@ -1,19 +1,19 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 export const useLocalState = (
   initialValue,
   key,
-  { valueType = 'string', isStoredImmediately = false } = {},
+  { valueType = "string", isStoredImmediately = false } = {}
 ) => {
   const storageValue = useMemo(() => window.localStorage.getItem(key), [key]);
   const castedValue = useMemo(() => {
-    if (valueType === 'number') {
+    if (valueType === "number") {
       return parseInt(storageValue, 10);
     }
-    if (valueType === 'boolean') {
-      return storageValue === 'true';
+    if (valueType === "boolean") {
+      return storageValue === "true";
     }
-    if (valueType === 'object') {
+    if (valueType === "object") {
       return JSON.parse(storageValue);
     }
     return storageValue;
@@ -23,7 +23,7 @@ export const useLocalState = (
 
   const updateValue = useCallback(
     (val, shouldBeStored = false) => {
-      const result = typeof val === 'function' ? val(value) : val;
+      const result = typeof val === "function" ? val(value) : val;
       if (JSON.stringify(result) !== JSON.stringify(value)) {
         setValue(result);
       }
@@ -31,7 +31,7 @@ export const useLocalState = (
         window.localStorage.setItem(key, result);
       }
     },
-    [key, value, isStoredImmediately],
+    [key, value, isStoredImmediately]
   );
 
   useEffect(() => {

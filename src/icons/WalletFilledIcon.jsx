@@ -1,8 +1,8 @@
-import { createIcon } from '@chakra-ui/icons';
-import * as React from 'react';
+import { createIcon } from "@chakra-ui/icons";
+import * as React from "react";
 
 export const WalletFilledIcon = createIcon({
-  displayName: 'WalletFilledIcon',
+  displayName: "WalletFilledIcon",
   path: (
     <path
       fillRule="evenodd"
@@ -11,5 +11,5 @@ export const WalletFilledIcon = createIcon({
       fill="currentColor"
     />
   ),
-  viewBox: '0 0 28 28',
+  viewBox: "0 0 28 28",
 });

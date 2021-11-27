@@ -1,19 +1,19 @@
-import { Box, Flex, HStack, Text, useBreakpointValue } from '@chakra-ui/react';
-import { GithubIcon } from 'icons/GithubIcon';
-import { OmniBridgeIcon } from 'icons/OmniBridgeIcon';
-import { RaidGuildIcon } from 'icons/RaidGuildIcon';
-import { TelegramIcon } from 'icons/TelegramIcon';
-import { TwitterIcon } from 'icons/TwitterIcon';
-import { XDaiIcon } from 'icons/XDaiIcon';
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { Box, Flex, HStack, Text, useBreakpointValue } from "@chakra-ui/react";
+import { GithubIcon } from "icons/GithubIcon";
+import { OmniBridgeIcon } from "icons/OmniBridgeIcon";
+import { RaidGuildIcon } from "icons/RaidGuildIcon";
+import { TelegramIcon } from "icons/TelegramIcon";
+import { TwitterIcon } from "icons/TwitterIcon";
+import { XDaiIcon } from "icons/XDaiIcon";
+import React from "react";
+import { Link } from "react-router-dom";
 
 export const Footer = () => {
   const smallScreen = useBreakpointValue({ base: true, sm: false });
   return (
     <Flex
       position="relative"
-      justify={{ base: 'center', sm: 'space-between' }}
+      justify={{ base: "center", sm: "space-between" }}
       align="center"
       h={20}
       maxW="75rem"
@@ -22,11 +22,11 @@ export const Footer = () => {
       color="grey"
     >
       {!smallScreen && (
-        <Link to="/" display={{ base: 'none', sm: 'block' }}>
+        <Link to="/" display={{ base: "none", sm: "block" }}>
           <Flex
             justify="space-around"
             align="center"
-            _hover={{ color: 'blue.500' }}
+            _hover={{ color: "blue.500" }}
             transition="0.25s"
           >
             <OmniBridgeIcon w={6} />
@@ -34,7 +34,7 @@ export const Footer = () => {
         </Link>
       )}
       <HStack spacing={4}>
-        <Box _hover={{ color: 'blue.500' }}>
+        <Box _hover={{ color: "blue.500" }}>
           <a
             href="https://xdaichain.com"
             rel="noreferrer noopener"
@@ -43,7 +43,7 @@ export const Footer = () => {
             <XDaiIcon />
           </a>
         </Box>
-        <Box _hover={{ color: 'blue.500' }} transition="0.25s">
+        <Box _hover={{ color: "blue.500" }} transition="0.25s">
           <a
             href="https://twitter.com/xdaichain"
             rel="noreferrer noopener"
@@ -52,7 +52,7 @@ export const Footer = () => {
             <TwitterIcon />
           </a>
         </Box>
-        <Box _hover={{ color: 'blue.500' }} transition="0.25s">
+        <Box _hover={{ color: "blue.500" }} transition="0.25s">
           <a
             href="https://t.me/xdaistable"
             rel="noreferrer noopener"
@@ -61,7 +61,7 @@ export const Footer = () => {
             <TelegramIcon />
           </a>
         </Box>
-        <Box _hover={{ color: 'blue.500' }} transition="0.25s">
+        <Box _hover={{ color: "blue.500" }} transition="0.25s">
           <a
             href="https://github.com/xdaichain"
             rel="noreferrer noopener"
@@ -78,7 +78,7 @@ export const Footer = () => {
         >
           <Flex
             align="center"
-            _hover={{ color: 'blue.500' }}
+            _hover={{ color: "blue.500" }}
             transition="0.25s"
           >
             <Text>Built by</Text>

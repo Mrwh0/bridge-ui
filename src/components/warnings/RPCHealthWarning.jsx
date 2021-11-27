@@ -1,8 +1,8 @@
-import { Alert, AlertIcon, Flex, Text } from '@chakra-ui/react';
-import { useBridgeDirection } from 'hooks/useBridgeDirection';
-import { useRPCHealth } from 'hooks/useRPCHealth';
-import { getNetworkName } from 'lib/helpers';
-import React from 'react';
+import { Alert, AlertIcon, Flex, Text } from "@chakra-ui/react";
+import { useBridgeDirection } from "hooks/useBridgeDirection";
+import { useRPCHealth } from "hooks/useRPCHealth";
+import { getNetworkName } from "lib/helpers";
+import React from "react";
 
 export const RPCHealthWarning = () => {
   const { foreignHealthy, homeHealthy } = useRPCHealth();
@@ -21,10 +21,10 @@ export const RPCHealthWarning = () => {
       >
         <AlertIcon minWidth="20px" />
         <Text fontSize="small">
-          {`The ${!homeHealthy ? getNetworkName(homeChainId) : ''} ${
-            bothSides ? 'and' : ''
-          } ${!foreignHealthy ? getNetworkName(foreignChainId) : ''} RPC-node${
-            bothSides ? 's are' : ' is'
+          {`The ${!homeHealthy ? getNetworkName(homeChainId) : ""} ${
+            bothSides ? "and" : ""
+          } ${!foreignHealthy ? getNetworkName(foreignChainId) : ""} RPC-node${
+            bothSides ? "s are" : " is"
           } not responding. Please set custom RPC URL in settings or come back later.`}
         </Text>
       </Alert>

@@ -1,19 +1,19 @@
-import { BigNumber, Contract, utils } from 'ethers';
+import { BigNumber, Contract, utils } from "ethers";
 
-import { ADDRESS_ZERO } from './constants';
+import { ADDRESS_ZERO } from "./constants";
 import {
   getMediatorAddress,
   getMediatorAddressWithoutOverride,
   logError,
-} from './helpers';
-import { networks } from './networks';
-import { getOverriddenMode, isOverridden } from './overrides';
-import { getEthersProvider } from './providers';
+} from "./helpers";
+import { networks } from "./networks";
+import { getOverriddenMode, isOverridden } from "./overrides";
+import { getEthersProvider } from "./providers";
 
 export const fetchAllowance = async (
   { mediator, address },
   account,
-  ethersProvider,
+  ethersProvider
 ) => {
   if (
     !account ||
@@ -27,7 +27,7 @@ export const fetchAllowance = async (
   }
 
   try {
-    const abi = ['function allowance(address, address) view returns (uint256)'];
+    const abi = ["function allowance(address, address) view returns (uint256)"];
     const tokenContract = new Contract(address, abi, ethersProvider);
     return tokenContract.allowance(account, mediator);
   } catch (allowanceError) {
@@ -42,53 +42,53 @@ const fetchMode = async (bridgeDirection, token) => {
   }
   const { enableReversedBridge, homeChainId } = networks[bridgeDirection];
   if (!enableReversedBridge) {
-    return token.chainId === homeChainId ? 'erc677' : 'erc20';
+    return token.chainId === homeChainId ? "erc677" : "erc20";
   }
 
   const ethersProvider = await getEthersProvider(token.chainId);
   const mediatorAddress = getMediatorAddressWithoutOverride(
     bridgeDirection,
-    token.chainId,
+    token.chainId
   );
-  const abi = ['function nativeTokenAddress(address) view returns (address)'];
+  const abi = ["function nativeTokenAddress(address) view returns (address)"];
   const mediatorContract = new Contract(mediatorAddress, abi, ethersProvider);
   const nativeTokenAddress = await mediatorContract.nativeTokenAddress(
-    token.address,
+    token.address
   );
-  if (nativeTokenAddress === ADDRESS_ZERO) return 'erc20';
-  return 'erc677';
+  if (nativeTokenAddress === ADDRESS_ZERO) return "erc20";
+  return "erc677";
 };
 
-export const fetchTokenName = async token => {
+export const fetchTokenName = async (token) => {
   const ethersProvider = await getEthersProvider(token.chainId);
 
-  let tokenName = token.name || '';
+  let tokenName = token.name || "";
   try {
-    const stringAbi = ['function name() view returns (string)'];
+    const stringAbi = ["function name() view returns (string)"];
     const tokenContractString = new Contract(
       token.address,
       stringAbi,
-      ethersProvider,
+      ethersProvider
     );
     tokenName = await tokenContractString.name();
   } catch {
-    const bytes32Abi = ['function name() view returns (bytes32)'];
+    const bytes32Abi = ["function name() view returns (bytes32)"];
     const tokenContractBytes32 = new Contract(
       token.address,
       bytes32Abi,
-      ethersProvider,
+      ethersProvider
     );
     tokenName = utils.parseBytes32String(await tokenContractBytes32.name());
   }
   return tokenName;
 };
 
-export const fetchTokenDetailsBytes32 = async token => {
+export const fetchTokenDetailsBytes32 = async (token) => {
   const ethersProvider = await getEthersProvider(token.chainId);
   const abi = [
-    'function decimals() view returns (uint8)',
-    'function symbol() view returns (bytes32)',
-    'function name() view returns (bytes32)',
+    "function decimals() view returns (uint8)",
+    "function symbol() view returns (bytes32)",
+    "function name() view returns (bytes32)",
   ];
   const tokenContract = new Contract(token.address, abi, ethersProvider);
   const [name, symbol, decimals] = await Promise.all([
@@ -103,12 +103,12 @@ export const fetchTokenDetailsBytes32 = async token => {
   };
 };
 
-export const fetchTokenDetailsString = async token => {
+export const fetchTokenDetailsString = async (token) => {
   const ethersProvider = await getEthersProvider(token.chainId);
   const abi = [
-    'function decimals() view returns (uint8)',
-    'function symbol() view returns (string)',
-    'function name() view returns (string)',
+    "function decimals() view returns (uint8)",
+    "function symbol() view returns (string)",
+    "function name() view returns (string)",
   ];
   const tokenContract = new Contract(token.address, abi, ethersProvider);
 
@@ -121,7 +121,7 @@ export const fetchTokenDetailsString = async token => {
   return { name, symbol, decimals };
 };
 
-const fetchTokenDetailsFromContract = async token => {
+const fetchTokenDetailsFromContract = async (token) => {
   let details = {};
   try {
     details = await fetchTokenDetailsString(token);
@@ -151,9 +151,9 @@ export const fetchTokenDetails = async (bridgeDirection, token) => {
 export const approveToken = async (
   ethersProvider,
   { address, mediator },
-  amount,
+  amount
 ) => {
-  const abi = ['function approve(address, uint256)'];
+  const abi = ["function approve(address, uint256)"];
   const tokenContract = new Contract(address, abi, ethersProvider.getSigner());
   return tokenContract.approve(mediator, amount);
 };
@@ -166,16 +166,16 @@ export const fetchTokenBalance = async (token, account) => {
 export const fetchTokenBalanceWithProvider = async (
   ethersProvider,
   { address, mode },
-  account,
+  account
 ) => {
-  if (address === ADDRESS_ZERO && mode === 'NATIVE') {
+  if (address === ADDRESS_ZERO && mode === "NATIVE") {
     return ethersProvider.getBalance(account);
   }
   if (!account || !address || address === ADDRESS_ZERO || !ethersProvider) {
     return BigNumber.from(0);
   }
   try {
-    const abi = ['function balanceOf(address) view returns (uint256)'];
+    const abi = ["function balanceOf(address) view returns (uint256)"];
     const tokenContract = new Contract(address, abi, ethersProvider);
     const balance = await tokenContract.balanceOf(account);
     return balance;

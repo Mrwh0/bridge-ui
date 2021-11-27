@@ -1,4 +1,4 @@
-import { CheckIcon } from '@chakra-ui/icons';
+import { CheckIcon } from "@chakra-ui/icons";
 import {
   Flex,
   Image,
@@ -9,24 +9,24 @@ import {
   ModalOverlay,
   Spinner,
   Text,
-} from '@chakra-ui/react';
-import LoadingImage from 'assets/loading.svg';
-import { ProgressRing } from 'components/common/ProgressRing';
-import { ClaimTokensModal } from 'components/modals/ClaimTokensModal';
-import { ClaimTransferModal } from 'components/modals/ClaimTransferModal';
-import { NeedsConfirmationModal } from 'components/modals/NeedsConfirmationModal';
-import { useBridgeContext } from 'contexts/BridgeContext';
-import { useSettings } from 'contexts/SettingsContext';
-import { useWeb3Context } from 'contexts/Web3Context';
-import { useBridgeDirection } from 'hooks/useBridgeDirection';
-import { useTransactionStatus } from 'hooks/useTransactionStatus';
-import { LOCAL_STORAGE_KEYS } from 'lib/constants';
-import React, { useEffect, useState } from 'react';
+} from "@chakra-ui/react";
+import LoadingImage from "assets/loading.svg";
+import { ProgressRing } from "components/common/ProgressRing";
+import { ClaimTokensModal } from "components/modals/ClaimTokensModal";
+import { ClaimTransferModal } from "components/modals/ClaimTransferModal";
+import { NeedsConfirmationModal } from "components/modals/NeedsConfirmationModal";
+import { useBridgeContext } from "contexts/BridgeContext";
+import { useSettings } from "contexts/SettingsContext";
+import { useWeb3Context } from "contexts/Web3Context";
+import { useBridgeDirection } from "hooks/useBridgeDirection";
+import { useTransactionStatus } from "hooks/useTransactionStatus";
+import { LOCAL_STORAGE_KEYS } from "lib/constants";
+import React, { useEffect, useState } from "react";
 
 const { DONT_SHOW_CLAIMS } = LOCAL_STORAGE_KEYS;
 
-const getTransactionString = hash => {
-  if (!hash) return 'here';
+const getTransactionString = (hash) => {
+  if (!hash) return "here";
   const len = hash.length;
   return `${hash.substr(0, 6)}...${hash.substr(len - 4, len - 1)}`;
 };
@@ -55,14 +55,14 @@ const BridgeLoader = ({
           {loadingText ? (
             <ModalContent
               boxShadow="0px 1rem 2rem #617492"
-              borderRadius={{ base: '1rem', md: 'full' }}
+              borderRadius={{ base: "1rem", md: "full" }}
               mx={{ base: 12, lg: 0 }}
-              maxW={{ base: '20rem', md: '25rem' }}
+              maxW={{ base: "20rem", md: "25rem" }}
             >
               <ModalBody px={4} py={8}>
                 <Flex
-                  align={{ base: 'center', md: 'stretch' }}
-                  direction={{ base: 'column', md: 'row' }}
+                  align={{ base: "center", md: "stretch" }}
+                  direction={{ base: "column", md: "row" }}
                 >
                   <Flex
                     h="3.25rem"
@@ -111,15 +111,15 @@ const BridgeLoader = ({
                   <Flex
                     flex={1}
                     direction="column"
-                    align={{ base: 'center', md: 'flex-start' }}
+                    align={{ base: "center", md: "flex-start" }}
                     justify="center"
                     mt={{ base: 2, md: 0 }}
                   >
                     <Text textAlign="center">
-                      {`${loadingText || 'Waiting for Block Confirmations'}...`}
+                      {`${loadingText || "Waiting for Block Confirmations"}...`}
                     </Text>
                     <Text color="grey" textAlign="center">
-                      {'Monitor at ALM '}
+                      {"Monitor at ALM "}
                       <Link
                         href={getMonitorUrl(chainId, txHash)}
                         rel="noreferrer noopener"
@@ -185,7 +185,7 @@ export const BridgeLoadingModal = () => {
     );
 
   useEffect(() => {
-    window.localStorage.setItem(DONT_SHOW_CLAIMS, 'false');
+    window.localStorage.setItem(DONT_SHOW_CLAIMS, "false");
   }, [account, chainId]);
 
   const loader = needsConfirmation ? (

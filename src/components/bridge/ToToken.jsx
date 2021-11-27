@@ -5,22 +5,22 @@ import {
   Switch,
   Text,
   useBreakpointValue,
-} from '@chakra-ui/react';
-import { AddToMetamask } from 'components/common/AddToMetamask';
-import { Logo } from 'components/common/Logo';
-import { useBridgeContext } from 'contexts/BridgeContext';
-import { useWeb3Context } from 'contexts/Web3Context';
-import { BigNumber, utils } from 'ethers';
-import { useBridgeDirection } from 'hooks/useBridgeDirection';
-import { fetchToToken } from 'lib/bridge';
+} from "@chakra-ui/react";
+import { AddToMetamask } from "components/common/AddToMetamask";
+import { Logo } from "components/common/Logo";
+import { useBridgeContext } from "contexts/BridgeContext";
+import { useWeb3Context } from "contexts/Web3Context";
+import { BigNumber, utils } from "ethers";
+import { useBridgeDirection } from "hooks/useBridgeDirection";
+import { fetchToToken } from "lib/bridge";
 import {
   formatValue,
   getNativeCurrency,
   logError,
   truncateText,
-} from 'lib/helpers';
-import { fetchTokenBalance } from 'lib/token';
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+} from "lib/helpers";
+import { fetchTokenBalance } from "lib/token";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 
 export const ToToken = () => {
   const { account, providerChainId } = useWeb3Context();
@@ -48,9 +48,10 @@ export const ToToken = () => {
   const smallScreen = useBreakpointValue({ base: true, lg: false });
   const [balanceLoading, setBalanceLoading] = useState(false);
 
-  const nativeCurrency = useMemo(() => getNativeCurrency(foreignChainId), [
-    foreignChainId,
-  ]);
+  const nativeCurrency = useMemo(
+    () => getNativeCurrency(foreignChainId),
+    [foreignChainId]
+  );
 
   const changeToToken = useCallback(async () => {
     setLoading(true);
@@ -61,7 +62,7 @@ export const ToToken = () => {
             ...fromToken,
             ...(await fetchToToken(bridgeDirection, fromToken, chainId)),
           }
-        : nativeCurrency,
+        : nativeCurrency
     );
     setLoading(false);
   }, [
@@ -80,14 +81,14 @@ export const ToToken = () => {
     if (token && account && chainId === token.chainId) {
       setBalanceLoading(true);
       fetchTokenBalance(token, account)
-        .catch(toBalanceError => {
+        .catch((toBalanceError) => {
           logError({ toBalanceError });
           if (isSubscribed) {
             setBalance(BigNumber.from(0));
             setBalanceLoading(false);
           }
         })
-        .then(b => {
+        .then((b) => {
           if (isSubscribed) {
             setBalance(b);
             setBalanceLoading(false);
@@ -108,9 +109,9 @@ export const ToToken = () => {
       ml={{ base: 2, lg: -6 }}
       position="relative"
       borderRadius="0.25rem"
-      background={{ base: '#EEF4FD', lg: 'transparent' }}
-      minH={smallScreen ? '5rem' : 8}
-      minW={smallScreen ? '15rem' : undefined}
+      background={{ base: "#EEF4FD", lg: "transparent" }}
+      minH={smallScreen ? "5rem" : 8}
+      minW={smallScreen ? "15rem" : undefined}
     >
       {!smallScreen && (
         <svg width="100%" viewBox="0 0 381 94" fill="none">
@@ -122,19 +123,19 @@ export const ToToken = () => {
       )}
       {token && (
         <Flex
-          position={{ base: 'relative', lg: 'absolute' }}
-          h={{ base: 'auto', lg: '100%' }}
+          position={{ base: "relative", lg: "absolute" }}
+          h={{ base: "auto", lg: "100%" }}
           w="100%"
           direction="column"
-          py={{ base: 4, lg: 2, xl: 3, '2xl': 4 }}
+          py={{ base: 4, lg: 2, xl: 3, "2xl": 4 }}
           pr={4}
-          pl={{ base: 4, lg: 8, xl: 10, '2xl': 12 }}
+          pl={{ base: 4, lg: 8, xl: 10, "2xl": 12 }}
         >
           <Flex
             justify="space-between"
-            align={{ base: 'stretch', sm: 'center', lg: 'flex-start' }}
+            align={{ base: "stretch", sm: "center", lg: "flex-start" }}
             mb={2}
-            direction={{ base: 'column', sm: 'row' }}
+            direction={{ base: "column", sm: "row" }}
           >
             <Flex align="center">
               <Flex
@@ -169,10 +170,10 @@ export const ToToken = () => {
                 <Flex
                   justify="flex-end"
                   align="center"
-                  fontSize={{ base: 'md', lg: 'sm', '2xl': 'md' }}
+                  fontSize={{ base: "md", lg: "sm", "2xl": "md" }}
                   {...(smallScreen
                     ? {}
-                    : { position: 'absolute', bottom: '4px', right: 0 })}
+                    : { position: "absolute", bottom: "4px", right: 0 })}
                 >
                   <Text color="grey" textAlign="right">
                     {`Balance: ${formatValue(balance, token.decimals)}`}
@@ -184,16 +185,16 @@ export const ToToken = () => {
           <Flex
             width="100%"
             justify="space-between"
-            align={{ base: 'center', lg: 'flex-end', xl: 'center' }}
+            align={{ base: "center", lg: "flex-end", xl: "center" }}
             flex={1}
             {...(!smallScreen
               ? {
-                  position: 'absolute',
+                  position: "absolute",
                   left: 0,
                   bottom: 0,
-                  pl: { base: 4, lg: 8, xl: 10, '2xl': 12 },
+                  pl: { base: 4, lg: 8, xl: 10, "2xl": 12 },
                   pr: 4,
-                  pb: { base: 4, lg: 2, xl: 3, '2xl': 4 },
+                  pb: { base: 4, lg: 2, xl: 3, "2xl": 4 },
                 }
               : {})}
             h="52px"

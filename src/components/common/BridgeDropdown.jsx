@@ -6,23 +6,23 @@ import {
   MenuList,
   Text,
   useBreakpointValue,
-} from '@chakra-ui/react';
-import { useSettings } from 'contexts/SettingsContext';
-import { DownArrowIcon } from 'icons/DownArrowIcon';
-import { NetworkIcon } from 'icons/NetworkIcon';
-import { networks } from 'lib/networks';
-import React, { useCallback, useEffect } from 'react';
+} from "@chakra-ui/react";
+import { useSettings } from "contexts/SettingsContext";
+import { DownArrowIcon } from "icons/DownArrowIcon";
+import { NetworkIcon } from "icons/NetworkIcon";
+import { networks } from "lib/networks";
+import React, { useCallback, useEffect } from "react";
 
 export const BridgeDropdown = ({ close }) => {
   const { bridgeDirection, setBridgeDirection } = useSettings();
-  const placement = useBreakpointValue({ base: 'bottom', md: 'bottom-end' });
+  const placement = useBreakpointValue({ base: "bottom", md: "bottom-end" });
 
   const setItem = useCallback(
-    e => {
+    (e) => {
       setBridgeDirection(e.target.value, true);
       close();
     },
-    [close, setBridgeDirection],
+    [close, setBridgeDirection]
   );
 
   const networkOptions = Object.keys(networks);
@@ -46,7 +46,7 @@ export const BridgeDropdown = ({ close }) => {
         rightIcon={<DownArrowIcon boxSize="0.5rem" color="black" />}
         color="grey"
         bg="none"
-        _hover={{ color: 'blue.500', bgColor: 'blackAlpha.100' }}
+        _hover={{ color: "blue.500", bgColor: "blackAlpha.100" }}
         p={2}
       >
         <Text color="black" textTransform="uppercase" fontSize="sm">

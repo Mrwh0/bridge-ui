@@ -1,8 +1,8 @@
-import { createIcon } from '@chakra-ui/icons';
-import * as React from 'react';
+import { createIcon } from "@chakra-ui/icons";
+import * as React from "react";
 
 export const SettingsIcon = createIcon({
-  displayName: 'SettingsIcon',
+  displayName: "SettingsIcon",
   path: (
     <>
       <path
@@ -31,5 +31,5 @@ export const SettingsIcon = createIcon({
       />
     </>
   ),
-  viewBox: '0 0 18 18',
+  viewBox: "0 0 18 18",
 });

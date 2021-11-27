@@ -1,8 +1,8 @@
-import { createIcon } from '@chakra-ui/icons';
-import * as React from 'react';
+import { createIcon } from "@chakra-ui/icons";
+import * as React from "react";
 
 export const SwitchIcon = createIcon({
-  displayName: 'SwitchIcon',
+  displayName: "SwitchIcon",
   path: (
     <g>
       <path
@@ -15,5 +15,5 @@ export const SwitchIcon = createIcon({
       />
     </g>
   ),
-  viewBox: '0 0 64 64',
+  viewBox: "0 0 64 64",
 });

@@ -1,7 +1,7 @@
-import { useBridgeDirection } from 'hooks/useBridgeDirection';
-import { logDebug, logError } from 'lib/helpers';
-import { getEthersProvider } from 'lib/providers';
-import { useEffect, useState } from 'react';
+import { useBridgeDirection } from "hooks/useBridgeDirection";
+import { logDebug, logError } from "lib/helpers";
+import { getEthersProvider } from "lib/providers";
+import { useEffect, useState } from "react";
 
 const { REACT_APP_RPC_HEALTH_UPDATE_INTERVAL } = process.env;
 
@@ -21,7 +21,7 @@ export const useRPCHealth = () => {
   useEffect(() => {
     const subscriptions = [];
     const unsubscribe = () => {
-      subscriptions.forEach(s => {
+      subscriptions.forEach((s) => {
         clearTimeout(s);
       });
     };
@@ -41,7 +41,7 @@ export const useRPCHealth = () => {
             foreignHealthy: foreignHealth,
           });
         }
-        logDebug('Updated RPC Health', {
+        logDebug("Updated RPC Health", {
           homeHealth,
           foreignHealth,
         });

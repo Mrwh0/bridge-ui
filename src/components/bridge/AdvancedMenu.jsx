@@ -1,4 +1,4 @@
-import { CloseIcon } from '@chakra-ui/icons';
+import { CloseIcon } from "@chakra-ui/icons";
 import {
   Button,
   Flex,
@@ -7,12 +7,12 @@ import {
   InputRightElement,
   Text,
   useDisclosure,
-} from '@chakra-ui/react';
-import { ReactComponent as AdvancedImage } from 'assets/advanced.svg';
-import { useBridgeContext } from 'contexts/BridgeContext';
-import { useWeb3Context } from 'contexts/Web3Context';
-import { utils } from 'ethers';
-import React, { useCallback } from 'react';
+} from "@chakra-ui/react";
+import { ReactComponent as AdvancedImage } from "assets/advanced.svg";
+import { useBridgeContext } from "contexts/BridgeContext";
+import { useWeb3Context } from "contexts/Web3Context";
+import { utils } from "ethers";
+import React, { useCallback } from "react";
 
 export const AdvancedMenu = () => {
   const { isGnosisSafe } = useWeb3Context();
@@ -23,7 +23,7 @@ export const AdvancedMenu = () => {
 
   const onClick = useCallback(() => {
     if (isMenuOpen) {
-      setReceiver('');
+      setReceiver("");
       if (!isGnosisSafe) onClose();
     } else {
       onOpen();
@@ -53,14 +53,14 @@ export const AdvancedMenu = () => {
               borderColor="#DAE3F0"
               bg="white"
               placeholder="Recipient Address"
-              _placeholder={{ color: 'greyText' }}
+              _placeholder={{ color: "greyText" }}
               color="black"
               value={receiver}
-              onChange={e => setReceiver(e.target.value)}
+              onChange={(e) => setReceiver(e.target.value)}
               isInvalid={!!receiver && !utils.isAddress(receiver)}
-              _focus={{ boxShadow: '0 0 0 3px rgba(66, 153, 225, 0.6)' }}
+              _focus={{ boxShadow: "0 0 0 3px rgba(66, 153, 225, 0.6)" }}
               _invalid={{
-                boxShadow: '0 0 0 3px #ef5d5d !important',
+                boxShadow: "0 0 0 3px #ef5d5d !important",
               }}
             />
             <InputRightElement>
@@ -70,7 +70,7 @@ export const AdvancedMenu = () => {
                 onClick={onClick}
                 color="grey"
                 transition="color 0.25s"
-                _hover={{ color: 'blue.500', cursor: 'pointer' }}
+                _hover={{ color: "blue.500", cursor: "pointer" }}
               />
             </InputRightElement>
           </InputGroup>
@@ -81,11 +81,11 @@ export const AdvancedMenu = () => {
             variant="ghost"
             h="2.5rem"
             fontWeight="normal"
-            _hover={{ bg: 'blackAlpha.100' }}
+            _hover={{ bg: "blackAlpha.100" }}
             px="2"
           >
             <AdvancedImage width="1.25rem" />
-            <Text ml={2}>{isMenuOpen ? 'Clear Recipient' : 'Advanced'}</Text>
+            <Text ml={2}>{isMenuOpen ? "Clear Recipient" : "Advanced"}</Text>
           </Button>
         )}
       </Flex>

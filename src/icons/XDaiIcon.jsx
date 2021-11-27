@@ -1,8 +1,8 @@
-import { createIcon } from '@chakra-ui/icons';
-import * as React from 'react';
+import { createIcon } from "@chakra-ui/icons";
+import * as React from "react";
 
 export const XDaiIcon = createIcon({
-  displayName: 'XDaiIcon',
+  displayName: "XDaiIcon",
   path: (
     <>
       <path
@@ -20,5 +20,5 @@ export const XDaiIcon = createIcon({
       />
     </>
   ),
-  viewBox: '0 0 18 18',
+  viewBox: "0 0 18 18",
 });

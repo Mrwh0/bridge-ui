@@ -1,9 +1,9 @@
-import { Badge, Image, Tooltip } from '@chakra-ui/react';
-import MetamaskFox from 'assets/metamask-fox.svg';
-import { useWeb3Context } from 'contexts/Web3Context';
-import { useSwitchChain } from 'hooks/useSwitchChain';
-import { getNetworkName } from 'lib/helpers';
-import React, { useCallback } from 'react';
+import { Badge, Image, Tooltip } from "@chakra-ui/react";
+import MetamaskFox from "assets/metamask-fox.svg";
+import { useWeb3Context } from "contexts/Web3Context";
+import { useSwitchChain } from "hooks/useSwitchChain";
+import { getNetworkName } from "lib/helpers";
+import React, { useCallback } from "react";
 
 export const useRenderChain = () => {
   const { isMetamask } = useWeb3Context();
@@ -11,10 +11,10 @@ export const useRenderChain = () => {
   const switchChain = useSwitchChain();
 
   const renderChain = useCallback(
-    chainId => {
+    (chainId) => {
       const networkName = getNetworkName(chainId);
       const isDefaultChain = [1, 3, 4, 5, 42].includes(chainId);
-      const isMobileBrowser = navigator?.userAgent?.includes('Mobile') || false;
+      const isMobileBrowser = navigator?.userAgent?.includes("Mobile") || false;
       const buttonWillWork =
         isMetamask && (isMobileBrowser ? !isDefaultChain : true);
 
@@ -51,7 +51,7 @@ export const useRenderChain = () => {
         </Badge>
       );
     },
-    [switchChain, isMetamask],
+    [switchChain, isMetamask]
   );
 
   return renderChain;

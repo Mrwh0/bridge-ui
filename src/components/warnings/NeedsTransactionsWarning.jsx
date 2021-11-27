@@ -1,11 +1,11 @@
-import { Alert, AlertIcon, Flex, Link, Text } from '@chakra-ui/react';
-import { utils } from 'ethers';
-import { useBridgeDirection } from 'hooks/useBridgeDirection';
-import { networkCurrencies } from 'lib/constants';
-import { getEthereumPrice } from 'lib/ethPrice';
-import { getFastGasPrice } from 'lib/gasPrice';
-import { getNetworkName } from 'lib/helpers';
-import React from 'react';
+import { Alert, AlertIcon, Flex, Link, Text } from "@chakra-ui/react";
+import { utils } from "ethers";
+import { useBridgeDirection } from "hooks/useBridgeDirection";
+import { networkCurrencies } from "lib/constants";
+import { getEthereumPrice } from "lib/ethPrice";
+import { getFastGasPrice } from "lib/gasPrice";
+import { getNetworkName } from "lib/helpers";
+import React from "react";
 
 const LearnMoreLink = () => (
   <Link
@@ -29,7 +29,7 @@ export const NeedsTransactionsWarning = ({ noShadow = false }) => {
   const gasCostInETHString = Number(gasCostInETH).toFixed(3);
   const gasCostInUSDString = gasCostInUSD.toFixed(2);
 
-  let txCostText = '';
+  let txCostText = "";
   if (foreignChainId === 1) {
     txCostText = (
       <>
@@ -47,12 +47,12 @@ export const NeedsTransactionsWarning = ({ noShadow = false }) => {
       <Alert
         status="warning"
         borderRadius={5}
-        boxShadow={noShadow ? 'none' : '0px 1rem 2rem rgba(204, 218, 238, 0.8)'}
+        boxShadow={noShadow ? "none" : "0px 1rem 2rem rgba(204, 218, 238, 0.8)"}
       >
         <AlertIcon minWidth="20px" />
         <Text fontSize="small">
           {`The transfer process requires 2 transactions, one on ${getNetworkName(
-            homeChainId,
+            homeChainId
           )} and one
           on ${getNetworkName(foreignChainId)}. `}
           {txCostText}

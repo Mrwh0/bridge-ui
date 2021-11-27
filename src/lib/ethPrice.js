@@ -1,6 +1,6 @@
-import { logDebug, logError } from 'lib/helpers';
+import { logDebug, logError } from "lib/helpers";
 
-const ethPriceFromApi = async fetchFn => {
+const ethPriceFromApi = async (fetchFn) => {
   try {
     const response = await fetchFn();
     const json = await response.json();
@@ -11,7 +11,7 @@ const ethPriceFromApi = async fetchFn => {
       return null;
     }
 
-    logDebug('Updated ETH Price', { oracleEthPrice });
+    logDebug("Updated ETH Price", { oracleEthPrice });
 
     return oracleEthPrice;
   } catch (e) {
@@ -20,13 +20,11 @@ const ethPriceFromApi = async fetchFn => {
   return null;
 };
 
-const {
-  REACT_APP_ETH_PRICE_API_URL,
-  REACT_APP_ETH_PRICE_UPDATE_INTERVAL,
-} = process.env;
+const { REACT_APP_ETH_PRICE_API_URL, REACT_APP_ETH_PRICE_UPDATE_INTERVAL } =
+  process.env;
 
 const DEFAULT_ETH_PRICE_API_URL =
-  'https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=USD';
+  "https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=USD";
 const DEFAULT_ETH_PRICE_UPDATE_INTERVAL = 60000;
 
 class EthPriceStore {

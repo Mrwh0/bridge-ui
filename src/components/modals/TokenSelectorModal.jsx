@@ -16,36 +16,36 @@ import {
   Text,
   useBreakpointValue,
   useDisclosure,
-} from '@chakra-ui/react';
-import SearchIcon from 'assets/search.svg';
-import { Logo } from 'components/common/Logo';
+} from "@chakra-ui/react";
+import SearchIcon from "assets/search.svg";
+import { Logo } from "components/common/Logo";
 import {
   ConfirmBSCTokenModal,
   shouldShowBSCTokenModal,
-} from 'components/modals/ConfirmBSCTokenModal';
-import { useBridgeContext } from 'contexts/BridgeContext';
-import { useSettings } from 'contexts/SettingsContext';
-import { useWeb3Context } from 'contexts/Web3Context';
-import { useBridgeDirection } from 'hooks/useBridgeDirection';
-import { PlusIcon } from 'icons/PlusIcon';
-import { ADDRESS_ZERO, LOCAL_STORAGE_KEYS } from 'lib/constants';
+} from "components/modals/ConfirmBSCTokenModal";
+import { useBridgeContext } from "contexts/BridgeContext";
+import { useSettings } from "contexts/SettingsContext";
+import { useWeb3Context } from "contexts/Web3Context";
+import { useBridgeDirection } from "hooks/useBridgeDirection";
+import { PlusIcon } from "icons/PlusIcon";
+import { ADDRESS_ZERO, LOCAL_STORAGE_KEYS } from "lib/constants";
 import {
   formatValue,
   getNativeCurrency,
   logError,
   removeElement,
   uniqueTokens,
-} from 'lib/helpers';
-import { ETH_BSC_BRIDGE } from 'lib/networks';
-import { fetchTokenBalanceWithProvider } from 'lib/token';
-import { fetchTokenList } from 'lib/tokenList';
+} from "lib/helpers";
+import { ETH_BSC_BRIDGE } from "lib/networks";
+import { fetchTokenBalanceWithProvider } from "lib/token";
+import { fetchTokenList } from "lib/tokenList";
 import React, {
   useCallback,
   useEffect,
   useMemo,
   useRef,
   useState,
-} from 'react';
+} from "react";
 
 const { CUSTOM_TOKENS } = LOCAL_STORAGE_KEYS;
 
@@ -69,44 +69,44 @@ export const TokenSelectorModal = ({ isOpen, onClose, onCustom }) => {
     enableForeignCurrencyBridge,
   } = useBridgeDirection();
 
-  const bridgeChainId = useMemo(() => getBridgeChainId(providerChainId), [
-    providerChainId,
-    getBridgeChainId,
-  ]);
+  const bridgeChainId = useMemo(
+    () => getBridgeChainId(providerChainId),
+    [providerChainId, getBridgeChainId]
+  );
 
   // Callbacks
   const fetchTokenListWithBalance = useCallback(
-    async tList => {
+    async (tList) => {
       const tokenValueSortFn = ({ balance: balanceA }, { balance: balanceB }) =>
         balanceB.sub(balanceA).gt(0) ? 1 : -1;
 
       const tokenListWithBalance = await Promise.all(
-        tList.map(async token => ({
+        tList.map(async (token) => ({
           ...token,
           balance: await fetchTokenBalanceWithProvider(
             ethersProvider,
             token,
-            account,
+            account
           ),
-        })),
+        }))
       );
 
       const natCurIndex = tokenListWithBalance.findIndex(
-        ({ address, mode }) => address === ADDRESS_ZERO && mode === 'NATIVE',
+        ({ address, mode }) => address === ADDRESS_ZERO && mode === "NATIVE"
       );
 
       if (natCurIndex !== -1) {
         return [
           tokenListWithBalance[natCurIndex],
           ...removeElement(tokenListWithBalance, natCurIndex).sort(
-            tokenValueSortFn,
+            tokenValueSortFn
           ),
         ];
       }
 
       return tokenListWithBalance.sort(tokenValueSortFn);
     },
-    [account, ethersProvider],
+    [account, ethersProvider]
   );
 
   const setDefaultTokenList = useCallback(
@@ -116,7 +116,7 @@ export const TokenSelectorModal = ({ isOpen, onClose, onCustom }) => {
         const baseTokenList = await fetchTokenList(
           chainId,
           getGraphEndpoint(chainId),
-          getGraphEndpoint(getBridgeChainId(chainId)),
+          getGraphEndpoint(getBridgeChainId(chainId))
         );
 
         const nativeCurrency =
@@ -128,15 +128,15 @@ export const TokenSelectorModal = ({ isOpen, onClose, onCustom }) => {
           ...nativeCurrency,
           ...uniqueTokens(
             baseTokenList.concat(
-              customTokens.filter(token => token.chainId === chainId),
-            ),
+              customTokens.filter((token) => token.chainId === chainId)
+            )
           ),
         ];
 
         setTokenList(
           !disableBalanceFetchToken
             ? await fetchTokenListWithBalance(customTokenList)
-            : customTokenList,
+            : customTokenList
         );
       } catch (fetchTokensError) {
         logError({ fetchTokensError });
@@ -150,7 +150,7 @@ export const TokenSelectorModal = ({ isOpen, onClose, onCustom }) => {
       fetchTokenListWithBalance,
       enableForeignCurrencyBridge,
       foreignChainId,
-    ],
+    ]
   );
 
   // Effects
@@ -172,13 +172,13 @@ export const TokenSelectorModal = ({ isOpen, onClose, onCustom }) => {
 
   // Handlers
   const selectToken = useCallback(
-    async token => {
+    async (token) => {
       onClose();
       setBridgeLoading(true);
       await setToken(token);
       setBridgeLoading(false);
     },
-    [setBridgeLoading, onClose, setToken],
+    [setBridgeLoading, onClose, setToken]
   );
 
   const {
@@ -194,7 +194,7 @@ export const TokenSelectorModal = ({ isOpen, onClose, onCustom }) => {
   }, [selectedToken, selectToken]);
 
   const onClick = useCallback(
-    async token => {
+    async (token) => {
       setSelectedToken(token);
       if (
         bridgeDirection === ETH_BSC_BRIDGE &&
@@ -205,11 +205,11 @@ export const TokenSelectorModal = ({ isOpen, onClose, onCustom }) => {
         selectToken(token);
       }
     },
-    [selectToken, bridgeDirection, showWarning],
+    [selectToken, bridgeDirection, showWarning]
   );
 
-  const onChange = e => {
-    const newFilteredTokenList = tokenList.filter(token => {
+  const onChange = (e) => {
+    const newFilteredTokenList = tokenList.filter((token) => {
       const lowercaseSearch = e.target.value.toLowerCase();
       const { name, symbol, address } = token;
       return (
@@ -256,7 +256,7 @@ export const TokenSelectorModal = ({ isOpen, onClose, onCustom }) => {
               >
                 <Flex align="center">
                   <PlusIcon mr={2} />
-                  <Text>{smallScreen ? 'Custom' : 'Add Custom Token'}</Text>
+                  <Text>{smallScreen ? "Custom" : "Add Custom Token"}</Text>
                 </Flex>
               </Link>
             </Flex>
@@ -267,7 +267,7 @@ export const TokenSelectorModal = ({ isOpen, onClose, onCustom }) => {
               <Input
                 placeholder="Search ..."
                 onChange={onChange}
-                _placeholder={{ color: 'grey' }}
+                _placeholder={{ color: "grey" }}
                 ref={initialRef}
               />
               <InputRightElement px={0}>
@@ -294,15 +294,9 @@ export const TokenSelectorModal = ({ isOpen, onClose, onCustom }) => {
               </Flex>
             )}
             {!loading &&
-              filteredTokenList.map(token => {
-                const {
-                  decimals,
-                  balance,
-                  name,
-                  address,
-                  logoURI,
-                  symbol,
-                } = token;
+              filteredTokenList.map((token) => {
+                const { decimals, balance, name, address, logoURI, symbol } =
+                  token;
                 return (
                   <Button
                     variant="outline"

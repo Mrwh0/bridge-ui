@@ -11,21 +11,21 @@ import {
   ModalHeader,
   ModalOverlay,
   Text,
-} from '@chakra-ui/react';
-import { utils } from 'ethers';
-import { getNetworkName } from 'lib/helpers';
-import React, { useCallback, useState } from 'react';
+} from "@chakra-ui/react";
+import { utils } from "ethers";
+import { getNetworkName } from "lib/helpers";
+import React, { useCallback, useState } from "react";
 
-const storageKey = token =>
+const storageKey = (token) =>
   `${utils.hexlify(
-    token.chainId,
+    token.chainId
   )}-${token.address.toLowerCase()}-confirm-eth-bsc`;
 
-export const shouldShowBSCTokenModal = token =>
-  window.localStorage.getItem(storageKey(token)) !== 'false';
+export const shouldShowBSCTokenModal = (token) =>
+  window.localStorage.getItem(storageKey(token)) !== "false";
 
-const notShowBSCTokenModal = token =>
-  window.localStorage.setItem(storageKey(token), 'false');
+const notShowBSCTokenModal = (token) =>
+  window.localStorage.setItem(storageKey(token), "false");
 
 export const ConfirmBSCTokenModal = ({
   isOpen,
@@ -61,7 +61,7 @@ export const ConfirmBSCTokenModal = ({
         >
           <ModalHeader p={6} mx={2}>
             <Text>
-              Bridging {token?.name || token?.symbol || 'token'} to{' '}
+              Bridging {token?.name || token?.symbol || "token"} to{" "}
               {getNetworkName(bridgeChainId)}
             </Text>
           </ModalHeader>
@@ -76,7 +76,7 @@ export const ConfirmBSCTokenModal = ({
             <Checkbox
               w="100%"
               isChecked={isChecked}
-              onChange={e => setChecked(e.target.checked)}
+              onChange={(e) => setChecked(e.target.checked)}
               borderColor="grey"
               borderRadius="4px"
               size="lg"

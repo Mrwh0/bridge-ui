@@ -11,13 +11,13 @@ import {
   ModalHeader,
   ModalOverlay,
   Text,
-} from '@chakra-ui/react';
-import ChangeNetworkImage from 'assets/change-network.png';
-import { useBridgeContext } from 'contexts/BridgeContext';
-import { useBridgeDirection } from 'hooks/useBridgeDirection';
-import { useRenderChain } from 'hooks/useRenderChain';
-import { getNetworkName } from 'lib/helpers';
-import React, { useState } from 'react';
+} from "@chakra-ui/react";
+import ChangeNetworkImage from "assets/change-network.png";
+import { useBridgeContext } from "contexts/BridgeContext";
+import { useBridgeDirection } from "hooks/useBridgeDirection";
+import { useRenderChain } from "hooks/useRenderChain";
+import { getNetworkName } from "lib/helpers";
+import React, { useState } from "react";
 
 export const NeedsConfirmationModal = ({
   setNeedsConfirmation,

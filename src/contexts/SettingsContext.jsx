@@ -1,13 +1,13 @@
-import { useLocalState } from 'hooks/useLocalState';
+import { useLocalState } from "hooks/useLocalState";
 import {
   ADDRESS_ZERO,
   DEFAULT_BRIDGE_DIRECTION,
   LOCAL_STORAGE_KEYS,
-} from 'lib/constants';
-import { fetchQueryParams, getNativeCurrency, getRPCKeys } from 'lib/helpers';
-import { networks } from 'lib/networks';
-import React, { useCallback, useContext, useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+} from "lib/constants";
+import { fetchQueryParams, getNativeCurrency, getRPCKeys } from "lib/helpers";
+import { networks } from "lib/networks";
+import React, { useCallback, useContext, useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 
 const {
   INFINITE_UNLOCK,
@@ -23,7 +23,7 @@ export const SettingsProvider = ({ children }) => {
 
   const [bridgeDirection, setBridgeDirection] = useLocalState(
     DEFAULT_BRIDGE_DIRECTION,
-    BRIDGE_DIRECTION,
+    BRIDGE_DIRECTION
   );
 
   const history = useHistory();
@@ -33,7 +33,7 @@ export const SettingsProvider = ({ children }) => {
 
     if (params) {
       history.replace({
-        search: '',
+        search: "",
       });
 
       if (params?.from && params?.to && params?.token) {
@@ -44,7 +44,7 @@ export const SettingsProvider = ({ children }) => {
         const networkEntry = Object.entries(networks).find(
           ([_, { homeChainId, foreignChainId }]) =>
             (homeChainId === fromChainId && foreignChainId === toChainId) ||
-            (homeChainId === toChainId && foreignChainId === fromChainId),
+            (homeChainId === toChainId && foreignChainId === fromChainId)
         );
 
         if (networkEntry) {
@@ -54,7 +54,7 @@ export const SettingsProvider = ({ children }) => {
               networkEntry[1].enableForeignCurrencyBridge &&
               networkEntry[1].foreignChainId === fromChainId
               ? getNativeCurrency(fromChainId)
-              : { chainId: fromChainId, address: tokenAddress },
+              : { chainId: fromChainId, address: tokenAddress }
           );
         }
       }
@@ -63,41 +63,41 @@ export const SettingsProvider = ({ children }) => {
 
   const { homeRPCKey, foreignRPCKey } = getRPCKeys(bridgeDirection);
 
-  const [foreignRPC, setForeignRPC] = useLocalState('', foreignRPCKey);
-  const [homeRPC, setHomeRPC] = useLocalState('', homeRPCKey);
+  const [foreignRPC, setForeignRPC] = useLocalState("", foreignRPCKey);
+  const [homeRPC, setHomeRPC] = useLocalState("", homeRPCKey);
 
   const [neverShowClaims, setNeverShowClaims] = useLocalState(
     false,
     NEVER_SHOW_CLAIMS,
-    { valueType: 'boolean' },
+    { valueType: "boolean" }
   );
 
   const [infiniteUnlock, setInfiniteUnlock] = useLocalState(
     false,
     INFINITE_UNLOCK,
     {
-      valueType: 'boolean',
-    },
+      valueType: "boolean",
+    }
   );
 
   const [disableBalanceFetchToken, setDisableBalanceFetchToken] = useLocalState(
     false,
     DISABLE_BALANCE_WHILE_TOKEN_FETCH,
     {
-      valueType: 'boolean',
-    },
+      valueType: "boolean",
+    }
   );
 
   const [needsSaving, setNeedsSaving] = useState(false);
 
   const save = useCallback(() => {
     if (needsSaving) {
-      setBridgeDirection(bNet => bNet, true);
-      setForeignRPC(mRPC => mRPC, true);
-      setHomeRPC(xRPC => xRPC, true);
-      setNeverShowClaims(nClaims => nClaims, true);
-      setInfiniteUnlock(iUnlock => iUnlock, true);
-      setDisableBalanceFetchToken(dBalanceToken => dBalanceToken, true);
+      setBridgeDirection((bNet) => bNet, true);
+      setForeignRPC((mRPC) => mRPC, true);
+      setHomeRPC((xRPC) => xRPC, true);
+      setNeverShowClaims((nClaims) => nClaims, true);
+      setInfiniteUnlock((iUnlock) => iUnlock, true);
+      setDisableBalanceFetchToken((dBalanceToken) => dBalanceToken, true);
       setNeedsSaving(false);
     }
   }, [

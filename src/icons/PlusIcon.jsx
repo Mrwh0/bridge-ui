@@ -1,8 +1,8 @@
-import { createIcon } from '@chakra-ui/icons';
-import * as React from 'react';
+import { createIcon } from "@chakra-ui/icons";
+import * as React from "react";
 
 export const PlusIcon = createIcon({
-  displayName: 'PlusIcon',
+  displayName: "PlusIcon",
   path: (
     <path
       fillRule="evenodd"
@@ -11,5 +11,5 @@ export const PlusIcon = createIcon({
       fill="currentColor"
     />
   ),
-  viewBox: '0 0 14 14',
+  viewBox: "0 0 14 14",
 });

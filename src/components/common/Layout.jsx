@@ -1,14 +1,14 @@
-import { Flex, Image } from '@chakra-ui/react';
-import DownTriangle from 'assets/down-triangle.svg';
-import UpTriangle from 'assets/up-triangle.svg';
-import { ConnectWeb3 } from 'components/common/ConnectWeb3';
-import { Footer } from 'components/common/Footer';
-import { Header } from 'components/common/Header';
-import { TermsOfServiceModal } from 'components/modals/TermsOfServiceModal';
-import { useSettings } from 'contexts/SettingsContext';
-import { useWeb3Context } from 'contexts/Web3Context';
-import { useBridgeDirection } from 'hooks/useBridgeDirection';
-import React, { useMemo } from 'react';
+import { Flex, Image } from "@chakra-ui/react";
+import DownTriangle from "assets/down-triangle.svg";
+import UpTriangle from "assets/up-triangle.svg";
+import { ConnectWeb3 } from "components/common/ConnectWeb3";
+import { Footer } from "components/common/Footer";
+import { Header } from "components/common/Header";
+import { TermsOfServiceModal } from "components/modals/TermsOfServiceModal";
+import { useSettings } from "contexts/SettingsContext";
+import { useWeb3Context } from "contexts/Web3Context";
+import { useBridgeDirection } from "hooks/useBridgeDirection";
+import React, { useMemo } from "react";
 
 export const Layout = ({ children }) => {
   const { homeChainId, foreignChainId } = useBridgeDirection();
@@ -30,7 +30,7 @@ export const Layout = ({ children }) => {
       isQueryChainProvided,
       homeChainId,
       foreignChainId,
-    ],
+    ]
   );
 
   return (

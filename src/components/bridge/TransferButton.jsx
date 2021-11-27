@@ -1,15 +1,15 @@
-import { Flex, Image, Text, useDisclosure, useToast } from '@chakra-ui/react';
-import TransferIcon from 'assets/transfer.svg';
-import { ConfirmTransferModal } from 'components/modals/ConfirmTransferModal';
-import { isRebasingToken } from 'components/warnings/RebasingTokenWarning';
-import { isSafeMoonToken } from 'components/warnings/SafeMoonTokenWarning';
-import { useBridgeContext } from 'contexts/BridgeContext';
-import { useWeb3Context } from 'contexts/Web3Context';
-import { utils } from 'ethers';
-import { useBridgeDirection } from 'hooks/useBridgeDirection';
-import { ADDRESS_ZERO } from 'lib/constants';
-import { formatValue } from 'lib/helpers';
-import React, { useCallback } from 'react';
+import { Flex, Image, Text, useDisclosure, useToast } from "@chakra-ui/react";
+import TransferIcon from "assets/transfer.svg";
+import { ConfirmTransferModal } from "components/modals/ConfirmTransferModal";
+import { isRebasingToken } from "components/warnings/RebasingTokenWarning";
+import { isSafeMoonToken } from "components/warnings/SafeMoonTokenWarning";
+import { useBridgeContext } from "contexts/BridgeContext";
+import { useWeb3Context } from "contexts/Web3Context";
+import { utils } from "ethers";
+import { useBridgeDirection } from "hooks/useBridgeDirection";
+import { ADDRESS_ZERO } from "lib/constants";
+import { formatValue } from "lib/helpers";
+import React, { useCallback } from "react";
 
 export const TransferButton = () => {
   const { foreignChainId, enableReversedBridge } = useBridgeDirection();
@@ -28,17 +28,17 @@ export const TransferButton = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const toast = useToast();
   const showError = useCallback(
-    msg => {
+    (msg) => {
       if (msg) {
         toast({
-          title: 'Error',
+          title: "Error",
           description: msg,
-          status: 'error',
-          isClosable: 'true',
+          status: "error",
+          isClosable: "true",
         });
       }
     },
-    [toast],
+    [toast]
   );
   const isTokenRebasing = isRebasingToken(token);
   const isTokenSafeMoon = isSafeMoonToken(token);
@@ -56,23 +56,23 @@ export const TransferButton = () => {
 
   const valid = useCallback(() => {
     if (!ethersProvider) {
-      showError('Please connect wallet');
+      showError("Please connect wallet");
     } else if (tokenLimits && amount.lt(tokenLimits.minPerTx)) {
       showError(
         `Please specify amount more than ${formatValue(
           tokenLimits.minPerTx,
-          token.decimals,
-        )}`,
+          token.decimals
+        )}`
       );
     } else if (tokenLimits && amount.gt(tokenLimits.maxPerTx)) {
       showError(
         `Please specify amount less than ${formatValue(
           tokenLimits.maxPerTx,
-          token.decimals,
-        )}`,
+          token.decimals
+        )}`
       );
     } else if (balance.lt(amount)) {
-      showError('Not enough balance');
+      showError("Not enough balance");
     } else if (receiver ? !utils.isAddress(receiver) : isGnosisSafe) {
       showError(`Please specify a valid recipient address`);
     } else {
@@ -101,21 +101,21 @@ export const TransferButton = () => {
       as="button"
       align="center"
       mt={{ base: 2, md: 2, lg: 3 }}
-      color={needsClaiming ? 'purple.300' : 'blue.500'}
+      color={needsClaiming ? "purple.300" : "blue.500"}
       _hover={
         !buttonEnabled
           ? undefined
           : {
-              color: needsClaiming ? 'purple.400' : 'blue.600',
+              color: needsClaiming ? "purple.400" : "blue.600",
             }
       }
-      cursor={!buttonEnabled ? 'not-allowed' : 'pointer'}
+      cursor={!buttonEnabled ? "not-allowed" : "pointer"}
       transition="0.25s"
       position="relative"
       opacity={!buttonEnabled ? 0.4 : 1}
       onClick={onClick}
       borderRadius="0.25rem"
-      w={{ base: '10rem', sm: '12rem', lg: 'auto' }}
+      w={{ base: "10rem", sm: "12rem", lg: "auto" }}
     >
       <ConfirmTransferModal isOpen={isOpen} onClose={onClose} />
       <svg width="100%" viewBox="0 0 156 42" fill="none">
@@ -132,7 +132,7 @@ export const TransferButton = () => {
         align="center"
       >
         <Text color="white" fontWeight="bold">
-          {needsClaiming ? 'Request' : 'Transfer'}
+          {needsClaiming ? "Request" : "Transfer"}
         </Text>
         <Image src={TransferIcon} ml={2} />
       </Flex>

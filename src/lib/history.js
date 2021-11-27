@@ -1,6 +1,6 @@
-import { gql, request } from 'graphql-request';
+import { gql, request } from "graphql-request";
 
-import { ADDRESS_ZERO } from './constants';
+import { ADDRESS_ZERO } from "./constants";
 
 const pageSize = 1000;
 
@@ -76,7 +76,7 @@ const executionsQuery = gql`
 `;
 
 export const getExecutions = async (graphEndpoint, requests) => {
-  const messageIds = requests.map(r => r.messageId);
+  const messageIds = requests.map((r) => r.messageId);
   let executions = [];
   let page = 0;
   const first = pageSize;
@@ -136,10 +136,12 @@ export const combineRequestsWithExecutions = (
   requests,
   executions,
   chainId,
-  bridgeChainId,
+  bridgeChainId
 ) =>
-  requests.map(req => {
-    const execution = executions.find(exec => exec.messageId === req.messageId);
+  requests.map((req) => {
+    const execution = executions.find(
+      (exec) => exec.messageId === req.messageId
+    );
     return {
       user: req.user,
       chainId,

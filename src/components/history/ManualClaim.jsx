@@ -6,30 +6,30 @@ import {
   InputRightElement,
   Text,
   useToast,
-} from '@chakra-ui/react';
-import { useClaim } from 'hooks/useClaim';
-import { isRevertedError, TOKENS_CLAIMED } from 'lib/amb';
-import { handleWalletError, logError } from 'lib/helpers';
-import React, { useCallback, useState } from 'react';
+} from "@chakra-ui/react";
+import { useClaim } from "hooks/useClaim";
+import { isRevertedError, TOKENS_CLAIMED } from "lib/amb";
+import { handleWalletError, logError } from "lib/helpers";
+import React, { useCallback, useState } from "react";
 
 export const ManualClaim = ({ handleClaimError }) => {
-  const [txHash, setTxHash] = useState('');
+  const [txHash, setTxHash] = useState("");
   const [loading, setLoading] = useState(false);
   const { claim, executing } = useClaim();
 
   const toast = useToast();
   const showError = useCallback(
-    msg => {
+    (msg) => {
       if (msg) {
         toast({
-          title: 'Error',
+          title: "Error",
           description: msg,
-          status: 'error',
-          isClosable: 'true',
+          status: "error",
+          isClosable: "true",
         });
       }
     },
-    [toast],
+    [toast]
   );
 
   const claimTokens = useCallback(async () => {
@@ -62,20 +62,20 @@ export const ManualClaim = ({ handleClaimError }) => {
       p="1rem"
       borderRadius="0.5rem"
       boxShadow="0px 1rem 2rem rgba(204, 218, 238, 0.8)"
-      direction={{ base: 'column', lg: 'row' }}
+      direction={{ base: "column", lg: "row" }}
     >
       <Flex
         direction="column"
         fontSize="sm"
         w="100%"
-        minW={{ base: 'auto', lg: '25rem' }}
-        mb={{ base: '2', lg: '0' }}
+        minW={{ base: "auto", lg: "25rem" }}
+        mb={{ base: "2", lg: "0" }}
       >
         <Text color="black">
           Can&apos;t find your transfer to claim tokens?
         </Text>
         <Text color="greyText">
-          Enter the transaction hash where the token transfer happened{' '}
+          Enter the transaction hash where the token transfer happened{" "}
         </Text>
       </Flex>
       <InputGroup>
@@ -85,7 +85,7 @@ export const ManualClaim = ({ handleClaimError }) => {
           fontSize="sm"
           placeholder="Transaction Hash"
           value={txHash}
-          onChange={e => setTxHash(e.target.value)}
+          onChange={(e) => setTxHash(e.target.value)}
           pr="6rem"
         />
         <InputRightElement minW="6rem" pr="1">

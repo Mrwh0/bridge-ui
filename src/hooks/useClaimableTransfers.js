@@ -1,19 +1,16 @@
-import { useBridgeContext } from 'contexts/BridgeContext';
-import { useWeb3Context } from 'contexts/Web3Context';
-import { useBridgeDirection } from 'hooks/useBridgeDirection';
+import { useBridgeContext } from "contexts/BridgeContext";
+import { useWeb3Context } from "contexts/Web3Context";
+import { useBridgeDirection } from "hooks/useBridgeDirection";
 import {
   combineRequestsWithExecutions,
   getExecutions,
   getRequests,
-} from 'lib/history';
-import { useEffect, useState } from 'react';
+} from "lib/history";
+import { useEffect, useState } from "react";
 
 export const useClaimableTransfers = () => {
-  const {
-    homeChainId,
-    foreignChainId,
-    getGraphEndpoint,
-  } = useBridgeDirection();
+  const { homeChainId, foreignChainId, getGraphEndpoint } =
+    useBridgeDirection();
   const { account } = useWeb3Context();
   const { txHash } = useBridgeContext();
   const [transfers, setTransfers] = useState();
@@ -27,20 +24,20 @@ export const useClaimableTransfers = () => {
       setTransfers();
       const { requests } = await getRequests(
         account,
-        getGraphEndpoint(homeChainId),
+        getGraphEndpoint(homeChainId)
       );
       const { executions } = await getExecutions(
         getGraphEndpoint(foreignChainId),
-        requests,
+        requests
       );
       const xDaiTransfers = combineRequestsWithExecutions(
         requests,
         executions,
         homeChainId,
-        foreignChainId,
+        foreignChainId
       )
         .sort((a, b) => b.timestamp - a.timestamp)
-        .filter(t => !t.receivingTx);
+        .filter((t) => !t.receivingTx);
       if (isSubscribed) {
         setTransfers(xDaiTransfers);
         setLoading(false);

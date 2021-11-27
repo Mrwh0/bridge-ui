@@ -1,9 +1,9 @@
-import { useWeb3Context } from 'contexts/Web3Context';
-import { BigNumber } from 'ethers';
-import { LARGEST_UINT256, LOCAL_STORAGE_KEYS } from 'lib/constants';
-import { logDebug, logError } from 'lib/helpers';
-import { approveToken, fetchAllowance } from 'lib/token';
-import { useCallback, useEffect, useState } from 'react';
+import { useWeb3Context } from "contexts/Web3Context";
+import { BigNumber } from "ethers";
+import { LARGEST_UINT256, LOCAL_STORAGE_KEYS } from "lib/constants";
+import { logDebug, logError } from "lib/helpers";
+import { approveToken, fetchAllowance } from "lib/token";
+import { useCallback, useEffect, useState } from "react";
 
 const { INFINITE_UNLOCK } = LOCAL_STORAGE_KEYS;
 
@@ -22,8 +22,8 @@ export const useApproval = (fromToken, fromAmount, txHash) => {
 
   useEffect(() => {
     setAllowed(
-      (fromToken && ['NATIVE', 'erc677'].includes(fromToken.mode)) ||
-        allowance.gte(fromAmount),
+      (fromToken && ["NATIVE", "erc677"].includes(fromToken.mode)) ||
+        allowance.gte(fromAmount)
     );
   }, [fromAmount, allowance, fromToken]);
 
@@ -33,7 +33,7 @@ export const useApproval = (fromToken, fromAmount, txHash) => {
   const approve = useCallback(async () => {
     setUnlockLoading(true);
     const approvalAmount =
-      window.localStorage.getItem(INFINITE_UNLOCK) === 'true'
+      window.localStorage.getItem(INFINITE_UNLOCK) === "true"
         ? LARGEST_UINT256
         : fromAmount;
     try {
@@ -42,11 +42,11 @@ export const useApproval = (fromToken, fromAmount, txHash) => {
       await tx.wait();
       setAllowance(approvalAmount);
     } catch (approveError) {
-      if (approveError?.code === 'TRANSACTION_REPLACED') {
+      if (approveError?.code === "TRANSACTION_REPLACED") {
         if (approveError.cancelled) {
-          throw new Error('transaction was replaced');
+          throw new Error("transaction was replaced");
         } else {
-          logDebug('TRANSACTION_REPLACED');
+          logDebug("TRANSACTION_REPLACED");
           setApprovalTxHash(approveError.replacement.hash);
           try {
             await approveError.replacement.wait();

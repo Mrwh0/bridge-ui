@@ -10,18 +10,18 @@ import {
   ModalHeader,
   ModalOverlay,
   Text,
-} from '@chakra-ui/react';
-import InfoImage from 'assets/info.svg';
-import React, { useState } from 'react';
+} from "@chakra-ui/react";
+import InfoImage from "assets/info.svg";
+import React, { useState } from "react";
 
-const SHOW_TERMS = 'show-terms';
+const SHOW_TERMS = "show-terms";
 
 export const TermsOfServiceModal = () => {
   const fromStorage = window.localStorage.getItem(SHOW_TERMS);
 
-  const [isOpen, setOpen] = useState(fromStorage !== 'false');
+  const [isOpen, setOpen] = useState(fromStorage !== "false");
   const onClose = () => {
-    window.localStorage.setItem(SHOW_TERMS, 'false');
+    window.localStorage.setItem(SHOW_TERMS, "false");
     setOpen(false);
   };
 
@@ -57,7 +57,7 @@ export const TermsOfServiceModal = () => {
                 basis. While we’ve worked long and hard to develop the core
                 features of the software, we expect that our users may detect
                 bugs and other issues. Help us improve by posting any
-                difficulties to our{' '}
+                difficulties to our{" "}
                 <Link
                   as="a"
                   href="
@@ -71,7 +71,7 @@ export const TermsOfServiceModal = () => {
               </Text>
               <Text as="p" textAlign="center" mb="4">
                 {
-                  'Use of this app and the OmniBridge is at your own risk. Users may experience unexpected delays, unexpected visual artifacts, unexpected loss of tokens or funds from improper app configuration, or other negative outcomes. '
+                  "Use of this app and the OmniBridge is at your own risk. Users may experience unexpected delays, unexpected visual artifacts, unexpected loss of tokens or funds from improper app configuration, or other negative outcomes. "
                 }
               </Text>
               <Text as="p" textAlign="center" mb="4">
@@ -86,7 +86,7 @@ export const TermsOfServiceModal = () => {
                 >
                   Terms of Service
                 </Link>
-                {' in full, and that you agree to be legally bound by them. '}
+                {" in full, and that you agree to be legally bound by them. "}
               </Text>
             </Flex>
           </ModalBody>
