@@ -10,7 +10,7 @@ import {
   networkLabels,
   networkNames,
 } from "lib/constants";
-import { POLIS_BSC_BRIDGE, defaultTokens, networks } from "lib/networks";
+import { defaultTokens, networks, POLIS_BSC_BRIDGE } from "lib/networks";
 
 import { getOverriddenMediator, isOverridden } from "./overrides";
 
