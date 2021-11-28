@@ -1,4 +1,10 @@
-const OVERRIDES = {};
+import { POLIS_BSC_BRIDGE } from "lib/networks";
+
+const POLIS_BSC_OVERRIDES = {};
+
+const OVERRIDES = {
+  [POLIS_BSC_BRIDGE]: POLIS_BSC_OVERRIDES,
+};
 
 export const isOverridden = (bridgeDirection, token) => {
   if (!token || !bridgeDirection) return false;

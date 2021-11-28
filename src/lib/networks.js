@@ -37,18 +37,5 @@ const getNetworkConfig = (bridges) => {
 export const networks = getNetworkConfig(ENABLED_BRIDGES);
 
 export const defaultTokens = {
-  [POLIS_BSC_BRIDGE]: {
-    56: {
-      address: "0x1af3f329e8be154074d8769d1ffa4ee058b1dbc3",
-      chainId: 56,
-      symbol: "DAI",
-      name: "Binance-Peg Dai Token",
-    },
-    333999: {
-      address: "0x247123e806a27Ea322bFd93e0273D04602dC942D",
-      chainId: 333999,
-      symbol: "DAI.BSC",
-      name: "Binance Pegged DAI from BSC wrapped by passport.meter.io\n",
-    },
-  },
+  [POLIS_BSC_BRIDGE]: {},
 };
