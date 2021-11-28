@@ -26,6 +26,7 @@ export const useFeeManager = () => {
         "function FOREIGN_TO_HOME_FEE() view returns (bytes32)",
         "function HOME_TO_FOREIGN_FEE() view returns (bytes32)",
       ];
+
       const feeManagerContract = new Contract(
         feeManagerAddress,
         abi,

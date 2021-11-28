@@ -9,9 +9,9 @@ const POLIS_BSC_BRIDGE_CONFIG = {
   enableReversedBridge: true,
   enableForeignCurrencyBridge: true,
   foreignMediatorAddress:
-    "0xecEAF9ef026f5f2614f10248920e33aF266CeD40".toLowerCase(),
+    "0x1D6D1Df5Cc6eC35Ba024Cc70B93865ECC50B7438".toLowerCase(),
   homeMediatorAddress:
-    "0xa69E679A9A57884dCc20A45B543232325dfC869a".toLowerCase(),
+    "0x63aeA5898ca64FF55a2Aee659bd0a5665987f6b0".toLowerCase(),
   foreignAmbAddress: "0x1D5609d5098bD5C802ab2580B89D926B021f3d30".toLowerCase(),
   homeAmbAddress: "0xCf27B036fC15b1520b03eb2A60C49a956B74673a".toLowerCase(),
   foreignGraphName: "polischain/polis-to-bsc-bridge",
