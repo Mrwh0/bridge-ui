@@ -69,9 +69,8 @@ export const chainUrls = {
 };
 
 export const defaultTokensUrl = {
-  56: "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/smartchain/tokenlist.json",
-  333999:
-    "https://raw.githubusercontent.com/hadeswap/hadeswap-interface/master/src/constants/token-lists/hadeswap-tokenlist.json",
+  56: "https://raw.githubusercontent.com/polischain/bridge-ui/main/tokenlist/bsc/bsc.json",
+  333999: "https://raw.githubusercontent.com/polischain/bridge-ui/main/tokenlist/polis/polis.json",
 };
 
 export const GRAPH_HEALTH_ENDPOINT =
