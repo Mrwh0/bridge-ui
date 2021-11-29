@@ -1,6 +1,6 @@
 import { nativeCurrencies, POLIS_FANTOM_BRIDGE } from "lib/constants";
 
-export { POLIS_FANTOM_BRIDGE }
+export { POLIS_FANTOM_BRIDGE };
 
 const POLIS_FANTOM_BRIDGE_CONFIG = {
   label: "polis⥊fantom",

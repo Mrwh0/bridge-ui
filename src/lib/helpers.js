@@ -8,7 +8,8 @@ import {
   nativeCurrencyMediators,
   networkCurrencies,
   networkLabels,
-  networkNames, POLIS_FANTOM_BRIDGE,
+  networkNames,
+  POLIS_FANTOM_BRIDGE,
 } from "lib/constants";
 import { defaultTokens, networks } from "lib/networks";
 
