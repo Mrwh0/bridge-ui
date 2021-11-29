@@ -3,10 +3,10 @@ import memoize from "fast-memoize";
 import { LOCAL_STORAGE_KEYS } from "lib/constants";
 import { getNetworkLabel, getRPCUrl, logError } from "lib/helpers";
 
-const { POLIS_RPC_URL, BSC_RPC_URL } = LOCAL_STORAGE_KEYS;
+const { POLIS_RPC_URL, FTM_RPC_URL } = LOCAL_STORAGE_KEYS;
 
 const RPC_URL = {
-  56: BSC_RPC_URL,
+  250: FTM_RPC_URL,
   333999: POLIS_RPC_URL,
 };
 

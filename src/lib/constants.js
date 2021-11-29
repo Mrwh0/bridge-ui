@@ -27,12 +27,12 @@ export const nativeCurrencies = {
     address: ADDRESS_ZERO,
     symbol: "FTM",
     mode: "NATIVE",
-    homeTokenAddress: "".toLowerCase(),
+    homeTokenAddress: "0xC98859a0d30888e74098b800187e1a6356a800d0".toLowerCase(),
   },
 };
 
 export const nativeCurrencyMediators = {
-  250: "".toLowerCase(),
+  250: "0x07a05d4167cffc2a974eade4a57c01909c1b6335".toLowerCase(),
 };
 
 export const networkNames = {

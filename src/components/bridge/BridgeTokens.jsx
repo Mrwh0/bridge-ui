@@ -5,7 +5,6 @@ import { ToToken } from "components/bridge/ToToken";
 import { TransferButton } from "components/bridge/TransferButton";
 import { UnlockButton } from "components/bridge/UnlockButton";
 import { BridgeLoadingModal } from "components/modals/BridgeLoadingModal";
-import { DaiWarning, isERC20DaiAddress } from "components/warnings/DaiWarning";
 import { GnosisSafeWarning } from "components/warnings/GnosisSafeWarning";
 import {
   InflationaryTokenWarning,
@@ -35,10 +34,6 @@ export const BridgeTokens = () => {
   const { getBridgeChainId, foreignChainId, enableReversedBridge } =
     useBridgeDirection();
   const { fromToken, toToken } = useBridgeContext();
-  const isERC20Dai =
-    !!fromToken &&
-    fromToken.chainId === foreignChainId &&
-    isERC20DaiAddress(fromToken);
   const showReverseBridgeWarning =
     !!toToken &&
     !enableReversedBridge &&
@@ -62,7 +57,6 @@ export const BridgeTokens = () => {
     >
       <GnosisSafeWarning noCheckbox />
       <RPCHealthWarning />
-      {isERC20Dai && <DaiWarning />}
       {showReverseBridgeWarning && <ReverseWarning />}
       {isInflationToken && (
         <InflationaryTokenWarning token={fromToken} noCheckbox />

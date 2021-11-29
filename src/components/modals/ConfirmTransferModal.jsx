@@ -16,7 +16,6 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import TransferImage from "assets/confirm-transfer.svg";
-import { DaiWarning, isERC20DaiAddress } from "components/warnings/DaiWarning";
 import { GnosisSafeWarning } from "components/warnings/GnosisSafeWarning";
 import {
   InflationaryTokenWarning,
@@ -102,11 +101,6 @@ export const ConfirmTransferModal = ({ isOpen, onClose }) => {
   const toUnit = toToken.symbol;
   const currentGasPrice = getGasPrice();
   const medianGasPrice = getMedianHistoricalEthGasPrice();
-
-  const isERC20Dai =
-    !!fromToken &&
-    fromToken.chainId === foreignChainId &&
-    isERC20DaiAddress(fromToken);
   const showReverseBridgeWarning =
     !!toToken &&
     !enableReversedBridge &&
@@ -241,7 +235,6 @@ export const ConfirmTransferModal = ({ isOpen, onClose }) => {
                 noShadow
               />
             )}
-            {isERC20Dai && <DaiWarning noShadow />}
             {showReverseBridgeWarning && <ReverseWarning noShadow />}
             {isInflationToken && (
               <InflationaryTokenWarning

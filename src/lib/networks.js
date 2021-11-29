@@ -9,11 +9,11 @@ const POLIS_FANTOM_BRIDGE_CONFIG = {
   enableReversedBridge: true,
   enableForeignCurrencyBridge: true,
   foreignMediatorAddress:
-    "0xD329D4De99672bc4aB3A17754D78149CAe871E1a".toLowerCase(),
+    "0x5210297D69359939F36f8Fda38D1E0fE82fDb02B".toLowerCase(),
   homeMediatorAddress:
-    "0x1a32E3c0e75E650a59B334C846fd4b9E1C9D430c".toLowerCase(),
-  foreignAmbAddress: "0xCd9de8f7C2a788262e1293437898d6BB08635e60".toLowerCase(),
-  homeAmbAddress: "0x8adeeaFe5964a7194c063b231007205269Dc0969".toLowerCase(),
+    "0xdbcEB62c9f00B1BFF0B34a85e19f6EE8A3e88BA3".toLowerCase(),
+  foreignAmbAddress: "0x0513Ff273f3e861604031959d68c7537885921d3".toLowerCase(),
+  homeAmbAddress: "0xA9Dd226959A7c4f08858702d68ee26c4c95F7FD8".toLowerCase(),
   foreignGraphName: "polischain/polis-to-fantom-bridge",
   homeGraphName: "polischain/fantom-to-polis-bridge",
   ambLiveMonitorPrefix: "http://polis-fantom-alm.acheron.exchange/",
