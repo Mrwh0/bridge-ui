@@ -24,12 +24,12 @@ export const nativeCurrencies = {
     address: ADDRESS_ZERO,
     symbol: "BNB",
     mode: "NATIVE",
-    homeTokenAddress: "".toLowerCase(),
+    homeTokenAddress: "0x96D7d647a41da22fDAA413805aBbF29faF01F706".toLowerCase(),
   },
 };
 
 export const nativeCurrencyMediators = {
-  56: "".toLowerCase(),
+  56: "0x349eb09887d63161aebff1366bb9f2d43f21769e".toLowerCase(),
 };
 
 export const networkNames = {

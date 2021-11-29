@@ -152,7 +152,7 @@ export const getRPCKeys = (bridgeDirection) => {
 };
 
 export const getHelperContract = (chainId) =>
-  nativeCurrencyMediators[chainId || 1];
+  nativeCurrencyMediators[chainId || 56];
 
 export const getMediatorAddressWithoutOverride = (bridgeDirection, chainId) => {
   if (!bridgeDirection || !chainId) return null;

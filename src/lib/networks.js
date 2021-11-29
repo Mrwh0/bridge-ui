@@ -1,4 +1,4 @@
-import { POLIS_BSC_BRIDGE } from "lib/constants";
+import {nativeCurrencies, POLIS_BSC_BRIDGE} from "lib/constants";
 
 export { POLIS_BSC_BRIDGE };
 
@@ -37,5 +37,13 @@ const getNetworkConfig = (bridges) => {
 export const networks = getNetworkConfig(ENABLED_BRIDGES);
 
 export const defaultTokens = {
-  [POLIS_BSC_BRIDGE]: {},
+  [POLIS_BSC_BRIDGE]: {
+    56: nativeCurrencies[56],
+    333999: {
+      address: '0xf1498e8103359fD96c5E08fb34b4C249B619025a',
+      chainId: 333999,
+      symbol: 'SOUL',
+      name: 'Soul Token',
+    },
+  }
 };
