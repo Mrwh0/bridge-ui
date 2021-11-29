@@ -16,7 +16,7 @@ const POLIS_BSC_BRIDGE_CONFIG = {
   homeAmbAddress: "0xCf27B036fC15b1520b03eb2A60C49a956B74673a".toLowerCase(),
   foreignGraphName: "polischain/polis-to-bsc-bridge",
   homeGraphName: "polischain/bsc-to-polis-bridge",
-  ambLiveMonitorPrefix: "https://alm-xdai.herokuapp.com",
+  ambLiveMonitorPrefix: "http://polis-bsc-alm.acheron.exchange/",
   claimDisabled: false,
   tokensClaimDisabled: [],
 };
