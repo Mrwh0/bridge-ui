@@ -1,0 +1,21 @@
+{
+  "name": "Fantom Opera",
+  "version": {
+    "major": 1,
+    "minor": 0,
+    "patch": 0
+  },
+  "logoURI": "https://assets.spookyswap.finance/tokens/FTM.png",
+  "timestamp": "2021-06-17T12:17:25.447Z",
+  "tokens": [
+    {
+      "chainId": 250,
+      "address": "0x841fad6eae12c286d1fd18d1d525dffa75c7effe",
+      "name": "SpookyToken",
+      "symbol": "BOO",
+      "decimals": 18,
+      "logoURI": "https://assets.spookyswap.finance/tokens/BOO.png",
+      "pairs": []
+    }
+  ]
+}

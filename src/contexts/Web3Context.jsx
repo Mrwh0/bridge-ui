@@ -37,7 +37,7 @@ const updateTitle = (chainId) => {
 
 const rpc = {
   333999: getRPCUrl(333999),
-  56: getRPCUrl(56),
+  250: getRPCUrl(250),
 };
 
 const providerOptions = {

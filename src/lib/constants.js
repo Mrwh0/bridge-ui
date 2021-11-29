@@ -1,11 +1,14 @@
 import { BigNumber } from "ethers";
 
-export const POLIS_BSC_BRIDGE = "polis-bsc";
+export const POLIS_FANTOM_BRIDGE = "polis-fantom";
 
 export const ADDRESS_ZERO = "0x0000000000000000000000000000000000000000";
 
 export const BNB_CURRENCY_LOGO =
   "https://s2.coinmarketcap.com/static/img/coins/64x64/1839.png";
+
+export const FTM_CURRENCY_LOGO =
+  "https://s2.coinmarketcap.com/static/img/coins/64x64/3513.png";
 
 export const LARGEST_UINT256 = BigNumber.from(
   "115792089237316195423570985008687907853269984665640564039457584007913129639935"
@@ -13,39 +16,39 @@ export const LARGEST_UINT256 = BigNumber.from(
 
 export const POLLING_INTERVAL = 5000;
 
-export const DEFAULT_BRIDGE_DIRECTION = POLIS_BSC_BRIDGE;
+export const DEFAULT_BRIDGE_DIRECTION = POLIS_FANTOM_BRIDGE;
 
 export const nativeCurrencies = {
-  56: {
-    chainId: 56,
+  250: {
+    chainId: 250,
     decimals: 18,
-    logoURI: BNB_CURRENCY_LOGO,
-    name: "Binance Coin",
+    logoURI: FTM_CURRENCY_LOGO,
+    name: "Fantom",
     address: ADDRESS_ZERO,
-    symbol: "BNB",
+    symbol: "FTM",
     mode: "NATIVE",
-    homeTokenAddress: "0x96D7d647a41da22fDAA413805aBbF29faF01F706".toLowerCase(),
+    homeTokenAddress: "".toLowerCase(),
   },
 };
 
 export const nativeCurrencyMediators = {
-  56: "0x349eb09887d63161aebff1366bb9f2d43f21769e".toLowerCase(),
+  250: "".toLowerCase(),
 };
 
 export const networkNames = {
-  56: "Binance Smart Chain",
+  250: "Fantom Opera",
   333999: "Polis Olympus Chain",
 };
 
 export const networkLabels = {
-  56: "BSC",
+  250: "Fantom",
   333999: "Polis",
 };
 
 export const networkCurrencies = {
-  56: {
-    name: "Binance Coin",
-    symbol: "BNB",
+  250: {
+    name: "Fantom",
+    symbol: "FTM",
   },
   333999: {
     name: "Polis",
@@ -54,11 +57,11 @@ export const networkCurrencies = {
 };
 
 export const chainUrls = {
-  56: {
-    rpc: ["https://bsc-dataseed.binance.org/"],
-    explorer: "https://bscscan.com",
-    chainId: 56,
-    name: networkNames[56],
+  250: {
+    rpc: ["https://rpc.ftm.tools/"],
+    explorer: "https://ftmscan.com",
+    chainId: 250,
+    name: networkNames[250],
   },
   333999: {
     rpc: ["https://rpc.polis.tech"],
@@ -69,8 +72,9 @@ export const chainUrls = {
 };
 
 export const defaultTokensUrl = {
-  56: "https://raw.githubusercontent.com/polischain/bridge-ui/main/tokenlist/bsc/bsc.json",
-  333999: "https://raw.githubusercontent.com/polischain/bridge-ui/main/tokenlist/polis/polis.json",
+  250: "https://raw.githubusercontent.com/polischain/bridge-ui/main/tokenlist/fantom/fantom.json",
+  333999:
+    "https://raw.githubusercontent.com/polischain/bridge-ui/main/tokenlist/polis/polis.json",
 };
 
 export const GRAPH_HEALTH_ENDPOINT =
@@ -78,7 +82,7 @@ export const GRAPH_HEALTH_ENDPOINT =
 
 export const LOCAL_STORAGE_KEYS = {
   DONT_SHOW_CLAIMS: "dont-show-claims",
-  BSC_RPC_URL: "bsc-rpc-url",
+  FTM_RPC_URL: "ftm-rpc-url",
   POLIS_RPC_URL: "polis-rpc-url",
   NEVER_SHOW_CLAIMS: "never-show-claims",
   INFINITE_UNLOCK: "infinite-unlock",
