@@ -40,10 +40,10 @@ export const defaultTokens = {
   [POLIS_FANTOM_BRIDGE]: {
     250: nativeCurrencies[250],
     333999: {
-      address: "0xf1498e8103359fD96c5E08fb34b4C249B619025a",
+      address: "0xE4EC05e0c77ED75318519E6F65110AE67D72CdCc",
       chainId: 333999,
-      symbol: "SOUL",
-      name: "Soul Token",
+      symbol: "WFTM",
+      name: "Wrapped Fantom on PolisDirection",
     },
   },
 };

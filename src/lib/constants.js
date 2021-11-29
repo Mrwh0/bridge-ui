@@ -28,7 +28,7 @@ export const nativeCurrencies = {
     symbol: "FTM",
     mode: "NATIVE",
     homeTokenAddress:
-      "0x3298BBBd8b5e08a4a39f68d32562279d2463F578".toLowerCase(),
+      "0xE4EC05e0c77ED75318519E6F65110AE67D72CdCc".toLowerCase(),
   },
 };
 
