@@ -9,11 +9,11 @@ const POLIS_BSC_BRIDGE_CONFIG = {
   enableReversedBridge: true,
   enableForeignCurrencyBridge: true,
   foreignMediatorAddress:
-    "0x1D6D1Df5Cc6eC35Ba024Cc70B93865ECC50B7438".toLowerCase(),
+    "0xD329D4De99672bc4aB3A17754D78149CAe871E1a".toLowerCase(),
   homeMediatorAddress:
-    "0x63aeA5898ca64FF55a2Aee659bd0a5665987f6b0".toLowerCase(),
-  foreignAmbAddress: "0x1D5609d5098bD5C802ab2580B89D926B021f3d30".toLowerCase(),
-  homeAmbAddress: "0xCf27B036fC15b1520b03eb2A60C49a956B74673a".toLowerCase(),
+    "0x1a32E3c0e75E650a59B334C846fd4b9E1C9D430c".toLowerCase(),
+  foreignAmbAddress: "0xCd9de8f7C2a788262e1293437898d6BB08635e60".toLowerCase(),
+  homeAmbAddress: "0x8adeeaFe5964a7194c063b231007205269Dc0969".toLowerCase(),
   foreignGraphName: "polischain/polis-to-bsc-bridge",
   homeGraphName: "polischain/bsc-to-polis-bridge",
   ambLiveMonitorPrefix: "http://polis-bsc-alm.acheron.exchange/",
