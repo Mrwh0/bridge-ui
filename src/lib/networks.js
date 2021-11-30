@@ -96,10 +96,10 @@ export const defaultTokens = {
   [POLIS_POLYGON_BRIDGE]: {
     137: nativeCurrencies[137],
     333999: {
-      address: "0xb4b6AB1f26B2Adbf0db2a7399508a7dbf4877c80",
+      address: "0xD045aC01FFB46d42ba923b9E7866F5e3519e6723",
       chainId: 333999,
       symbol: "WMATIC",
-      name: "Wrapped Polygon on Polis",
+      name: "Wrapped Matic on Polis",
     },
   },
 };

@@ -44,7 +44,7 @@ export const nativeCurrencies = {
     symbol: "MATIC",
     mode: "NATIVE",
     homeTokenAddress:
-      "0xb4b6AB1f26B2Adbf0db2a7399508a7dbf4877c80".toLowerCase(),
+      "0xD045aC01FFB46d42ba923b9E7866F5e3519e6723".toLowerCase(),
   },
   250: {
     chainId: 250,
@@ -61,7 +61,7 @@ export const nativeCurrencies = {
 
 export const nativeCurrencyMediators = {
   56: "0x7d5d0ba109a6b9f6dde7d2a89a8150b589d49504".toLowerCase(),
-  137: "0xb4b6AB1f26B2Adbf0db2a7399508a7dbf4877c80".toLowerCase(),
+  137: "0x594e8e761c509101decd0953dbfebd2f73cb075a".toLowerCase(),
   250: "0xB771bA1483Eb9aC628a7E81af060Aed52cE74A53".toLowerCase(),
 };
 
@@ -85,7 +85,7 @@ export const networkCurrencies = {
     symbol: "BNB",
   },
   137: {
-    name: "Polygon",
+    name: "Matic",
     symbol: "MATIC",
   },
   250: {
