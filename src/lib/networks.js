@@ -16,7 +16,7 @@ const POLIS_FANTOM_BRIDGE_CONFIG = {
   homeAmbAddress: "0xA9Dd226959A7c4f08858702d68ee26c4c95F7FD8".toLowerCase(),
   foreignGraphName: "polischain/polis-to-fantom-bridge",
   homeGraphName: "polischain/fantom-to-polis-bridge",
-  ambLiveMonitorPrefix: "http://polis-ftm-alm.acheron.exchange/",
+  ambLiveMonitorPrefix: "http://polis-ftm-alm.acheron.exchange",
   claimDisabled: false,
   tokensClaimDisabled: [],
 };
@@ -34,7 +34,7 @@ const POLIS_BSC_BRIDGE_CONFIG = {
   homeAmbAddress: "0x731885890fdF7e53311A7271eb0713E7dbC25E8a".toLowerCase(),
   foreignGraphName: "polischain/polis-to-bsc-bridge",
   homeGraphName: "polischain/bsc-to-polis-bridge",
-  ambLiveMonitorPrefix: "http://polis-bsc-alm.acheron.exchange/",
+  ambLiveMonitorPrefix: "http://polis-bsc-alm.acheron.exchange",
   claimDisabled: false,
   tokensClaimDisabled: [],
 };
@@ -52,7 +52,7 @@ const POLIS_POLYGON_BRIDGE_CONFIG = {
   homeAmbAddress: "0xa85f128B9cb883AaC4DF5272f206890D623EC2f8".toLowerCase(),
   foreignGraphName: "polischain/polis-to-polygon-bridge",
   homeGraphName: "polischain/polygon-to-polis-bridge",
-  ambLiveMonitorPrefix: "http://polis-polygon-alm.acheron.exchange/",
+  ambLiveMonitorPrefix: "http://polis-polygon-alm.acheron.exchange",
   claimDisabled: false,
   tokensClaimDisabled: [],
 };
