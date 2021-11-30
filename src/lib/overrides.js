@@ -1,9 +1,13 @@
-import { POLIS_FANTOM_BRIDGE } from "lib/networks";
+import { POLIS_FANTOM_BRIDGE, POLIS_BSC_BRIDGE, POLIS_POLYGON_BRIDGE } from "lib/networks";
 
 const POLIS_FANTOM_OVERRIDES = {};
+const POLIS_BSC_OVERRIDES = {};
+const POLIS_POLYGON_OVERRIDES = {};
 
 const OVERRIDES = {
   [POLIS_FANTOM_BRIDGE]: POLIS_FANTOM_OVERRIDES,
+  [POLIS_BSC_BRIDGE]: POLIS_BSC_OVERRIDES,
+  [POLIS_POLYGON_BRIDGE]: POLIS_POLYGON_OVERRIDES,
 };
 
 export const isOverridden = (bridgeDirection, token) => {

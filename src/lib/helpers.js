@@ -10,6 +10,8 @@ import {
   networkLabels,
   networkNames,
   POLIS_FANTOM_BRIDGE,
+  POLIS_POLYGON_BRIDGE,
+  POLIS_BSC_BRIDGE
 } from "lib/constants";
 import { defaultTokens, networks } from "lib/networks";
 
@@ -135,7 +137,7 @@ export const logDebug = (...args) => {
   }
 };
 
-const { POLIS_RPC_URL, FANTOM_RPC_URL } = LOCAL_STORAGE_KEYS;
+const { POLIS_RPC_URL, FANTOM_RPC_URL, BSC_RPC_URL, POLYGON_RPC_URL } = LOCAL_STORAGE_KEYS;
 
 export const getRPCKeys = (bridgeDirection) => {
   switch (bridgeDirection) {
@@ -143,6 +145,16 @@ export const getRPCKeys = (bridgeDirection) => {
       return {
         homeRPCKey: POLIS_RPC_URL,
         foreignRPCKey: FANTOM_RPC_URL,
+      };
+    case POLIS_POLYGON_BRIDGE:
+      return {
+        homeRPCKey: POLIS_RPC_URL,
+        foreignRPCKey: POLYGON_RPC_URL,
+      };
+    case POLIS_BSC_BRIDGE:
+      return {
+        homeRPCKey: POLIS_RPC_URL,
+        foreignRPCKey: BSC_RPC_URL,
       };
     default:
       return {
