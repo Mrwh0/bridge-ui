@@ -9,10 +9,9 @@ import {
   networkCurrencies,
   networkLabels,
   networkNames,
+  POLIS_BSC_BRIDGE,
   POLIS_FANTOM_BRIDGE,
-  POLIS_POLYGON_BRIDGE,
-  POLIS_BSC_BRIDGE
-} from "lib/constants";
+  POLIS_POLYGON_BRIDGE} from "lib/constants";
 import { defaultTokens, networks } from "lib/networks";
 
 import { getOverriddenMediator, isOverridden } from "./overrides";

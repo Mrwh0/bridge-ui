@@ -1,6 +1,6 @@
-import { nativeCurrencies, POLIS_FANTOM_BRIDGE, POLIS_POLYGON_BRIDGE, POLIS_BSC_BRIDGE } from "lib/constants";
+import { nativeCurrencies, POLIS_BSC_BRIDGE,POLIS_FANTOM_BRIDGE, POLIS_POLYGON_BRIDGE } from "lib/constants";
 
-export { POLIS_FANTOM_BRIDGE, POLIS_POLYGON_BRIDGE, POLIS_BSC_BRIDGE };
+export { POLIS_BSC_BRIDGE,POLIS_FANTOM_BRIDGE, POLIS_POLYGON_BRIDGE };
 
 const POLIS_FANTOM_BRIDGE_CONFIG = {
   label: "polis⥊fantom",
@@ -16,7 +16,7 @@ const POLIS_FANTOM_BRIDGE_CONFIG = {
   homeAmbAddress: "0xA9Dd226959A7c4f08858702d68ee26c4c95F7FD8".toLowerCase(),
   foreignGraphName: "polischain/polis-to-fantom-bridge",
   homeGraphName: "polischain/fantom-to-polis-bridge",
-  ambLiveMonitorPrefix: "http://polis-fantom-alm.acheron.exchange/",
+  ambLiveMonitorPrefix: "http://polis-ftm-alm.acheron.exchange/",
   claimDisabled: false,
   tokensClaimDisabled: [],
 };
