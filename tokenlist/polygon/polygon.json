@@ -1,0 +1,46 @@
+{
+  "name": "Polygon",
+  "version": {
+    "major": 1,
+    "minor": 0,
+    "patch": 0
+  },
+  "logoURI": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/polygon/info/logo.png",
+  "timestamp": "2021-06-17T12:17:25.447Z",
+  "tokens": [
+    {
+      "asset": "c966_t0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063",
+      "type": "POLYGON",
+      "address": "0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063",
+      "name": "(PoS) Dai Stablecoin",
+      "symbol": "DAI",
+      "decimals": 18,
+      "logoURI": "https://assets.trustwalletapp.com/blockchains/polygon/assets/0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063/logo.png",
+      "pairs": [
+        {
+          "base": "c966_t0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619"
+        }
+      ]
+    },
+    {
+      "asset": "c966_t0x53E0bca35eC356BD5ddDFebbD1Fc0fD03FaBad39",
+      "type": "POLYGON",
+      "address": "0x53E0bca35eC356BD5ddDFebbD1Fc0fD03FaBad39",
+      "name": "ChainLink Token",
+      "symbol": "LINK",
+      "decimals": 18,
+      "logoURI": "https://assets.trustwalletapp.com/blockchains/polygon/assets/0x53E0bca35eC356BD5ddDFebbD1Fc0fD03FaBad39/logo.png",
+      "pairs": []
+    },
+    {
+      "asset": "c966_t0x831753DD7087CaC61aB5644b308642cc1c33Dc13",
+      "type": "POLYGON",
+      "address": "0x831753DD7087CaC61aB5644b308642cc1c33Dc13",
+      "name": "QuickSwap",
+      "symbol": "QUICK",
+      "decimals": 18,
+      "logoURI": "https://assets.trustwalletapp.com/blockchains/polygon/assets/0x831753DD7087CaC61aB5644b308642cc1c33Dc13/logo.png",
+      "pairs": []
+    }
+  ]
+}

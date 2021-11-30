@@ -1,11 +1,11 @@
 {
   "name": "Binance Smart Chain",
   "version": {
-    "major": 11,
+    "major": 1,
     "minor": 0,
     "patch": 0
   },
-  "logoURI": "https://trustwallet.com/assets/images/favicon.png",
+  "logoURI": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/smartchain/info/logo.png",
   "timestamp": "2021-06-17T12:17:25.447Z",
   "tokens": [
     {
