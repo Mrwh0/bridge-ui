@@ -9,11 +9,11 @@ const POLIS_FANTOM_BRIDGE_CONFIG = {
   enableReversedBridge: true,
   enableForeignCurrencyBridge: true,
   foreignMediatorAddress:
-    "0x5210297D69359939F36f8Fda38D1E0fE82fDb02B".toLowerCase(),
+    "0xf4Ce1C6d4eF79d5661AfAA6678892446822Cb558".toLowerCase(),
   homeMediatorAddress:
-    "0xdbcEB62c9f00B1BFF0B34a85e19f6EE8A3e88BA3".toLowerCase(),
-  foreignAmbAddress: "0x0513Ff273f3e861604031959d68c7537885921d3".toLowerCase(),
-  homeAmbAddress: "0xA9Dd226959A7c4f08858702d68ee26c4c95F7FD8".toLowerCase(),
+    "0x26f898A29CD9Ea4c327037547DF6FA7E2967b8D6".toLowerCase(),
+  foreignAmbAddress: "0xF34029CD8A376f30d65Bf8f71C3bBFA01Fab91a3".toLowerCase(),
+  homeAmbAddress: "0x9411446287A9DE0Fc02B8bB0201E3d401d7615F4".toLowerCase(),
   foreignGraphName: "polischain/polis-to-fantom-bridge",
   homeGraphName: "polischain/fantom-to-polis-bridge",
   ambLiveMonitorPrefix: "http://polis-ftm-alm.acheron.exchange",
@@ -78,7 +78,7 @@ export const defaultTokens = {
   [POLIS_FANTOM_BRIDGE]: {
     250: nativeCurrencies[250],
     333999: {
-      address: "0xE4EC05e0c77ED75318519E6F65110AE67D72CdCc",
+      address: "0x03C7A86e14e9BC71d84A4DBe6352b1561402e29C",
       chainId: 333999,
       symbol: "WFTM",
       name: "Wrapped Fantom on Polis",
@@ -87,7 +87,7 @@ export const defaultTokens = {
   [POLIS_BSC_BRIDGE]: {
     56: nativeCurrencies[56],
     333999: {
-      address: "0x99Ce06D2eEf0b1c7A76B897C0439a284bf63eE3f",
+      address: "0xDb6D07410F3b4e73553Ede8aFc2FC6922B19863E",
       chainId: 333999,
       symbol: "WBNB",
       name: "Wrapped BNB on Polis",

@@ -6,22 +6,9 @@ import { logDebug, logError } from "lib/helpers";
 import { getEthersProvider } from "lib/providers";
 import { useEffect, useRef, useState } from "react";
 
-const {
-  REACT_APP_GRAPH_HEALTH_UPDATE_INTERVAL,
-  REACT_APP_GRAPH_HEALTH_THRESHOLD_BLOCKS,
-} = process.env;
+const UPDATE_INTERVAL = 60000
 
-const DEFAULT_GRAPH_HEALTH_UPDATE_INTERVAL = 60000;
-
-const DEFAULT_GRAPH_HEALTH_THRESHOLD_BLOCKS = 10;
-
-const UPDATE_INTERVAL =
-  REACT_APP_GRAPH_HEALTH_UPDATE_INTERVAL ||
-  DEFAULT_GRAPH_HEALTH_UPDATE_INTERVAL;
-
-const THRESHOLD_BLOCKS =
-  REACT_APP_GRAPH_HEALTH_THRESHOLD_BLOCKS ||
-  DEFAULT_GRAPH_HEALTH_THRESHOLD_BLOCKS;
+const THRESHOLD_BLOCKS = 10
 
 export const useGraphHealth = (
   description,

@@ -33,7 +33,7 @@ export const nativeCurrencies = {
     symbol: "BNB",
     mode: "NATIVE",
     homeTokenAddress:
-      "0x99Ce06D2eEf0b1c7A76B897C0439a284bf63eE3f".toLowerCase(),
+      "0xDb6D07410F3b4e73553Ede8aFc2FC6922B19863E".toLowerCase(),
   },
   137: {
     chainId: 137,
@@ -55,7 +55,7 @@ export const nativeCurrencies = {
     symbol: "FTM",
     mode: "NATIVE",
     homeTokenAddress:
-      "0xA5FF89642A1Daaf8E5A3a2610966940b6A5cFC9D".toLowerCase(),
+      "0x03C7A86e14e9BC71d84A4DBe6352b1561402e29C".toLowerCase(),
   },
 };
 
