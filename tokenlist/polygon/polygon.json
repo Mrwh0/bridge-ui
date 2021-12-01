@@ -13,7 +13,7 @@
       "name": "(PoS) Dai Stablecoin",
       "symbol": "DAI",
       "decimals": 18,
-      "logoURI": "https://assets.trustwalletapp.com/blockchains/polygon/assets/0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063/logo.png",
+      "logoURI": "https://assets.trustwalletapp.com/blockchains/polygon/assets/0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063/logo.png"
     },
     {
       "chainId": 137,
@@ -21,7 +21,7 @@
       "name": "ChainLink Token",
       "symbol": "LINK",
       "decimals": 18,
-      "logoURI": "https://assets.trustwalletapp.com/blockchains/polygon/assets/0x53E0bca35eC356BD5ddDFebbD1Fc0fD03FaBad39/logo.png",
+      "logoURI": "https://assets.trustwalletapp.com/blockchains/polygon/assets/0x53E0bca35eC356BD5ddDFebbD1Fc0fD03FaBad39/logo.png"
     },
     {
       "chainId": 137,
@@ -29,7 +29,7 @@
       "name": "QuickSwap",
       "symbol": "QUICK",
       "decimals": 18,
-      "logoURI": "https://assets.trustwalletapp.com/blockchains/polygon/assets/0x831753DD7087CaC61aB5644b308642cc1c33Dc13/logo.png",
+      "logoURI": "https://assets.trustwalletapp.com/blockchains/polygon/assets/0x831753DD7087CaC61aB5644b308642cc1c33Dc13/logo.png"
     },
     {
       "chainId": 137,
