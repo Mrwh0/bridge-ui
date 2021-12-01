@@ -2,58 +2,43 @@
   "name": "Binance Smart Chain",
   "version": {
     "major": 1,
-    "minor": 0,
+    "minor": 1,
     "patch": 0
   },
   "logoURI": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/smartchain/info/logo.png",
-  "timestamp": "2021-06-17T12:17:25.447Z",
   "tokens": [
     {
       "chainId": 56,
-      "asset": "c20000714_t0xBf5140A22578168FD562DCcF235E5D43A02ce9B1",
-      "type": "BEP20",
       "address": "0xBf5140A22578168FD562DCcF235E5D43A02ce9B1",
       "name": "Binance-Peg Uniswap",
       "symbol": "UNI",
       "decimals": 18,
       "logoURI": "https://assets.trustwalletapp.com/blockchains/smartchain/assets/0xBf5140A22578168FD562DCcF235E5D43A02ce9B1/logo.png",
-      "pairs": []
     },
     {
-      "asset": "c20000714_t0xC9849E6fdB743d08fAeE3E34dd2D1bc69EA11a51",
-      "type": "BEP20",
       "address": "0xC9849E6fdB743d08fAeE3E34dd2D1bc69EA11a51",
       "name": "Bunny Token",
       "symbol": "BUNNY",
       "decimals": 18,
       "logoURI": "https://assets.trustwalletapp.com/blockchains/smartchain/assets/0xC9849E6fdB743d08fAeE3E34dd2D1bc69EA11a51/logo.png",
-      "pairs": []
     },
     {
       "chainId": 56,
-      "asset": "c20000714_t0xCa3F508B8e4Dd382eE878A314789373D80A5190A",
-      "type": "BEP20",
       "address": "0xCa3F508B8e4Dd382eE878A314789373D80A5190A",
       "name": "beefy.finance",
       "symbol": "BIFI",
       "decimals": 18,
       "logoURI": "https://assets.trustwalletapp.com/blockchains/smartchain/assets/0xCa3F508B8e4Dd382eE878A314789373D80A5190A/logo.png",
-      "pairs": []
     },
     {
       "chainId": 56,
-      "asset": "c20000714_t0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56",
-      "type": "BEP20",
       "address": "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56",
       "name": "BUSD",
       "symbol": "BUSD",
       "decimals": 18,
       "logoURI": "https://assets.trustwalletapp.com/blockchains/smartchain/assets/0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56/logo.png",
-      "pairs": []
     },
     {
-      "asset": "c20000714_t0xF8A0BF9cF54Bb92F17374d9e9A321E6a111a51bD",
-      "type": "BEP20",
       "address": "0xF8A0BF9cF54Bb92F17374d9e9A321E6a111a51bD",
       "name": "Binance-Peg ChainLink",
       "symbol": "LINK",
@@ -62,13 +47,19 @@
     },
     {
       "chainId": 56,
-      "asset": "c20000714_t0xcF6BB5389c92Bdda8a3747Ddb454cB7a64626C63",
-      "type": "BEP20",
       "address": "0xcF6BB5389c92Bdda8a3747Ddb454cB7a64626C63",
       "name": "Venus",
       "symbol": "XVS",
       "decimals": 18,
       "logoURI": "https://assets.trustwalletapp.com/blockchains/smartchain/assets/0xcF6BB5389c92Bdda8a3747Ddb454cB7a64626C63/logo.png"
+    },
+    {
+      "chainId": 56,
+      "address": "0x17b70f87054985144513e33daf265908ead50230",
+      "name": "Soul Token on BSC",
+      "symbol": "SOUL",
+      "decimals": 18,
+      "logoURI": "https://raw.githubusercontent.com/hadeswap/assets/master/blockchains/olympus/assets/0xf1498e8103359fD96c5E08fb34b4C249B619025a/logo.png"
     }
   ]
 }
