@@ -153,7 +153,7 @@ export const defaultTokens = {
   },
   [POLIS_MAINNET_BRIDGE]: {
     1: {
-      address: "0x7cc8711922029165af30232bca282e8ff3ff1bb3",
+      address: "0xd958d021622283b9179e754332f58bdb8ce8a356",
       chainId: 1,
       symbol: "SOUL",
       name: "Soul Token on Mainnet",
