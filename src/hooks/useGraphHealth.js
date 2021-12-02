@@ -6,9 +6,9 @@ import { logDebug, logError } from "lib/helpers";
 import { getEthersProvider } from "lib/providers";
 import { useEffect, useRef, useState } from "react";
 
-const UPDATE_INTERVAL = 60000
+const UPDATE_INTERVAL = 60000;
 
-const THRESHOLD_BLOCKS = 10
+const THRESHOLD_BLOCKS = 10;
 
 export const useGraphHealth = (
   description,
