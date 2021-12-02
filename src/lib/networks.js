@@ -76,30 +76,45 @@ export const networks = getNetworkConfig(ENABLED_BRIDGES);
 
 export const defaultTokens = {
   [POLIS_FANTOM_BRIDGE]: {
-    250: nativeCurrencies[250],
+    250: {
+      address: "0xc8cc8371e0b0e02f53d6f96ea35f0a9a627c16e0",
+      chainId: 250,
+      symbol: "SOUL",
+      name: "Soul Token on Fantom",
+    },
     333999: {
-      address: "0x03C7A86e14e9BC71d84A4DBe6352b1561402e29C",
+      address: "0xf1498e8103359fD96c5E08fb34b4C249B619025a",
       chainId: 333999,
-      symbol: "WFTM",
-      name: "Wrapped Fantom on Polis",
+      symbol: "SOUL",
+      name: "Soul Token",
     },
   },
   [POLIS_BSC_BRIDGE]: {
-    56: nativeCurrencies[56],
+    56: {
+      address: "0x17b70f87054985144513e33daf265908ead50230",
+      chainId: 56,
+      symbol: "SOUL",
+      name: "Soul Token on BSC",
+    },
     333999: {
-      address: "0xDb6D07410F3b4e73553Ede8aFc2FC6922B19863E",
+      address: "0xf1498e8103359fD96c5E08fb34b4C249B619025a",
       chainId: 333999,
-      symbol: "WBNB",
-      name: "Wrapped BNB on Polis",
+      symbol: "SOUL",
+      name: "Soul Token",
     },
   },
   [POLIS_POLYGON_BRIDGE]: {
-    137: nativeCurrencies[137],
+    137: {
+      address: "0x7cc8711922029165af30232bca282e8ff3ff1bb3",
+      chainId: 137,
+      symbol: "SOUL",
+      name: "Soul Token on Polygon",
+    },
     333999: {
-      address: "0xD045aC01FFB46d42ba923b9E7866F5e3519e6723",
+      address: "0xf1498e8103359fD96c5E08fb34b4C249B619025a",
       chainId: 333999,
-      symbol: "WMATIC",
-      name: "Wrapped Matic on Polis",
+      symbol: "SOUL",
+      name: "Soul Token",
     },
   },
 };

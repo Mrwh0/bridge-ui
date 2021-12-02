@@ -2,26 +2,11 @@
   "name": "Fantom Opera",
   "version": {
     "major": 1,
-    "minor": 1,
+    "minor": 0,
     "patch": 0
   },
   "logoURI": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/fantom/info/logo.png",
   "tokens": [
-    {
-      "chainId": 250,
-      "address": "0x841fad6eae12c286d1fd18d1d525dffa75c7effe",
-      "name": "SpookyToken",
-      "symbol": "BOO",
-      "decimals": 18,
-      "logoURI": "https://assets.spookyswap.finance/tokens/BOO.png"
-    },
-    {
-      "chainId": 250,
-      "address": "0xc8cc8371e0b0e02f53d6f96ea35f0a9a627c16e0",
-      "name": "Soul Token on Fantom",
-      "symbol": "SOUL",
-      "decimals": 18,
-      "logoURI": "https://raw.githubusercontent.com/hadeswap/assets/master/blockchains/olympus/assets/0xf1498e8103359fD96c5E08fb34b4C249B619025a/logo.png"
-    }
+
   ]
 }
