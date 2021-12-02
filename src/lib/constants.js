@@ -3,8 +3,12 @@ import { BigNumber } from "ethers";
 export const POLIS_FANTOM_BRIDGE = "polis-fantom";
 export const POLIS_BSC_BRIDGE = "polis-bsc";
 export const POLIS_POLYGON_BRIDGE = "polis-polygon";
+export const POLIS_MAINNET_BRIDGE = "polis-mainnet";
 
 export const ADDRESS_ZERO = "0x0000000000000000000000000000000000000000";
+
+export const ETHEREUM_CURRENCY_LOGO =
+  "https://s2.coinmarketcap.com/static/img/coins/64x64/1027.png";
 
 export const BNB_CURRENCY_LOGO =
   "https://s2.coinmarketcap.com/static/img/coins/64x64/1839.png";
@@ -24,6 +28,17 @@ export const POLLING_INTERVAL = 5000;
 export const DEFAULT_BRIDGE_DIRECTION = POLIS_FANTOM_BRIDGE;
 
 export const nativeCurrencies = {
+  1: {
+    chainId: 1,
+    decimals: 18,
+    logoURI: ETHEREUM_CURRENCY_LOGO,
+    name: "Ethereum",
+    address: ADDRESS_ZERO,
+    symbol: "ETH",
+    mode: "NATIVE",
+    homeTokenAddress:
+      "0x5B5B05D93c7e374a6D223BFA9591281fbf48237F".toLowerCase(),
+  },
   56: {
     chainId: 56,
     decimals: 18,
@@ -60,12 +75,14 @@ export const nativeCurrencies = {
 };
 
 export const nativeCurrencyMediators = {
+  1: "0xa05924cbd2a8434b3993394b9bed122583a783ad".toLowerCase(),
   56: "0x7d5d0ba109a6b9f6dde7d2a89a8150b589d49504".toLowerCase(),
   137: "0x594e8e761c509101decd0953dbfebd2f73cb075a".toLowerCase(),
   250: "0xB771bA1483Eb9aC628a7E81af060Aed52cE74A53".toLowerCase(),
 };
 
 export const networkNames = {
+  1: "Mainnet",
   56: "Binance Smart Chain",
   137: "Polygon",
   250: "Fantom Opera",
@@ -73,6 +90,7 @@ export const networkNames = {
 };
 
 export const networkLabels = {
+  1: "Mainnet",
   56: "BSC",
   137: "Polygon",
   250: "Fantom",
@@ -80,6 +98,10 @@ export const networkLabels = {
 };
 
 export const networkCurrencies = {
+  1: {
+    name: "Ethereum",
+    symbol: "ETH",
+  },
   56: {
     name: "Binance Coin",
     symbol: "BNB",
@@ -99,6 +121,14 @@ export const networkCurrencies = {
 };
 
 export const chainUrls = {
+  1: {
+    rpc: process.env.REACT_APP_MAINNET_RPC_URL.split(
+      " "
+    ),
+    explorer: "https://etherscan.io",
+    chainId: 1,
+    name: networkNames[1],
+  },
   56: {
     rpc: ["https://bsc-dataseed.binance.org/"],
     explorer: "https://bscscan.com",
@@ -126,6 +156,7 @@ export const chainUrls = {
 };
 
 export const defaultTokensUrl = {
+  1: "https://raw.githubusercontent.com/polischain/bridge-ui/main/tokenlist/mainnet/mainnet.json",
   56: "https://raw.githubusercontent.com/polischain/bridge-ui/main/tokenlist/bsc/bsc.json",
   137: "https://raw.githubusercontent.com/polischain/bridge-ui/main/tokenlist/polygon/polygon.json",
   250: "https://raw.githubusercontent.com/polischain/bridge-ui/main/tokenlist/fantom/fantom.json",
@@ -138,6 +169,7 @@ export const GRAPH_HEALTH_ENDPOINT =
 
 export const LOCAL_STORAGE_KEYS = {
   DONT_SHOW_CLAIMS: "dont-show-claims",
+  MAINNET_RPC_URL: "mainnet-rpc-url",
   FTM_RPC_URL: "ftm-rpc-url",
   POLIS_RPC_URL: "polis-rpc-url",
   BSC_RPC_URL: "bsc-rpc-url",

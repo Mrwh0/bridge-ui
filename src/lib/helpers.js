@@ -11,7 +11,9 @@ import {
   networkNames,
   POLIS_BSC_BRIDGE,
   POLIS_FANTOM_BRIDGE,
-  POLIS_POLYGON_BRIDGE} from "lib/constants";
+  POLIS_MAINNET_BRIDGE,
+  POLIS_POLYGON_BRIDGE,
+} from "lib/constants";
 import { defaultTokens, networks } from "lib/networks";
 
 import { getOverriddenMediator, isOverridden } from "./overrides";
@@ -136,7 +138,13 @@ export const logDebug = (...args) => {
   }
 };
 
-const { POLIS_RPC_URL, FANTOM_RPC_URL, BSC_RPC_URL, POLYGON_RPC_URL } = LOCAL_STORAGE_KEYS;
+const {
+  POLIS_RPC_URL,
+  FANTOM_RPC_URL,
+  BSC_RPC_URL,
+  POLYGON_RPC_URL,
+  MAINNET_RPC_URL,
+} = LOCAL_STORAGE_KEYS;
 
 export const getRPCKeys = (bridgeDirection) => {
   switch (bridgeDirection) {
@@ -154,6 +162,11 @@ export const getRPCKeys = (bridgeDirection) => {
       return {
         homeRPCKey: POLIS_RPC_URL,
         foreignRPCKey: BSC_RPC_URL,
+      };
+    case POLIS_MAINNET_BRIDGE:
+      return {
+        homeRPCKey: POLIS_RPC_URL,
+        foreignRPCKey: MAINNET_RPC_URL,
       };
     default:
       return {
