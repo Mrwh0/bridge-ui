@@ -130,7 +130,9 @@ export const chainUrls = {
     name: networkNames[1],
   },
   56: {
-    rpc: ["https://bsc-dataseed.binance.org/"],
+    rpc: process.env.REACT_APP_BSC_RPC_URL.split(
+      " "
+    ),
     explorer: "https://bscscan.com",
     chainId: 56,
     name: networkNames[56],
