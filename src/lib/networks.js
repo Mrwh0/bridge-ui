@@ -3,6 +3,7 @@ import {
   POLIS_FANTOM_BRIDGE,
   POLIS_MAINNET_BRIDGE,
   POLIS_POLYGON_BRIDGE,
+  POLIS_AVALANCHE_BRIDGE,
 } from "lib/constants";
 
 export {
@@ -10,6 +11,7 @@ export {
   POLIS_FANTOM_BRIDGE,
   POLIS_MAINNET_BRIDGE,
   POLIS_POLYGON_BRIDGE,
+  POLIS_AVALANCHE_BRIDGE,
 };
 
 const POLIS_FANTOM_BRIDGE_CONFIG = {
@@ -84,12 +86,32 @@ const POLIS_MAINNET_BRIDGE_CONFIG = {
   claimDisabled: false,
   tokensClaimDisabled: [],
 };
+const POLIS_AVALANCHE_BRIDGE_CONFIG = {
+  label: "polis⥊avalanche",
+  homeChainId: 333999,
+  foreignChainId: 43114,
+  enableReversedBridge: true,
+  enableForeignCurrencyBridge: true,
+  foreignMediatorAddress:
+    "0xfB59876201405Aee8D8aDa645b168AFEdb442F76".toLowerCase(),
+  homeMediatorAddress:
+    "0xfB59876201405Aee8D8aDa645b168AFEdb442F76".toLowerCase(),
+  foreignAmbAddress: "0xd66650Db783296918d11EdaE2FA6F191e9F7f884".toLowerCase(),
+  homeAmbAddress: "0xd66650Db783296918d11EdaE2FA6F191e9F7f884".toLowerCase(),
+  foreignGraphName: "polischain/polis-to-avalanche",
+  homeGraphName: "polischain/avalanche-to-polis-bridge",
+  ambLiveMonitorPrefix: "http://polis-avalanche-alm.acheron.exchange",
+  claimDisabled: false,
+  tokensClaimDisabled: [],
+};
 
 const ENABLED_BRIDGES = [
   POLIS_FANTOM_BRIDGE,
   POLIS_BSC_BRIDGE,
   POLIS_POLYGON_BRIDGE,
   POLIS_MAINNET_BRIDGE,
+  POLIS_AVALANCHE_BRIDGE,
+
 ].map((b) => b.toLowerCase());
 
 const bridgeInfo = {
@@ -97,6 +119,7 @@ const bridgeInfo = {
   [POLIS_POLYGON_BRIDGE]: POLIS_POLYGON_BRIDGE_CONFIG,
   [POLIS_BSC_BRIDGE]: POLIS_BSC_BRIDGE_CONFIG,
   [POLIS_MAINNET_BRIDGE]: POLIS_MAINNET_BRIDGE_CONFIG,
+  [POLIS_AVALANCHE_BRIDGE]: POLIS_AVALANCHE_BRIDGE_CONFIG,
 };
 
 const getNetworkConfig = (bridges) => {
@@ -157,6 +180,20 @@ export const defaultTokens = {
       chainId: 1,
       symbol: "SOUL",
       name: "Soul Token on Mainnet",
+    },
+    333999: {
+      address: "0xf1498e8103359fD96c5E08fb34b4C249B619025a",
+      chainId: 333999,
+      symbol: "SOUL",
+      name: "Soul Token",
+    },
+  },
+  [POLIS_AVALANCHE_BRIDGE]: {
+    43114: {
+      address: "pending",
+      chainId: 43114,
+      symbol: "SOUL",
+      name: "Soul Token on Avalanche",
     },
     333999: {
       address: "0xf1498e8103359fD96c5E08fb34b4C249B619025a",
