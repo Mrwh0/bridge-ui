@@ -9,11 +9,11 @@ import {
   networkCurrencies,
   networkLabels,
   networkNames,
+  POLIS_AVALANCHE_BRIDGE,
   POLIS_BSC_BRIDGE,
   POLIS_FANTOM_BRIDGE,
   POLIS_MAINNET_BRIDGE,
   POLIS_POLYGON_BRIDGE,
-  POLIS_AVALANCHE_BRIDGE,
 } from "lib/constants";
 import { defaultTokens, networks } from "lib/networks";
 

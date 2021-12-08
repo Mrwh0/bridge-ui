@@ -94,7 +94,7 @@ export const nativeCurrencyMediators = {
   56: "0x7d5d0ba109a6b9f6dde7d2a89a8150b589d49504".toLowerCase(),
   137: "0x594e8e761c509101decd0953dbfebd2f73cb075a".toLowerCase(),
   250: "0xB771bA1483Eb9aC628a7E81af060Aed52cE74A53".toLowerCase(),
-  43114:"0x37475F044DE2437fC60F664d85AE0232d00695D1".toLowerCase(),
+  43114: "0x37475F044DE2437fC60F664d85AE0232d00695D1".toLowerCase(),
 };
 
 export const networkNames = {
@@ -144,17 +144,13 @@ export const networkCurrencies = {
 
 export const chainUrls = {
   1: {
-    rpc: process.env.REACT_APP_MAINNET_RPC_URL.split(
-      " "
-    ),
+    rpc: process.env.REACT_APP_MAINNET_RPC_URL.split(" "),
     explorer: "https://etherscan.io",
     chainId: 1,
     name: networkNames[1],
   },
   56: {
-    rpc: process.env.REACT_APP_BSC_RPC_URL.split(
-      " "
-    ),
+    rpc: process.env.REACT_APP_BSC_RPC_URL.split(" "),
     explorer: "https://bscscan.com",
     chainId: 56,
     name: networkNames[56],
@@ -190,7 +186,8 @@ export const defaultTokensUrl = {
   56: "https://raw.githubusercontent.com/polischain/bridge-ui/main/tokenlist/bsc/bsc.json",
   137: "https://raw.githubusercontent.com/polischain/bridge-ui/main/tokenlist/polygon/polygon.json",
   250: "https://raw.githubusercontent.com/polischain/bridge-ui/main/tokenlist/fantom/fantom.json",
-  43114: "https://raw.githubusercontent.com/polischain/bridge-ui/main/tokenlist/avalanche/avalanche.json",
+  43114:
+    "https://raw.githubusercontent.com/polischain/bridge-ui/main/tokenlist/avalanche/avalanche.json",
   333999:
     "https://raw.githubusercontent.com/polischain/bridge-ui/main/tokenlist/polis/polis.json",
 };
