@@ -190,7 +190,7 @@ export const defaultTokens = {
   },
   [POLIS_AVALANCHE_BRIDGE]: {
     43114: {
-      address: "pending",
+      address: "0x3126cadD2d364612E49B4c7779116037EF9fCe91",
       chainId: 43114,
       symbol: "SOUL",
       name: "Soul Token on Avalanche",
