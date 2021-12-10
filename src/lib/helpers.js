@@ -9,6 +9,7 @@ import {
   networkCurrencies,
   networkLabels,
   networkNames,
+  POLIS_AVALANCHE_BRIDGE,
   POLIS_BSC_BRIDGE,
   POLIS_FANTOM_BRIDGE,
   POLIS_MAINNET_BRIDGE,
@@ -144,6 +145,7 @@ const {
   BSC_RPC_URL,
   POLYGON_RPC_URL,
   MAINNET_RPC_URL,
+  AVALANCHE_RPC_URL,
 } = LOCAL_STORAGE_KEYS;
 
 export const getRPCKeys = (bridgeDirection) => {
@@ -167,6 +169,11 @@ export const getRPCKeys = (bridgeDirection) => {
       return {
         homeRPCKey: POLIS_RPC_URL,
         foreignRPCKey: MAINNET_RPC_URL,
+      };
+    case POLIS_AVALANCHE_BRIDGE:
+      return {
+        homeRPCKey: POLIS_RPC_URL,
+        foreignRPCKey: AVALANCHE_RPC_URL,
       };
     default:
       return {
