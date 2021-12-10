@@ -98,7 +98,7 @@ const POLIS_AVALANCHE_BRIDGE_CONFIG = {
     "0xfB59876201405Aee8D8aDa645b168AFEdb442F76".toLowerCase(),
   foreignAmbAddress: "0xd66650Db783296918d11EdaE2FA6F191e9F7f884".toLowerCase(),
   homeAmbAddress: "0xd66650Db783296918d11EdaE2FA6F191e9F7f884".toLowerCase(),
-  foreignGraphName: "polischain/polis-to-avalanche",
+  foreignGraphName: "mrwh0/polistoavalanche",
   homeGraphName: "polischain/avalanche-to-polis-bridge",
   ambLiveMonitorPrefix: "http://polis-avalanche-alm.acheron.exchange",
   claimDisabled: false,
