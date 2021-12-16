@@ -1,10 +1,11 @@
 import { BigNumber } from "ethers";
 
-export const POLIS_FANTOM_BRIDGE = "polis-fantom";
-export const POLIS_BSC_BRIDGE = "polis-bsc";
-export const POLIS_POLYGON_BRIDGE = "polis-polygon";
-export const POLIS_MAINNET_BRIDGE = "polis-mainnet";
 export const POLIS_AVALANCHE_BRIDGE = "polis-avalanche";
+export const POLIS_BSC_BRIDGE = "polis-bsc";
+export const POLIS_FANTOM_BRIDGE = "polis-fantom";
+export const POLIS_IOTEX_BRIDGE = "polis-iotex";
+export const POLIS_MAINNET_BRIDGE = "polis-mainnet";
+export const POLIS_POLYGON_BRIDGE = "polis-polygon";
 
 export const ADDRESS_ZERO = "0x0000000000000000000000000000000000000000";
 
@@ -22,6 +23,9 @@ export const POLYGON_CURRENCY_LOGO =
 
 export const AVALANCHE_CURRENCY_LOGO =
   "https://s2.coinmarketcap.com/static/img/coins/64x64/5805.png";
+
+export const IOTEX_CURRENCY_LOGO =
+  "https://s2.coinmarketcap.com/static/img/coins/64x64/2777.png";
 
 export const LARGEST_UINT256 = BigNumber.from(
   "115792089237316195423570985008687907853269984665640564039457584007913129639935"
@@ -87,6 +91,17 @@ export const nativeCurrencies = {
     homeTokenAddress:
       "0x3126cadD2d364612E49B4c7779116037EF9fCe91".toLowerCase(),
   },
+  4689: {
+    chainId: 4689,
+    decimals: 18,
+    logoURI: IOTEX_CURRENCY_LOGO,
+    name: "Iotex",
+    address: ADDRESS_ZERO,
+    symbol: "IOTEX",
+    mode: "NATIVE",
+    homeTokenAddress:
+      "0xB2c97E7BD98490Fe6D6134F593E74008B5ECD9F4".toLowerCase(),
+  },
 };
 
 export const nativeCurrencyMediators = {
@@ -94,6 +109,7 @@ export const nativeCurrencyMediators = {
   56: "0x7d5d0ba109a6b9f6dde7d2a89a8150b589d49504".toLowerCase(),
   137: "0x594e8e761c509101decd0953dbfebd2f73cb075a".toLowerCase(),
   250: "0xB771bA1483Eb9aC628a7E81af060Aed52cE74A53".toLowerCase(),
+  4689: "0x37475F044DE2437fC60F664d85AE0232d00695D1".toLowerCase(),
   43114: "0x37475F044DE2437fC60F664d85AE0232d00695D1".toLowerCase(),
 };
 
@@ -102,6 +118,7 @@ export const networkNames = {
   56: "Binance Smart Chain",
   137: "Polygon",
   250: "Fantom Opera",
+  4689: "Iotex",
   43114: "Avalanche C chain",
   333999: "Polis Olympus Chain",
 };
@@ -111,6 +128,7 @@ export const networkLabels = {
   56: "BSC",
   137: "Polygon",
   250: "Fantom",
+  4689: "Iotex",
   43114: "Avalanche",
   333999: "Polis",
 };
@@ -131,6 +149,10 @@ export const networkCurrencies = {
   250: {
     name: "Fantom",
     symbol: "FTM",
+  },
+  4689: {
+    name: "Iotex",
+    symbol: "IOTEX",
   },
   43114: {
     name: "Avalanche",
@@ -167,6 +189,12 @@ export const chainUrls = {
     chainId: 250,
     name: networkNames[250],
   },
+  4689: {
+    rpc: ["https://babel-api.mainnet.iotex.io"],
+    explorer: "https://iotexscan.io",
+    chainId: 4689,
+    name: networkNames[4689],
+  },
   43114: {
     rpc: ["https://api.avax.network/ext/bc/C/rpc"],
     explorer: "https://snowtrace.io",
@@ -186,6 +214,7 @@ export const defaultTokensUrl = {
   56: "https://raw.githubusercontent.com/polischain/bridge-ui/main/tokenlist/bsc/bsc.json",
   137: "https://raw.githubusercontent.com/polischain/bridge-ui/main/tokenlist/polygon/polygon.json",
   250: "https://raw.githubusercontent.com/polischain/bridge-ui/main/tokenlist/fantom/fantom.json",
+  4689: "https://raw.githubusercontent.com/polischain/bridge-ui/main/tokenlist/iotex/iotex.json",
   43114:
     "https://raw.githubusercontent.com/polischain/bridge-ui/main/tokenlist/avalanche/avalanche.json",
   333999:

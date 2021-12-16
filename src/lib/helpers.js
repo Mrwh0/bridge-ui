@@ -12,6 +12,7 @@ import {
   POLIS_AVALANCHE_BRIDGE,
   POLIS_BSC_BRIDGE,
   POLIS_FANTOM_BRIDGE,
+  POLIS_IOTEX_BRIDGE,
   POLIS_MAINNET_BRIDGE,
   POLIS_POLYGON_BRIDGE,
 } from "lib/constants";
@@ -140,12 +141,13 @@ export const logDebug = (...args) => {
 };
 
 const {
-  POLIS_RPC_URL,
-  FANTOM_RPC_URL,
-  BSC_RPC_URL,
-  POLYGON_RPC_URL,
-  MAINNET_RPC_URL,
   AVALANCHE_RPC_URL,
+  BSC_RPC_URL,
+  FANTOM_RPC_URL,
+  IOTEX_RPC_URL,
+  MAINNET_RPC_URL,
+  POLIS_RPC_URL,
+  POLYGON_RPC_URL,
 } = LOCAL_STORAGE_KEYS;
 
 export const getRPCKeys = (bridgeDirection) => {
@@ -174,6 +176,11 @@ export const getRPCKeys = (bridgeDirection) => {
       return {
         homeRPCKey: POLIS_RPC_URL,
         foreignRPCKey: AVALANCHE_RPC_URL,
+      };
+    case POLIS_IOTEX_BRIDGE:
+      return {
+        homeRPCKey: POLIS_RPC_URL,
+        foreignRPCKey: IOTEX_RPC_URL,
       };
     default:
       return {
