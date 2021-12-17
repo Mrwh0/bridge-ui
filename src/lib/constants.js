@@ -232,6 +232,7 @@ export const LOCAL_STORAGE_KEYS = {
   BSC_RPC_URL: "bsc-rpc-url",
   POLYGON_RPC_URL: "polygon-rpc-url",
   AVALANCHE_RPC_URL: "avalanche-rpc-url",
+  IOTEX_RPC_URL: "iotex-rpc-url",
   NEVER_SHOW_CLAIMS: "never-show-claims",
   INFINITE_UNLOCK: "infinite-unlock",
   CUSTOM_TOKENS: "customTokens",

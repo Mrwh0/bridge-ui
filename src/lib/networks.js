@@ -195,7 +195,6 @@ export const defaultTokens = {
       name: "Soul Token",
     },
   },
-  // pending add soul token on iotex
   [POLIS_MAINNET_BRIDGE]: {
     1: {
       address: "0xd958d021622283b9179e754332f58bdb8ce8a356",
@@ -212,7 +211,7 @@ export const defaultTokens = {
   },
   [POLIS_AVALANCHE_BRIDGE]: {
     43114: {
-      address: "0x3126cadD2d364612E49B4c7779116037EF9fCe91",
+      address: "0x8af201118c7f06ca3225fbd8e166f54d3fa5ff93",
       chainId: 43114,
       symbol: "SOUL",
       name: "Soul Token on Avalanche",
