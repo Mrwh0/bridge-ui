@@ -1,4 +1,5 @@
 import {
+  nativeCurrencies,
   POLIS_AVALANCHE_BRIDGE,
   POLIS_BSC_BRIDGE,
   POLIS_FANTOM_BRIDGE,
@@ -77,11 +78,11 @@ const POLIS_IOTEX_BRIDGE_CONFIG = {
   enableReversedBridge: true,
   enableForeignCurrencyBridge: true,
   foreignMediatorAddress:
-    "0x712B61e244CB26c8bB41655913d8076E144C7A21".toLowerCase(),
+    "0x18a5D68BA3Ad47405CC2fFCB0C57E47A519C140a".toLowerCase(),
   homeMediatorAddress:
-    "0x1A8D1775335366F1068e6078813160Abf84c26bd".toLowerCase(),
-  foreignAmbAddress: "0xA600c818a7Bb37cDd6B0098aB5B18B69c71892f7".toLowerCase(),
-  homeAmbAddress: "0x2953A5f857eC9fA213105E745cCf2c8f6852aBb4".toLowerCase(),
+    "0x9308B28A0bcCA5645DA0C3C15732871432ab646d".toLowerCase(),
+  foreignAmbAddress: "0xB632A2c05A1880da0a870FD5BDD650059F3A0383".toLowerCase(),
+  homeAmbAddress: "0xC150C423A9624b7ae40749d63B869c2B9e968a96".toLowerCase(),
   foreignGraphName: "polischain/polis-to-iotex-bridge",
   homeGraphName: "polischain/iotex-to-polis-bridge",
   ambLiveMonitorPrefix: "http://polis-iotex-alm.acheron.exchange",
@@ -188,6 +189,15 @@ export const defaultTokens = {
       symbol: "SOUL",
       name: "Soul Token on Polygon",
     },
+    333999: {
+      address: "0xf1498e8103359fD96c5E08fb34b4C249B619025a",
+      chainId: 333999,
+      symbol: "SOUL",
+      name: "Soul Token",
+    },
+  },
+  [POLIS_IOTEX_BRIDGE]: {
+    4689: nativeCurrencies[4689],
     333999: {
       address: "0xf1498e8103359fD96c5E08fb34b4C249B619025a",
       chainId: 333999,

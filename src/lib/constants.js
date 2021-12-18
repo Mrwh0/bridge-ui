@@ -100,7 +100,7 @@ export const nativeCurrencies = {
     symbol: "IOTEX",
     mode: "NATIVE",
     homeTokenAddress:
-      "0xB2c97E7BD98490Fe6D6134F593E74008B5ECD9F4".toLowerCase(),
+      "pending".toLowerCase(),
   },
 };
 
@@ -109,7 +109,7 @@ export const nativeCurrencyMediators = {
   56: "0x7d5d0ba109a6b9f6dde7d2a89a8150b589d49504".toLowerCase(),
   137: "0x594e8e761c509101decd0953dbfebd2f73cb075a".toLowerCase(),
   250: "0xB771bA1483Eb9aC628a7E81af060Aed52cE74A53".toLowerCase(),
-  4689: "0x37475F044DE2437fC60F664d85AE0232d00695D1".toLowerCase(),
+  4689: "pending".toLowerCase(),
   43114: "0x37475F044DE2437fC60F664d85AE0232d00695D1".toLowerCase(),
 };
 
